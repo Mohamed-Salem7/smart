@@ -16,37 +16,35 @@ class Verifying2 extends StatefulWidget {
 }
 
 class _Verifying2State extends State<Verifying2> {
+  bool isResend = false;
+  bool isVerified = false;
+  bool isLoading = false;
+
+  late Timer timer;
+
+  int start = 30;
+
+  void resend() {
+    setState(() {
+      isResend = true;
+    });
+    Duration oneSec = Duration(seconds: 1);
+    timer = Timer.periodic(oneSec, (timer) {
+      setState(() {
+        if (start == 0) {
+          start = 30;
+          isResend = false;
+          timer.cancel();
+        } else {
+          start--;
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    bool isResend = false;
-    bool isVerified = false;
-    bool isLoading = false;
-
-    late Timer timer;
-    int start = 30;
-
-    void resend()
-    {
-      setState(() {
-        isResend = true;
-      });
-      const oneSec = Duration(seconds: 1);
-      timer = Timer.periodic(oneSec, (timer)
-      {
-       setState(() {
-         if(start == 0)
-         {
-           start = 30;
-           isResend = false;
-           timer.cancel();
-         }else
-         {
-           start--;
-         }
-       });
-      });
-    }
     return Scaffold(
       body: Column(
         children: [
@@ -136,22 +134,19 @@ class _Verifying2State extends State<Verifying2> {
                               },
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Colors.amber,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Color(0xff5300BF),
                                   ),
                                 ),
                               ),
-                              style:
-                              Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.headline6,
                               cursorColor: const Color(0xff5300BF),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
@@ -179,22 +174,19 @@ class _Verifying2State extends State<Verifying2> {
                               },
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Colors.amber,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Color(0xff5300BF),
                                   ),
                                 ),
                               ),
-                              style:
-                              Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.headline6,
                               cursorColor: const Color(0xff5300BF),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
@@ -222,22 +214,19 @@ class _Verifying2State extends State<Verifying2> {
                               },
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Colors.amber,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Color(0xff5300BF),
                                   ),
                                 ),
                               ),
-                              style:
-                              Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.headline6,
                               cursorColor: const Color(0xff5300BF),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
@@ -265,22 +254,19 @@ class _Verifying2State extends State<Verifying2> {
                               },
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Colors.amber,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Color(0xff5300BF),
                                   ),
                                 ),
                               ),
-                              style:
-                              Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.headline6,
                               cursorColor: const Color(0xff5300BF),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
@@ -308,22 +294,19 @@ class _Verifying2State extends State<Verifying2> {
                               },
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Colors.amber,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Color(0xff5300BF),
                                   ),
                                 ),
                               ),
-                              style:
-                              Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.headline6,
                               cursorColor: const Color(0xff5300BF),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
@@ -351,22 +334,19 @@ class _Verifying2State extends State<Verifying2> {
                               },
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Colors.amber,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
                                     color: Color(0xff5300BF),
                                   ),
                                 ),
                               ),
-                              style:
-                              Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.headline6,
                               cursorColor: const Color(0xff5300BF),
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
@@ -382,12 +362,12 @@ class _Verifying2State extends State<Verifying2> {
                   ),
                   Positioned(
                     top: size.height * 0.65,
-                    right: size.width * 0.15,
-                    left: size.width * 0.15,
+                    right: size.width * 0.1,
+                    left: size.width * 0.1,
                     child: Container(
                       width: size.width * 0.8,
                       child: ElevatedButton(
-                        clipBehavior: Clip.hardEdge,
+                        clipBehavior: Clip.antiAlias,
                         onPressed: () {
                           // navigatorTo(context, Verifying2());
                         },
@@ -397,6 +377,7 @@ class _Verifying2State extends State<Verifying2> {
                               (0xff5300BF),
                             ),
                           ),
+
                         ),
                         child: const Text(
                           'تأكيد الرقم',
@@ -412,56 +393,88 @@ class _Verifying2State extends State<Verifying2> {
                       ),
                     ),
                   ),
+                  if(!isResend)
+                  Positioned(
+                    top: size.height * 0.74,
+                    right: size.width * 0.1,
+                    left: size.width * 0.22,
+                    child: const Text(
+                           'لم أستلم كود التفعيل؟',
+                      style: TextStyle(
+                        fontFamily: 'Tajawal',
+                        fontSize: 14,
+                        color: Color(0xff7b7890),
+                        height: 1.7142857142857142,
+                      ),
+                      textHeightBehavior:
+                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                      textAlign: TextAlign.center,
+                      softWrap: false,
+                    ),
+                  ),
+                  if(isResend)
                   Positioned(
                     top: size.height * 0.74,
                     right: size.width * 0.2,
                     left: size.width * 0.2,
-                    child: Row(
-                      children: [
-                        Text(
-                          'لم أستلم كود التفعيل؟',
+                    child: const Text(
+                      'انتظر قليلا ليتم إعادة ارسال كود التفعيل',
+                      style:  TextStyle(
+                        fontFamily: 'Tajawal',
+                        fontSize: 14,
+                        color: Color(0xff7b7890),
+                        height: 1.7142857142857142,
+                      ),
+                      textHeightBehavior:
+                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                      textAlign: TextAlign.center,
+                      softWrap: false,
+                    ),
+                  ),
+                  if (!isResend)
+                    Positioned(
+                      top: size.height * 0.72,
+                      right: size.width * 0.6,
+                      child: TextButton(
+                        onPressed: () {
+                          if (isResend) return;
+                          return resend();
+                        },
+                        child: const Text(
+                          'أعد الارسال',
                           style: TextStyle(
                             fontFamily: 'Tajawal',
                             fontSize: 14,
-                            color: Color(0xff7b7890),
-                            height: 1.7142857142857142,
+                            color: Color(0xff5300bf),
+                            fontWeight: FontWeight.w700,
+                            //height: 1.7142857142857142,
                           ),
                           textHeightBehavior: TextHeightBehavior(
                               applyHeightToFirstAscent: false),
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.right,
                           softWrap: false,
                         ),
-                        SizedBox(
-                          width: size.width * 0.01,
-                        ),
-                        TextButton(
-                          onPressed: ()
-                          {
-                            print(isResend);
-                            if(!isResend)
-                              return resend();
-                            return resend();
-
-                          },
-                          child: Text(
-                            isResend ?
-                              start.toString() : 'أعد الارسال',
-                            style: const TextStyle(
-                              fontFamily: 'Tajawal',
-                              fontSize: 14,
-                              color: Color(0xff5300bf),
-                              fontWeight: FontWeight.w700,
-                              //height: 1.7142857142857142,
-                            ),
-                            textHeightBehavior: const TextHeightBehavior(
-                                applyHeightToFirstAscent: false),
-                            textAlign: TextAlign.right,
-                            softWrap: false,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                  if (isResend)
+                    Positioned(
+                      top: size.height * 0.72,
+                      right: size.width * 0.4,
+                      child: Text(
+                        '\n\n ${start.toString()} : 00',
+                        style: const TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 32,
+                          color: const Color(0xfff6c52f),
+                          fontWeight: FontWeight.w500,
+                          height: 0.75,
+                        ),
+                        textHeightBehavior: TextHeightBehavior(
+                            applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.center,
+                        softWrap: false,
+                      ),
+                    ),
                 ],
               ),
             ),
