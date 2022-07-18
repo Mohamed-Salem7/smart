@@ -116,8 +116,8 @@ class _Verifying2State extends State<Verifying2> {
                   ),
                   Positioned(
                     top: size.height * 0.55,
-                    right: size.width * 0.14,
-                    left: size.width * 0.14,
+                    right: size.width * 0.06,
+                    left: size.width * 0.06,
                     child: Form(
                       child: Row(
                         children: [
@@ -162,7 +162,7 @@ class _Verifying2State extends State<Verifying2> {
                             ),
                           ),
                           SizedBox(
-                            width: size.width * 0.05,
+                            width: size.width * 0.02,
                           ),
                           Container(
                             height: size.height * 0.06,
@@ -205,7 +205,7 @@ class _Verifying2State extends State<Verifying2> {
                             ),
                           ),
                           SizedBox(
-                            width: size.width * 0.05,
+                            width: size.width * 0.02,
                           ),
                           Container(
                             height: size.height * 0.06,
@@ -248,7 +248,93 @@ class _Verifying2State extends State<Verifying2> {
                             ),
                           ),
                           SizedBox(
-                            width: size.width * 0.05,
+                            width: size.width * 0.02,
+                          ),
+                          Container(
+                            height: size.height * 0.06,
+                            width: size.width * 0.13,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xffF5F6FA),
+                            ),
+                            child: TextFormField(
+                              onChanged: (value) {
+                                if (value.length == 1) {
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                  BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                  BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff5300BF),
+                                  ),
+                                ),
+                              ),
+                              style:
+                              Theme.of(context).textTheme.headline6,
+                              cursorColor: const Color(0xff5300BF),
+                              keyboardType: TextInputType.number,
+                              textAlign: TextAlign.center,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1),
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: size.width * 0.02,
+                          ),
+                          Container(
+                            height: size.height * 0.06,
+                            width: size.width * 0.13,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xffF5F6FA),
+                            ),
+                            child: TextFormField(
+                              onChanged: (value) {
+                                if (value.length == 1) {
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
+                              decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                  BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                  BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff5300BF),
+                                  ),
+                                ),
+                              ),
+                              style:
+                              Theme.of(context).textTheme.headline6,
+                              cursorColor: const Color(0xff5300BF),
+                              keyboardType: TextInputType.number,
+                              textAlign: TextAlign.center,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1),
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: size.width * 0.02,
                           ),
                           Container(
                             height: size.height * 0.06,
@@ -296,7 +382,8 @@ class _Verifying2State extends State<Verifying2> {
                   ),
                   Positioned(
                     top: size.height * 0.65,
-                    right: size.width * 0.06,
+                    right: size.width * 0.15,
+                    left: size.width * 0.15,
                     child: Container(
                       width: size.width * 0.8,
                       child: ElevatedButton(
