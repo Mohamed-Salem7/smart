@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/Home/cubit/cubit.dart';
 import 'package:smart_service/Home/cubit/state.dart';
+import 'package:smart_service/Login/Register.dart';
+import 'package:smart_service/constant.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
