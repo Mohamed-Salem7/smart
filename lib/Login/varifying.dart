@@ -94,7 +94,7 @@ class VerifyingCode extends StatelessWidget {
                                       keyboardType: TextInputType.phone,
                                       validator: (value) {
                                         if (value == null) {
-                                          return 'Please enter your Phone';
+                                          return 'رجاءا أدخل رقم هاتفك';
                                         }
                                         return null;
                                       },

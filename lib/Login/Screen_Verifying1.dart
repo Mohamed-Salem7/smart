@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:smart_service/Login/Register.dart';
 import 'package:smart_service/Login/cubit/state.dart';
 import 'package:smart_service/constant.dart';
 
@@ -368,7 +369,7 @@ class _Verifying2State extends State<Verifying2> {
                       child: ElevatedButton(
                         clipBehavior: Clip.antiAlias,
                         onPressed: () {
-                          // navigatorTo(context, Verifying2());
+                           navigatorTo(context, RegisterScreen());
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(

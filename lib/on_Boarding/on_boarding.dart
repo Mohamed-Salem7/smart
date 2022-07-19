@@ -92,7 +92,6 @@ class _OnBordingState extends State<OnBordingScreen> {
                 strokeWidth: 2.0,
                 radius: 8,
                 expansionFactor: 2.0,
-                //offset: 7,
               ),
             ),
           ),
@@ -119,9 +118,6 @@ class _OnBordingState extends State<OnBordingScreen> {
                   fontWeight: FontWeight.w700,
                   color: Color(0xff5300BF),
                 ),
-                //textHeightBehavior:
-                //TextHeightBehavior(applyHeightToFirstAscent: false),
-                //textAlign: TextAlign.right,
               ),
             ),
           ),
