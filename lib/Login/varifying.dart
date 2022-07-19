@@ -104,7 +104,7 @@ class VerifyingCode extends StatelessWidget {
                                         hintStyle: TextStyle(
                                           fontFamily: 'Tajawal',
                                           fontSize: 16,
-                                          color: Color(0xff0F0A39),
+                                          color: Color(0xffEEDFF9),
                                         ),
                                       ),
                                       style: const TextStyle(

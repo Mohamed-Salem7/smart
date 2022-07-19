@@ -6,7 +6,6 @@ import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:smart_service/Login/cubit/state.dart';
 import 'package:smart_service/constant.dart';
 
-import 'cubit/cubit.dart';
 
 class Verifying2 extends StatefulWidget {
   const Verifying2({Key? key}) : super(key: key);
