@@ -91,6 +91,9 @@ class RegisterCliente extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  onTap: (){},
+                  keyboardType: TextInputType.name,
+                  controller: nameController,
                   validator: (value)
                   {
                     if(value == null) {
@@ -101,6 +104,7 @@ class RegisterCliente extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                     fontFamily: 'Tajawal',
+                    height: 0.5,
                     fontSize: 16,
                     color: Color(0xff0f0a39),
 
@@ -115,9 +119,6 @@ class RegisterCliente extends StatelessWidget {
                       //height: 1.5,
                     ),
                   ),
-                  onTap: (){},
-                  keyboardType: TextInputType.name,
-                  controller: nameController,
                 ),
               ),
             ),
