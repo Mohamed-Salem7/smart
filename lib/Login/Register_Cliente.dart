@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_service/Home/Main_Screen.dart';
+import 'package:smart_service/constant.dart';
 
 class RegisterCliente extends StatelessWidget {
   const RegisterCliente({Key? key}) : super(key: key);
@@ -124,7 +126,10 @@ class RegisterCliente extends StatelessWidget {
             ),
             InkWell(
 
-              onTap: (){},
+              onTap: ()
+              {
+                navigatorFinished(context, MainScreen());
+              },
               child: Container(
                 height: size.height * 0.05,
                 width: size.width * 0.895,
