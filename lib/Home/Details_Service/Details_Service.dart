@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_service/Home/Home_Screen.dart';
+import 'package:smart_service/Home/Main_Screen.dart';
 import 'package:smart_service/constant.dart';
 import 'package:unicons/unicons.dart';
 
@@ -38,7 +39,7 @@ class DetailsService extends StatelessWidget {
                           right: size.width * 0.05,
                           child: IconButton(
                             onPressed: () {
-                              navigatorFinished(context, const HomeScreen());
+                              navigatorFinished(context, const MainScreen());
                             },
                             icon: const Icon(
                               Icons.arrow_back_ios,
@@ -68,7 +69,7 @@ class DetailsService extends StatelessWidget {
                           left: size.width * 0.02,
                           child: IconButton(
                             onPressed: () {
-                              navigatorFinished(context, const HomeScreen());
+
                             },
                             icon: const Icon(
                               UniconsLine.search,
