@@ -106,8 +106,8 @@ class DetailsService extends StatelessWidget {
                 ),
                 Positioned(
                   top: size.height * 0.24,
-                  right: size.width * 0.1,
-                  left: size.width * 0.1,
+                  right: size.width * 0.07,
+                  left: size.width * 0.07,
                   child: Container(
                     height: size.height * 0.2,
                     width: double.infinity,
