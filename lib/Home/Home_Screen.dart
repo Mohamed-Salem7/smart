@@ -34,14 +34,14 @@ class HomeScreen extends StatelessWidget {
                 Positioned(
                   top: size.height * 0.17,
                   right: size.width * 0.08,
-                  child: const Text(
+                  child:  Text(
                     'مرحباً, منال منصور',
                     style: TextStyle(
                       fontFamily: 'Tajawal',
                       fontSize: 18,
                       color: const Color(0xff5300bf),
                       fontWeight: FontWeight.w700,
-                      height: 2.888888888888889,
+                      height: size.height * 0.001,
                     ),
                     textHeightBehavior:
                         TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -51,13 +51,13 @@ class HomeScreen extends StatelessWidget {
                 Positioned(
                   top: size.height * 0.2,
                   right: size.width * 0.08,
-                  child: const Text(
+                  child:  Text(
                     'كيف يمكننا مساعدتك؟',
                     style: TextStyle(
                       fontFamily: 'Tajawal',
                       fontSize: 14,
                       color: const Color(0xff0f0a39),
-                      height: 2.857142857142857,
+                      height: size.height * 0.001,
                     ),
                     textHeightBehavior:
                         TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                       child: Row(
                         children: [
                           const Icon(
@@ -91,13 +91,13 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             width: size.width * 0.03,
                           ),
-                          const Text(
+                           Text(
                             'حدد موقعك',
                             style: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: const Color(0xff000000),
-                              height: 0.1,
+                              height: size.height * 0.0001,
                             ),
                             textHeightBehavior: TextHeightBehavior(
                                 applyHeightToFirstAscent: false),
@@ -128,19 +128,19 @@ class HomeScreen extends StatelessWidget {
                       color: const Color(0xffffffff),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                       child: TextFormField(
                         onTap: () {},
                         textAlign: TextAlign.start,
                         controller: searchController,
-                        decoration: const InputDecoration(
+                        decoration:  InputDecoration(
                           border: InputBorder.none,
                           hintText: 'ما الخدمة التي تبحث عنها',
                           hintStyle: TextStyle(
                             fontFamily: 'Tajawal',
                             fontSize: 16,
                             color: Color(0xffcbc9d9),
-                            height: 0.5,
+                            height: size.height * 0.001,
                           ),
                           prefixIcon: Icon(
                             Icons.search_sharp,
@@ -164,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                       child: InkWell(
                         onTap: ()
                         {
@@ -191,14 +191,14 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                 Text(
                                   'خدمة صيانة المنازل',
                                   style: TextStyle(
                                     fontFamily: 'Tajawal',
                                     fontSize: 16,
                                     color: Color(0xff383838),
                                     fontWeight: FontWeight.w700,
-                                    height: 1.625,
+                                    height: size.height * 0.001,
                                   ),
                                   textHeightBehavior: TextHeightBehavior(
                                       applyHeightToFirstAscent: false),
@@ -208,13 +208,13 @@ class HomeScreen extends StatelessWidget {
                                 SizedBox(
                                   height: size.height * 0.01,
                                 ),
-                                const Text(
+                                 Text(
                                   'تفاصيل عن الخدمة',
                                   style: TextStyle(
                                     fontFamily: 'Tajawal',
                                     fontSize: 14,
                                     color: Color(0xa8000000),
-                                    height: 1.6428571428571428,
+                                    height: size.height * 0.001,
                                   ),
                                   textHeightBehavior: TextHeightBehavior(
                                       applyHeightToFirstAscent: false),

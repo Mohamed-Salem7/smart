@@ -30,21 +30,21 @@ class RegisterCliente extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.0525,vertical: size.height *0.02),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: size.height * 0.13,
             ),
-            const Text(
+             Text(
               'يرجى ادخال بياناتك',
               style: TextStyle(
                 fontFamily: 'Tajawal',
                 fontSize: 28,
                 color: const Color(0xff0f0a39),
                 fontWeight: FontWeight.w700,
-                height: 1.8571428571428572,
+                height: size.height * 0.001,
               ),
               textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
               textAlign: TextAlign.right,
@@ -52,13 +52,13 @@ class RegisterCliente extends StatelessWidget {
             SizedBox(
               height: size.height * 0.03,
             ),
-            const Text(
+             Text(
               'يمكنك كتابة اسم المستخدم في الخانة المخصصة له أدناه',
               style: TextStyle(
                 fontFamily: 'Tajawal',
                 fontSize: 20,
                 color: Color(0xff7b7890),
-                height: 2,
+                height: size.height * 0.002,
               ),
               textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
               textAlign: TextAlign.right,
@@ -66,13 +66,13 @@ class RegisterCliente extends StatelessWidget {
             SizedBox(
               height: size.height * 0.06,
             ),
-            const Text(
+             Text(
               'الاسم',
               style: TextStyle(
                 fontFamily: 'Tajawal',
                 fontSize: 14,
                 color:  Color(0xff7b7890),
-                height: 1.7142857142857142,
+                height: size.height *0.001,
               ),
               textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
               textAlign: TextAlign.right,
@@ -89,7 +89,7 @@ class RegisterCliente extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10)
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                 child: TextFormField(
                   onTap: (){},
                   keyboardType: TextInputType.name,
@@ -102,21 +102,21 @@ class RegisterCliente extends StatelessWidget {
                     return null;
                   },
                   textAlign: TextAlign.start,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontFamily: 'Tajawal',
-                    height: 0.5,
+                    height: size.height * 0.002,
                     fontSize: 16,
-                    color: Color(0xff0f0a39),
+                    color:const Color(0xff0f0a39),
 
                   ),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'أدخل إسمك',
                     hintStyle: TextStyle(
                       fontFamily: 'Tajawal',
                       fontSize: 16,
-                      color:  Color(0xffcbc9d9),
-                      //height: 1.5,
+                      color: const Color(0xffcbc9d9),
+                      height: size.height * 0.001,
                     ),
                   ),
                 ),
@@ -138,7 +138,7 @@ class RegisterCliente extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xff5300BF),
                 ),
-                child: const Center(
+                child: Center(
                   child:Text(
                     'التالي',
                     style: TextStyle(
@@ -146,7 +146,7 @@ class RegisterCliente extends StatelessWidget {
                       fontSize: 16,
                       color: const Color(0xffffffff),
                       fontWeight: FontWeight.w700,
-                      height: 1.5,
+                      height: size.height * 0.001,
                     ),
                     textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
                     textAlign: TextAlign.center,

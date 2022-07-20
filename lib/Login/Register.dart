@@ -14,14 +14,14 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
+        title: Text(
           'تسجيل مستخدم جديد',
           style: TextStyle(
             fontFamily: 'Tajawal',
             fontSize: 20,
             color: Color(0xff0f0a39),
             fontWeight: FontWeight.w700,
-            //height: 1.6,
+            height: size.height * 0.001,
           ),
           textHeightBehavior:
               TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -34,7 +34,7 @@ class RegisterScreen extends StatelessWidget {
         actionsIconTheme: IconThemeData(),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.0525,vertical: size.height * 0.02),
         child: Row(
           children: [
             Column(
@@ -43,14 +43,14 @@ class RegisterScreen extends StatelessWidget {
                 SizedBox(
                   height: size.height * 0.13,
                 ),
-                const Text(
+                 Text(
                   'تسجيل مستخدم جديد',
                   style: TextStyle(
                     fontFamily: 'Tajawal',
                     fontSize: 28,
                     color: Color(0xff0f0a39),
                     fontWeight: FontWeight.w700,
-                    height: 1.8571428571428572,
+                    height: size.height * 0.0025,
                   ),
                   textHeightBehavior:
                       TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -58,14 +58,14 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   width: size.width * 0.895,
-                  child: const Text(
+                  child:  Text(
                     'يمكنك اختيار  تسجيل بياناتك كعميل أو مزود خدمة',
                     maxLines: 2,
                     style: TextStyle(
                       fontFamily: 'Tajawal',
                       fontSize: 20,
                       color: const Color(0xff7b7890),
-                      height: 2,
+                      height: size.height * 0.002,
                     ),
                     textHeightBehavior:
                         TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -105,7 +105,7 @@ class RegisterScreen extends StatelessWidget {
                             blurStyle: BlurStyle.solid),
                       ],
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'عميل',
                         style: TextStyle(
@@ -113,7 +113,7 @@ class RegisterScreen extends StatelessWidget {
                           fontSize: 16,
                           color: const Color(0xff5300bf),
                           fontWeight: FontWeight.w700,
-                          height: 1.5,
+                          height: size.height * 0.0015,
                         ),
                         textHeightBehavior:
                             TextHeightBehavior(applyHeightToFirstAscent: false),

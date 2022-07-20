@@ -364,12 +364,12 @@ class _Verifying2State extends State<Verifying2> {
                     top: size.height * 0.65,
                     right: size.width * 0.1,
                     left: size.width * 0.1,
-                    child: Container(
+                    child: SizedBox(
                       width: size.width * 0.8,
                       child: ElevatedButton(
                         clipBehavior: Clip.antiAlias,
                         onPressed: () {
-                           navigatorTo(context, RegisterScreen());
+                           navigatorTo(context, const RegisterScreen());
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -465,11 +465,11 @@ class _Verifying2State extends State<Verifying2> {
                         style: const TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 32,
-                          color: const Color(0xfff6c52f),
+                          color: Color(0xfff6c52f),
                           fontWeight: FontWeight.w500,
                           height: 0.75,
                         ),
-                        textHeightBehavior: TextHeightBehavior(
+                        textHeightBehavior: const TextHeightBehavior(
                             applyHeightToFirstAscent: false),
                         textAlign: TextAlign.center,
                         softWrap: false,

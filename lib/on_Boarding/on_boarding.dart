@@ -129,7 +129,7 @@ class _OnBordingState extends State<OnBordingScreen> {
   Widget buildBorder(border) =>
       SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05,vertical: MediaQuery.of(context).size.height * 0.01),
           child: Column(
             children: [
               Expanded(

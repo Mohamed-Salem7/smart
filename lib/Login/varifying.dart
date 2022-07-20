@@ -85,8 +85,8 @@ class VerifyingCode extends StatelessWidget {
                                     color: const Color(0xffF5F6FA),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: size.width * 0.05),
                                     child: TextFormField(
                                       controller: phoneController,
                                       onTap: () {},
@@ -125,9 +125,9 @@ class VerifyingCode extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: const Color(0xffF5F6FA),
                                   ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Align(
+                                  child:  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height * 0.01),
+                                    child: const Align(
                                       alignment: AlignmentDirectional.centerEnd,
                                       child: Text(
                                         '972+',

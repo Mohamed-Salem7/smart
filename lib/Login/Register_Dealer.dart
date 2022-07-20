@@ -36,21 +36,21 @@ class RegisterDealer extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.0525,vertical: size.height *0.025),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: size.height * 0.07,
             ),
-            const Text(
+             Text(
               'يرجى ادخال بياناتك',
               style: TextStyle(
                 fontFamily: 'Tajawal',
                 fontSize: 28,
                 color: const Color(0xff0f0a39),
                 fontWeight: FontWeight.w700,
-                height: 1.8571428571428572,
+                height: size.height * 0.002,
               ),
               textHeightBehavior:
                   TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -59,13 +59,13 @@ class RegisterDealer extends StatelessWidget {
             SizedBox(
               height: size.height * 0.01,
             ),
-            const Text(
+             Text(
               'يمكنك كتابة اسم المستخدم في الخانة المخصصة له أدناه',
               style: TextStyle(
                 fontFamily: 'Tajawal',
                 fontSize: 20,
                 color: Color(0xff7b7890),
-                height: 2,
+                height: size.height *0.002,
               ),
               textHeightBehavior:
                   TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -80,13 +80,13 @@ class RegisterDealer extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.03,
                     ),
-                    const Text(
+                     Text(
                       'الاسم',
                       style: TextStyle(
                         fontFamily: 'Tajawal',
                         fontSize: 14,
                         color: Color(0xff7b7890),
-                        height: 1.7142857142857142,
+                        height: size.height * 0.002,
                       ),
                       textHeightBehavior:
                           TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -103,7 +103,7 @@ class RegisterDealer extends StatelessWidget {
                           color: const Color(0xffF5F6FA),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null) {
@@ -117,14 +117,14 @@ class RegisterDealer extends StatelessWidget {
                             fontSize: 16,
                             color: Color(0xff0f0a39),
                           ),
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             border: InputBorder.none,
                             hintText: 'أدخل إسمك',
                             hintStyle: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: Color(0xffcbc9d9),
-                              //height: 1.5,
+                              height: size.height * 0.001,
                             ),
                           ),
                           onTap: () {},
@@ -136,13 +136,13 @@ class RegisterDealer extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.02,
                     ),
-                    const Text(
+                     Text(
                       'رقم الجوال',
                       style: TextStyle(
                         fontFamily: 'Tajawal',
                         fontSize: 14,
                         color: Color(0xff7b7890),
-                        height: 1.7142857142857142,
+                        height: size.height * 0.003,
                       ),
                       textHeightBehavior:
                           TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -159,7 +159,7 @@ class RegisterDealer extends StatelessWidget {
                             color: const Color(0xffF5F6FA),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                             child: TextFormField(
                               validator: (value) {
                                 if (value == null) {
@@ -173,14 +173,14 @@ class RegisterDealer extends StatelessWidget {
                                 fontSize: 16,
                                 color: Color(0xff0f0a39),
                               ),
-                              decoration: const InputDecoration(
+                              decoration:  InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'رقم الجوال',
                                 hintStyle: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 16,
                                   color: Color(0xffcbc9d9),
-                                  //height: 1.5,
+                                  height: size.height * 0.001,
                                 ),
                               ),
                               onTap: () {},
@@ -199,9 +199,9 @@ class RegisterDealer extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: const Color(0xffF5F6FA),
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Align(
+                          child:  Padding(
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
+                            child: const Align(
                               alignment: AlignmentDirectional.centerEnd,
                               child: Text(
                                 '+972',
@@ -223,13 +223,13 @@ class RegisterDealer extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.02,
                     ),
-                    const Text(
+                    Text(
                       'الموقع',
                       style: TextStyle(
                         fontFamily: 'Tajawal',
                         fontSize: 14,
                         color: Color(0xff7b7890),
-                        height: 1.7142857142857142,
+                        height: size.height * 0.003,
                       ),
                       textHeightBehavior:
                           TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -246,7 +246,7 @@ class RegisterDealer extends StatelessWidget {
                             color: const Color(0xffF5F6FA),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                             child: TextFormField(
                               validator: (value) {
                                 if (value == null) {
@@ -260,14 +260,14 @@ class RegisterDealer extends StatelessWidget {
                                 fontSize: 16,
                                 color: Color(0xff0f0a39),
                               ),
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'أدخل موقعك',
                                 hintStyle: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 16,
                                   color: Color(0xffcbc9d9),
-                                  //height: 1.5,
+                                  height: size.height * 0.001,
                                 ),
                               ),
                               onTap: () {},
@@ -292,13 +292,13 @@ class RegisterDealer extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.02,
                     ),
-                    const Text(
+                     Text(
                       'إختيار الخدمة',
                       style: TextStyle(
                         fontFamily: 'Tajawal',
                         fontSize: 14,
                         color: Color(0xff7b7890),
-                        height: 1.7142857142857142,
+                        height: size.height*0.003,
                       ),
                       textHeightBehavior:
                       TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -314,15 +314,15 @@ class RegisterDealer extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: const Color(0xffF5F6FA),
                           ),
-                          child: const Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
+                            child:  Text(
                               'الخدمة',
                               style: TextStyle(
                                 fontFamily: 'Tajawal',
                                 fontSize: 16,
                                 color: const Color(0xffcbc9d9),
-                                height: 1.5,
+                                height: size.height * 0.01,
                               ),
                               textHeightBehavior:
                               TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -347,13 +347,13 @@ class RegisterDealer extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.02,
                     ),
-                    const Text(
+                     Text(
                       'سعر الخدمة',
                       style: TextStyle(
                         fontFamily: 'Tajawal',
                         fontSize: 14,
                         color: Color(0xff7b7890),
-                        height: 1.7142857142857142,
+                        height: size.height *0.001,
                       ),
                       textHeightBehavior:
                       TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -370,7 +370,7 @@ class RegisterDealer extends StatelessWidget {
                           color: const Color(0xffF5F6FA),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null) {
@@ -384,14 +384,14 @@ class RegisterDealer extends StatelessWidget {
                             fontSize: 16,
                             color: Color(0xff0f0a39),
                           ),
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             border: InputBorder.none,
                             hintText: 'أدخل سعر الخدمة',
                             hintStyle: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: Color(0xffcbc9d9),
-                              //height: 1.5,
+                              height: size.height *0.001,
                             ),
                           ),
                           onTap: () {},
@@ -426,7 +426,7 @@ class RegisterDealer extends StatelessWidget {
                           color: const Color(0xffF5F6FA),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null) {
@@ -442,18 +442,17 @@ class RegisterDealer extends StatelessWidget {
                             color: Color(0xff0f0a39),
                             overflow: TextOverflow.ellipsis,
                           ),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: ' أدخل تفاصيل الخدمة الخاصة بك',
                             hintStyle: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: Color(0xffcbc9d9),
-                              //height: 1.5,
+                              height: size.height * 0.001,
                             ),
                           ),
                           onTap: () {},
-                          keyboardType: TextInputType.none,
                           controller: detailsServiceController,
                         ),
                       ),
@@ -484,7 +483,7 @@ class RegisterDealer extends StatelessWidget {
                           color: const Color(0xffF5F6FA),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null) {
@@ -498,14 +497,14 @@ class RegisterDealer extends StatelessWidget {
                             fontSize: 16,
                             color: Color(0xff0f0a39),
                           ),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'أدخل العنوان',
                             hintStyle: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: Color(0xffcbc9d9),
-                              //height: 1.5,
+                              height: size.height * 0.001,
                             ),
                           ),
                           onTap: () {},
@@ -540,7 +539,7 @@ class RegisterDealer extends StatelessWidget {
                           color: const Color(0xffF5F6FA),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null) {
@@ -554,18 +553,17 @@ class RegisterDealer extends StatelessWidget {
                             fontSize: 16,
                             color: Color(0xff0f0a39),
                           ),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'أدخل وقت العمل',
                             hintStyle: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: Color(0xffcbc9d9),
-                              //height: 1.5,
+                              height: size.height *0.001,
                             ),
                           ),
                           onTap: () {},
-                          keyboardType: TextInputType.none,
                           controller: timeJobController,
                         ),
                       ),
