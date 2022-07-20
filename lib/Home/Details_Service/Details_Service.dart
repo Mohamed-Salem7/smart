@@ -10,35 +10,6 @@ class DetailsService extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: const Color(0xffF6C52F),
-      //   title: const Text(
-      //     'خدمة صيانة المنازل',
-      //     style: TextStyle(
-      //       fontFamily: 'Tajawal',
-      //       fontSize: 20,
-      //       color: const Color(0xff0f0a39),
-      //       fontWeight: FontWeight.w700,
-      //       height: 0.6,
-      //     ),
-      //     textHeightBehavior:
-      //         TextHeightBehavior(applyHeightToFirstAscent: false),
-      //     textAlign: TextAlign.right,
-      //     softWrap: false,
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: const Icon(
-      //         Icons.search,
-      //       ),
-      //     ),
-      //   ],
-      //   iconTheme: const IconThemeData(
-      //     color: Color(0xff0F0A39),
-      //   ),
-      // ),
       body: Column(
         children: [
           Expanded(
@@ -59,7 +30,7 @@ class DetailsService extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                     child: Stack(
                       children: [
                         Positioned(
@@ -77,14 +48,14 @@ class DetailsService extends StatelessWidget {
                         Positioned(
                           top: size.height * 0.1,
                           right: size.width * 0.2,
-                          child: const Text(
+                          child:  Text(
                             'خدمة صيانة المنازل',
                             style: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 20,
                               color: const Color(0xff0f0a39),
                               fontWeight: FontWeight.w700,
-                              height: 0.6,
+                              height: size.height *0.02,
                             ),
                             textHeightBehavior: TextHeightBehavior(
                                 applyHeightToFirstAscent: false),
@@ -149,19 +120,19 @@ class DetailsService extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                           child: Row(
                             children: [
-                              const Text(
+                               Text(
                                 'كهرباء',
                                 style: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 21,
                                   color: const Color(0xff383838),
                                   fontWeight: FontWeight.w700,
-                                  height: 1.2380952380952381,
+                                  height: size.height * 0.001,
                                 ),
-                                textHeightBehavior: TextHeightBehavior(
+                                textHeightBehavior: const TextHeightBehavior(
                                     applyHeightToFirstAscent: false),
                                 textAlign: TextAlign.right,
                                 softWrap: false,
@@ -169,7 +140,7 @@ class DetailsService extends StatelessWidget {
                               const Spacer(),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   UniconsLine.circle,
                                   color: Color(0xff707070),
                                 ),
@@ -181,45 +152,45 @@ class DetailsService extends StatelessWidget {
                           color: Color(0xffBDC4CC),
                           height: 0.5,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.all(10.0),
+                         Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,vertical: size.height *0.01),
                           child: Text(
                             'اصلاح أعطال الطبلون',
                             style: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 16,
                               color: Color(0xff383838),
-                              height: 1.625,
+                              height: size.height * 0.002,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.02,),
                           child: Row(
                             children: [
-                              const Text(
+                               Text(
                                 '350-200',
                                 style: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 12,
                                   color: const Color(0xff000000),
                                   fontWeight: FontWeight.w700,
-                                  height: 1.9166666666666667,
+                                  height: size.height *0.002,
                                 ),
-                                textHeightBehavior: TextHeightBehavior(
+                                textHeightBehavior: const TextHeightBehavior(
                                     applyHeightToFirstAscent: false),
                                 textAlign: TextAlign.right,
                               ),
-                              const Text(
+                               Text(
                                 'شيكل',
                                 style: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 12,
                                   color: const Color(0xff000000),
                                   fontWeight: FontWeight.w700,
-                                  height: 1.9166666666666667,
+                                  height: size.height * 0.002,
                                 ),
-                                textHeightBehavior: TextHeightBehavior(
+                                textHeightBehavior: const TextHeightBehavior(
                                     applyHeightToFirstAscent: false),
                                 textAlign: TextAlign.right,
                               ),
@@ -239,7 +210,7 @@ class DetailsService extends StatelessWidget {
                                   fontSize: 20,
                                   color: const Color(0xff000000),
                                   fontWeight: FontWeight.w700,
-                                  height: 2.5,
+                                  height: size.height * 0.003,
                                 ),
                               ),
                               IconButton(
@@ -265,7 +236,7 @@ class DetailsService extends StatelessWidget {
             width: double.infinity,
             color: Color(0xffFFFFFF),
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.0525,vertical: size.height *0.02),
               child: Column(
                 children: [
                   InkWell(
