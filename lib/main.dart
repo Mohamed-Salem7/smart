@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       title: 'Smart Service',
-      home:  MainScreen(),
+      home:  ScreenShot(),
     );
 
   }
