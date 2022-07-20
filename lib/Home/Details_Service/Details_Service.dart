@@ -260,6 +260,49 @@ class DetailsService extends StatelessWidget {
               ],
             ),
           ),
+          Container(
+            height: size.height * 0.1,
+            width: double.infinity,
+            color: Color(0xffFFFFFF),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: ()
+                    {
+                    },
+                    child: Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Container(
+                        height: size.height * 0.05,
+                        width: size.width * 0.3,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                          color: const Color(0xff5300BF),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'التالي',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 14,
+                              color: Color(0xffffffff),
+                              fontWeight: FontWeight.w500,
+                            ),
+                            textAlign: TextAlign.center,
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
