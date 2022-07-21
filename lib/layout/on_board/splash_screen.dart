@@ -12,9 +12,8 @@ class ScreenShot extends StatefulWidget {
 
 class _ScreenShotState extends State<ScreenShot> {
   @override
-  void initState() {
+  void initState(){
     super.initState();
-
     loadPage();
   }
 

@@ -266,6 +266,50 @@ class DetailsService extends StatelessWidget {
                                     ],
                                   ),
                                 ),
+                                Padding(
+                                  padding:  EdgeInsets.symmetric(horizontal: size.width * 0.025),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        ' إجمالي المبلغ :',
+                                        style: TextStyle(
+                                          fontFamily: 'Tajawal',
+                                          fontSize: 12,
+                                          color: const Color(0xff5300bf),
+                                          fontWeight: FontWeight.w700,
+                                          height: size.height * 0.0025,
+                                        ),
+                                        textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.right,
+                                      ),
+                                      Text(
+                                        '400',
+                                        style: TextStyle(
+                                          fontFamily: 'Tajawal',
+                                          fontSize: 12,
+                                          color: const Color(0xff000000),
+                                          fontWeight: FontWeight.w700,
+                                          height: size.height * 0.002,
+                                        ),
+                                        textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.right,
+                                      ),
+                                      Text(
+                                        'شيكل',
+                                        style: TextStyle(
+                                          fontFamily: 'Tajawal',
+                                          fontSize: 12,
+                                          color: const Color(0xff000000),
+                                          fontWeight: FontWeight.w700,
+                                          height: size.height * 0.0025,
+                                        ),
+                                        textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.right,
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
