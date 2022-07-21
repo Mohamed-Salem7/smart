@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_service/Login/Register_Cliente.dart';
-import 'package:smart_service/Login/Register_Dealer.dart';
-import 'package:smart_service/constant.dart';
+import 'package:smart_service/layout/Login/Register_Cliente.dart';
+import 'package:smart_service/layout/Login/Register_Dealer.dart';
+import 'package:smart_service/Shared/constant.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);

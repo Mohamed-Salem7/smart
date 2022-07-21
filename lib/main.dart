@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:smart_service/Home/Main_Screen.dart';
-import 'package:smart_service/on_Boarding/splash_screen.dart';
+import 'package:smart_service/layout/Main_Screen.dart';
+import 'package:smart_service/layout/on_board/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

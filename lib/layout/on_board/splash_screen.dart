@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_service/on_Boarding/on_boarding.dart';
+import 'package:smart_service/layout/on_board/on_boarding.dart';
 
 class ScreenShot extends StatefulWidget {
   const ScreenShot({Key? key}) : super(key: key);

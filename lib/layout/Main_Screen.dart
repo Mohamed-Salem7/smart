@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_service/Home/cubit/cubit.dart';
-import 'package:smart_service/Home/cubit/state.dart';
-import 'package:smart_service/Login/Register.dart';
-import 'package:smart_service/constant.dart';
+import 'package:smart_service/layout/Login/Register.dart';
+import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/modules/Home/cubit/state.dart';
+
+import '../modules/Home/cubit/cubit.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);

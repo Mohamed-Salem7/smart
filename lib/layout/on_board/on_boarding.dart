@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_service/Login/varifying.dart';
+import 'package:smart_service/layout/Login/varifying.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BordingModel {

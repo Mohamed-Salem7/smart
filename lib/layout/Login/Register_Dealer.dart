@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_service/Home/Main_Screen.dart';
-import 'package:smart_service/constant.dart';
+import 'package:smart_service/layout/Main_Screen.dart';
+import 'package:smart_service/Shared/constant.dart';
 
 class RegisterDealer extends StatelessWidget {
   const RegisterDealer({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_service/Login/Screen_Verifying1.dart';
-import 'package:smart_service/Login/cubit/cubit.dart';
-import 'package:smart_service/Login/cubit/state.dart';
-import 'package:smart_service/constant.dart';
+import 'package:smart_service/layout/Login/Screen_Verifying1.dart';
+import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/modules/Login/cubit/cubit.dart';
+import 'package:smart_service/modules/Login/cubit/state.dart';
 
 class VerifyingCode extends StatelessWidget {
   const VerifyingCode({Key? key}) : super(key: key);

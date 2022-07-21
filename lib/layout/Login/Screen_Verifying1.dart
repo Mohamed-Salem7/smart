@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
-import 'package:smart_service/Login/Register.dart';
-import 'package:smart_service/Login/cubit/state.dart';
-import 'package:smart_service/constant.dart';
+import 'package:smart_service/layout/Login/Register.dart';
+import 'package:smart_service/Shared/constant.dart';
 
 
 class Verifying2 extends StatefulWidget {
