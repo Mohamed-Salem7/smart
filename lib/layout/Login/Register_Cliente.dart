@@ -1,3 +1,4 @@
+import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class RegisterCliente extends StatelessWidget {
     var passwordController = TextEditingController();
     return BlocProvider(
       create: (context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit,LoginState>(
+      child: BlocConsumer<LoginCubit, LoginState>(
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Colors.white,
@@ -161,8 +162,8 @@ class RegisterCliente extends StatelessWidget {
                         color: const Color(0xffF5F6FA),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width * 0.02),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
                         child: TextFormField(
                           controller: emailController,
                           onTap: () {},
@@ -183,8 +184,7 @@ class RegisterCliente extends StatelessWidget {
                               color: Color(0xffcbc9d9),
                             ),
                           ),
-
-                          style:  TextStyle(
+                          style: TextStyle(
                             fontFamily: 'Tajawal',
                             fontSize: 16,
                             height: size.height * 0.001,
@@ -214,8 +214,8 @@ class RegisterCliente extends StatelessWidget {
                         color: const Color(0xffF5F6FA),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width * 0.02),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
                         child: TextFormField(
                           controller: passwordController,
                           onTap: () {},
@@ -230,19 +230,17 @@ class RegisterCliente extends StatelessWidget {
                           obscureText: LoginCubit.get(context).isPassword,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-
-                            suffixIcon:
-                            LoginCubit.get(context).suffix != null
+                            suffixIcon: LoginCubit.get(context).suffix != null
                                 ? IconButton(
-                              onPressed: () {
-                                LoginCubit.get(context)
-                                    .changeVisibilityPassword();
-                              },
-                              icon: Icon(
-                                LoginCubit.get(context).suffix,
-                                color: Color(0xffF6C52F),
-                              ),
-                            )
+                                    onPressed: () {
+                                      LoginCubit.get(context)
+                                          .changeVisibilityPassword();
+                                    },
+                                    icon: Icon(
+                                      LoginCubit.get(context).suffix,
+                                      color: Color(0xffF6C52F),
+                                    ),
+                                  )
                                 : null,
                             hintText: 'أدخل كلمة المرور',
                             hintStyle: const TextStyle(
@@ -263,33 +261,43 @@ class RegisterCliente extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.05,
                     ),
-                    InkWell(
-                      onTap: () {
-                        navigatorFinished(context, MainScreen());
-                      },
-                      child: Container(
-                        height: size.height * 0.05,
-                        width: size.width * 0.895,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xff5300BF),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'التالي',
-                            style: TextStyle(
-                              fontFamily: 'Tajawal',
-                              fontSize: 16,
-                              color: const Color(0xffffffff),
-                              fontWeight: FontWeight.w700,
-                              height: size.height * 0.001,
+                    BuildCondition(
+                      condition: state is! LoadingRegisterClient,
+                      builder: (context) => InkWell(
+                        onTap: () {
+                          LoginCubit.get(context).registerClient(
+                            email: emailController.text,
+                            name: nameController.text,
+                            password: passwordController.text,
+                          );
+                        },
+                        child: Container(
+                          height: size.height * 0.05,
+                          width: size.width * 0.895,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xff5300BF),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'التالي',
+                              style: TextStyle(
+                                fontFamily: 'Tajawal',
+                                fontSize: 16,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w700,
+                                height: size.height * 0.001,
+                              ),
+                              textHeightBehavior: TextHeightBehavior(
+                                  applyHeightToFirstAscent: false),
+                              textAlign: TextAlign.center,
+                              softWrap: false,
                             ),
-                            textHeightBehavior: TextHeightBehavior(
-                                applyHeightToFirstAscent: false),
-                            textAlign: TextAlign.center,
-                            softWrap: false,
                           ),
                         ),
+                      ),
+                      fallback: (context) => const Center(
+                        child: CircularProgressIndicator(),
                       ),
                     ),
                   ],
@@ -298,7 +306,12 @@ class RegisterCliente extends StatelessWidget {
             ),
           );
         },
-        listener: (context, state) {},
+        listener: (context, state)
+        {
+          if(state is SuccessRegisterClient) {
+            navigatorFinished(context, const MainScreen());
+          }
+        },
       ),
     );
   }

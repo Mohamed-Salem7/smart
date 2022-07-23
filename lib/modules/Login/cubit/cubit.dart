@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/models/Register_Model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_service/modules/Login/cubit/state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -74,6 +77,15 @@ class LoginCubit extends Cubit<LoginState> {
       image:
           'https://www.dotcominfoway.com/wp-content/uploads/2020/01/social-media-app-cost.png',
     );
+    FirebaseFirestore.instance
+        .collection('user')
+        .doc(uId)
+        .set(registerModel.toMap())
+        .then((value) {
+      emit(SuccessRegisterClient());
+    }).catchError((error) {
+      emit(ErrorRegisterClient(error));
+    });
   }
 
   void registerClient({
@@ -88,13 +100,8 @@ class LoginCubit extends Cubit<LoginState> {
       password: password,
     )
         .then((value) {
-      createAccount(
-          email: email,
-          name: name,
-          uId: value.user!.uid
-      );
-      emit(SuccessRegisterClient());
-    }).catchError((error){
+      createAccount(email: email, name: name, uId: value.user!.uid);
+    }).catchError((error) {
       print(error.toString());
       emit(ErrorRegisterClient(error));
     });

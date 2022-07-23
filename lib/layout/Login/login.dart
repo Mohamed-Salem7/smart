@@ -89,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                           right: size.width * 0.06,
                           child: Container(
                             height: size.height * 0.05,
-                            width: size.width * 0.8,
+                            width: size.width * 0.895,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color(0xffF5F6FA),
@@ -149,7 +149,7 @@ class LoginScreen extends StatelessWidget {
                           right: size.width * 0.06,
                           child: Container(
                             height: size.height * 0.05,
-                            width: size.width * 0.8,
+                            width: size.width * 0.895,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color(0xffF5F6FA),
@@ -210,7 +210,7 @@ class LoginScreen extends StatelessWidget {
                           child: BuildCondition(
                             condition: state is! LoadingLoginState,
                             builder: (context) => Container(
-                              width: size.width * 0.8,
+                              width: size.width * 0.895,
                               child: ElevatedButton(
                                 clipBehavior: Clip.hardEdge,
                                 onPressed: () {
