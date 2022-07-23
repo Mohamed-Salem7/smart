@@ -103,7 +103,6 @@ class RevisionDetails extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            navigatorTo(context, const DetailsOrder());
                           },
                           child: Align(
                             alignment: AlignmentDirectional.centerEnd,
