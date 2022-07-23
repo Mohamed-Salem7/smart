@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_service/layout/Login/varifying.dart';
+import 'package:smart_service/layout/Login/login.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BordingModel {
@@ -108,7 +108,7 @@ class _OnBordingState extends State<OnBordingScreen> {
               onTap: ()
               {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => VerifyingCode()));
+                    MaterialPageRoute(builder: (context) => const LoginScreen()));
               },
               child: const Text(
                 'تخطي',

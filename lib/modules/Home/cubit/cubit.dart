@@ -8,8 +8,13 @@ import 'package:smart_service/layout/About_Us.dart';
 import 'package:smart_service/layout/Home_Screen.dart';
 import 'package:smart_service/layout/Logout_Screen.dart';
 import 'package:smart_service/layout/Notification_Screen.dart';
+import 'package:smart_service/models/User_Model.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+import '../../../Shared/constant.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(InitialHomeState());
@@ -76,4 +81,22 @@ class HomeCubit extends Cubit<HomeState> {
         icon: Icon(Iconsax.info_circle), label: 'عنا'),
     const BottomNavigationBarItem(icon: Icon(Iconsax.logout), label: 'خروج'),
   ];
+
+
+  UserModel? userModel;
+
+  Future<void> getUserData() async {
+    emit(LoadingGetUserData());
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(uId)
+        .get()
+        .then((value) {
+      userModel = UserModel.fromJson(value.data()) ;
+      emit(SuccessGetUserData());
+    }).catchError((error) {
+      print(error.toString());
+      emit(ErrorGetUserData(error));
+    });
+  }
 }

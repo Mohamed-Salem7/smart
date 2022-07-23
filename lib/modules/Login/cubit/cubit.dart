@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/modules/Login/cubit/state.dart';
 
@@ -33,6 +34,16 @@ class LoginCubit extends Cubit<LoginState>
               start--;
             }
         });
+  }
+
+  bool isPassword = true;
+  IconData suffix = Icons.visibility_outlined;
+
+  void changeVisibilityPassword()
+  {
+    isPassword = !isPassword;
+    suffix = isPassword ?  Icons.visibility_outlined : Icons.visibility_off_outlined;
+    emit(ChangeVisibilityPassword());
   }
 
   void verifyingNumber({

@@ -18,3 +18,5 @@ void navigatorFinished(context, widget) => Navigator.pushAndRemoveUntil(
     return false;
   },
 );
+
+String uId = ' ';

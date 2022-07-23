@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:smart_service/layout/Login/Register_Dealer.dart';
-import 'package:smart_service/layout/Login/varifying.dart';
+import 'package:smart_service/layout/Login/login.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/layout/on_board/splash_screen.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       title: 'Smart Service',
-      home:  RegisterDealer(),
+      home:  ScreenShot(),
     );
 
   }
