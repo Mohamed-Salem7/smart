@@ -19,3 +19,22 @@ class ErrorLoginState extends LoginState
 }
 class ChangeVisibilityPassword extends LoginState{}
 
+class LoadingLoginUserState extends LoginState {}
+
+class SuccessLoginUserState extends LoginState {}
+
+
+class ErrorLoginUserState extends LoginState {
+  final String error;
+  ErrorLoginUserState(this.error);
+}
+
+class LoadingRegisterClient extends LoginState {}
+
+
+class SuccessRegisterClient extends LoginState {}
+
+class ErrorRegisterClient extends LoginState {
+  final String error;
+  ErrorRegisterClient(this.error);
+}

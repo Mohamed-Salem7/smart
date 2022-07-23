@@ -214,8 +214,9 @@ class LoginScreen extends StatelessWidget {
                               child: ElevatedButton(
                                 clipBehavior: Clip.hardEdge,
                                 onPressed: () {
-                                  LoginCubit.get(context).verifyingNumber(
-                                    phoneNumber: emailController.text,
+                                  LoginCubit.get(context).loginUser(
+                                    email: emailController.text,
+                                    password: passwordController.text,
                                   );
                                 },
                                 style: ButtonStyle(
