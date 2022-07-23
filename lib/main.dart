@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,19 @@ import 'package:smart_service/layout/Login/login.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/layout/on_board/splash_screen.dart';
 
-void main() {
+import 'Shared/cache_helper.dart';
+import 'Shared/constant.dart';
+
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
+  await CacheHelper.init();
+
+  uId = CacheHelper.getData(key: 'uId');
+
   runApp(const MyApp());
 }
 
