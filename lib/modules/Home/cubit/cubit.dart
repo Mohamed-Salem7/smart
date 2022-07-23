@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,12 +33,31 @@ class HomeCubit extends Cubit<HomeState> {
     'تنظيف منازل'
   ];
 
+  List<String> nameOrder = [
+    'تفاصيل الطلب :',
+    'تفاصيل الدفع :',
+  ];
+
+  List<String> detailsOrder = [
+    'موعد الطلب :',
+    'الخدمة :',
+    'العنوان :',
+    'ملاحظات :',
+  ];
+
+  List<String> detailsAnswerOrder = [
+    '10-11-2020,',
+    'الكهرباء',
+    'رام الله-شارع القدس-عمارة 23',
+    'لدي مشكلة في الكهرباء',
+  ];
+
+
   int nameIndex = 0;
 
   int currentIndex = 0;
 
-  void changeName(int index)
-  {
+  void changeName(int index) {
     nameIndex = index;
     emit(ChangeScreenDetailsState());
   }

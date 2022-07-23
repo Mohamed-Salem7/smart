@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:smart_service/layout/Details_Service.dart';
+import 'package:smart_service/layout/details/Details_Service.dart';
 import 'package:smart_service/Shared/constant.dart';
 
 class HomeScreen extends StatelessWidget {

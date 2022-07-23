@@ -54,6 +54,8 @@ dependencies:
   unicons: ^2.1.0
   ionicons: ^0.1.2
   iconsax: ^0.0.8
+  buildcondition: ^0.0.4
+  text_form_field_wrapper: ^1.0.0
 
 dev_dependencies:
   flutter_test:
