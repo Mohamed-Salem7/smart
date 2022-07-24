@@ -107,15 +107,15 @@ class HomeCubit extends Cubit<HomeState> {
     electricityList = [];
     emit(LoadingGetElectricityState());
     await FirebaseFirestore.instance.collection('houses_repair')
-        .doc()
+        .doc('1')
         .collection('Electricity')
         .get()
         .then((value) {
           value.docs.forEach((element) {
             electricityList.add(ServiceModel.fromJson(element.data()));
+            print(electricityList.length);
             print(electricityList);
           });
-          print('Hello');
       emit(SuccessGetElectricityState());
     }).catchError((error){
       emit(ErrorGetElectricityState(error.toString()));

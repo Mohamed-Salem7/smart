@@ -1,6 +1,6 @@
 class ServiceModel {
-  late String name;
-  late String price;
+  late dynamic name;
+  late dynamic price;
 
 
   ServiceModel({
@@ -8,8 +8,8 @@ class ServiceModel {
     required this.price,
   });
 
-  ServiceModel.fromJson(Map<String, dynamic>? json) {
-    name = json!['name'] ?? ' ';
+  ServiceModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'] ?? ' ';
     price = json['price'] ?? ' ';
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/models/Service_Model.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
@@ -14,7 +15,7 @@ class DetailsService extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit()..getElectricity(),
       child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -52,7 +53,6 @@ class DetailsService extends StatelessWidget {
                                       child: IconButton(
                                         onPressed: () {
                                           Navigator.pop(context);
-                                          print('aaaaaaaaaa');
                                         },
                                         icon: const Icon(
                                           Icons.arrow_back_ios,
@@ -98,7 +98,6 @@ class DetailsService extends StatelessWidget {
                                     height: size.height * 0.115,
                                     child: ListView.separated(
                                       scrollDirection: Axis.horizontal,
-                                      //طريق الحركة
                                       itemBuilder: (context, index) => Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
@@ -141,207 +140,28 @@ class DetailsService extends StatelessWidget {
                                       ),
                                       separatorBuilder: (context, index) =>
                                           SizedBox(
-                                        width: 10.0,
+                                        width: size.width * 0.02,
                                       ),
-                                      itemCount: 7,
+                                      itemCount:
+                                          HomeCubit.get(context).name.length,
                                     ),
                                   ),
                                 ),
+
                               ],
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: size.height * 0.22),
-                          child: Container(
-                            child: ListView.separated(
-                              physics: const BouncingScrollPhysics(),
-                              //scrollDirection: Axis.horizontal,
-                              //طريق الحركة
-                              itemBuilder: (context, index) => Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: size.width * 0.08),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: size.height * 0.24,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        boxShadow: <BoxShadow>[
-                                          BoxShadow(
-                                              color: Colors.black12,
-                                              offset: Offset.fromDirection(
-                                                1.5,
-                                                10,
-                                              ),
-                                              spreadRadius: 0,
-                                              blurRadius: 10.0),
-                                        ],
-                                        borderRadius: BorderRadius.circular(
-                                          20,
-                                        ),
-                                        color: Colors.white,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: size.width * 0.025,
-                                                vertical: size.height * 0.005),
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  HomeCubit.get(context).name[
-                                                      HomeCubit.get(context)
-                                                          .nameIndex],
-                                                  style: const TextStyle(
-                                                    fontFamily: 'Tajawal',
-                                                    fontSize: 21,
-                                                    color: Color(0xff383838),
-                                                    fontWeight: FontWeight.w700,
-                                                    height: 1.2380952380952381,
-                                                  ),
-                                                  textHeightBehavior:
-                                                      const TextHeightBehavior(
-                                                          applyHeightToFirstAscent:
-                                                              false),
-                                                  textAlign: TextAlign.right,
-                                                  softWrap: false,
-                                                ),
-                                                const Spacer(),
-                                                IconButton(
-                                                  onPressed: () {},
-                                                  icon: const Icon(
-                                                    UniconsLine.circle,
-                                                    color: Color(0xff707070),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          const Divider(
-                                            color: Color(0xffBDC4CC),
-                                            height: 0.5,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: size.width * 0.025,
-                                                vertical: size.height * 0.005),
-                                            child: const Text(
-                                              'اصلاح أعطال الطبلون',
-                                              style: TextStyle(
-                                                fontFamily: 'Tajawal',
-                                                fontSize: 16,
-                                                color: Color(0xff383838),
-                                                height: 1.625,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10.0),
-                                            child: Row(
-                                              children: [
-                                                const Text(
-                                                  '350-200',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Tajawal',
-                                                    fontSize: 12,
-                                                    color:
-                                                        const Color(0xff000000),
-                                                    fontWeight: FontWeight.w700,
-                                                    height: 1.9166666666666667,
-                                                  ),
-                                                  textHeightBehavior:
-                                                      TextHeightBehavior(
-                                                          applyHeightToFirstAscent:
-                                                              false),
-                                                  textAlign: TextAlign.right,
-                                                ),
-                                                const Text(
-                                                  'شيكل',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Tajawal',
-                                                    fontSize: 12,
-                                                    color:
-                                                        const Color(0xff000000),
-                                                    fontWeight: FontWeight.w700,
-                                                    height: 1.9166666666666667,
-                                                  ),
-                                                  textHeightBehavior:
-                                                      TextHeightBehavior(
-                                                          applyHeightToFirstAscent:
-                                                              false),
-                                                  textAlign: TextAlign.right,
-                                                ),
-                                                const Spacer(),
-                                                IconButton(
-                                                  onPressed: ()
-                                                  {
-                                                  },
-                                                  icon: const Icon(
-                                                    UniconsLine.minus_circle,
-                                                    color: Color(0xff5300BF),
-                                                    size: 25,
-                                                  ),
-                                                ),
-                                                const Text(
-                                                  '0',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Tajawal',
-                                                    fontSize: 20,
-                                                    color: Color(0xff000000),
-                                                    fontWeight: FontWeight.w700,
-                                                    height: 2.5,
-                                                  ),
-                                                ),
-                                                IconButton(
-                                                  onPressed: ()
-                                                  {
-                                                  },
-                                                  icon: const Icon(
-                                                    UniconsLine.plus_circle,
-                                                    size: 25,
-                                                    color: Color(0xff5300BF),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: size.width * 0.025,
-                                                vertical: size.height * 0.005),
-                                            child: Row(
-                                              children: const [
-                                                Spacer(),
-                                                Text(
-                                                  'اجمالي المبلغ',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Tajawal',
-                                                    fontSize: 12,
-                                                    color: Color(0xff383838),
-                                                    height: 1.625,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: size.height * 0.01,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              separatorBuilder: (context, index) => SizedBox(
-                                height: 0,
-                              ),
-                              itemCount: 5,
+                          padding: EdgeInsets.only(top: size.height * 0.23),
+                          child: ListView.builder(
+                            itemCount: HomeCubit.get(context).electricityList.length,
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) => buildProduct(
+                              context,
+                              size,
+                              HomeCubit.get(context).electricityList[index],
                             ),
                           ),
                         ),
@@ -412,3 +232,169 @@ Color color2(int i, context) {
 
   return Color(0xffE0E0E0);
 }
+
+Widget buildProduct(
+        BuildContext context, Size size,ServiceModel serviceModel) =>
+    Padding(
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
+      child: Column(
+        children: [
+          Container(
+            height: size.height * 0.24,
+            decoration: BoxDecoration(
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset.fromDirection(
+                      1.5,
+                      10,
+                    ),
+                    spreadRadius: 0,
+                    blurRadius: 10.0),
+              ],
+              borderRadius: BorderRadius.circular(
+                20,
+              ),
+              color: Colors.white,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.025,
+                      vertical: size.height * 0.005),
+                  child: Row(
+                    children: [
+                      Text(
+                        HomeCubit.get(context)
+                            .name[HomeCubit.get(context).nameIndex],
+                        style: const TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 21,
+                          color: Color(0xff383838),
+                          fontWeight: FontWeight.w700,
+                          height: 1.2380952380952381,
+                        ),
+                        textHeightBehavior: const TextHeightBehavior(
+                            applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.right,
+                        softWrap: false,
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          UniconsLine.circle,
+                          color: Color(0xff707070),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const Divider(
+                  color: Color(0xffBDC4CC),
+                  height: 0.5,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.025,
+                      vertical: size.height * 0.005),
+                  child: Text(
+                    serviceModel.name,
+                    style: TextStyle(
+                      fontFamily: 'Tajawal',
+                      fontSize: 16,
+                      color: Color(0xff383838),
+                      height: 1.625,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        serviceModel.price,
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 12,
+                          color: const Color(0xff000000),
+                          fontWeight: FontWeight.w700,
+                          height: 1.9166666666666667,
+                        ),
+                        textHeightBehavior: TextHeightBehavior(
+                            applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.right,
+                      ),
+                      const Text(
+                        'شيكل',
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 12,
+                          color: const Color(0xff000000),
+                          fontWeight: FontWeight.w700,
+                          height: 1.9166666666666667,
+                        ),
+                        textHeightBehavior: TextHeightBehavior(
+                            applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.right,
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          UniconsLine.minus_circle,
+                          color: Color(0xff5300BF),
+                          size: 25,
+                        ),
+                      ),
+                      const Text(
+                        '0',
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 20,
+                          color: Color(0xff000000),
+                          fontWeight: FontWeight.w700,
+                          height: 2.5,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          UniconsLine.plus_circle,
+                          size: 25,
+                          color: Color(0xff5300BF),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.025,
+                      vertical: size.height * 0.005),
+                  child: Row(
+                    children: const [
+                      Spacer(),
+                      Text(
+                        'اجمالي المبلغ',
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 12,
+                          color: Color(0xff383838),
+                          height: 1.625,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: size.height * 0.01,
+          ),
+        ],
+      ),
+    );
