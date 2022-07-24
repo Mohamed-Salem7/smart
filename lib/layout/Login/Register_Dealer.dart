@@ -15,6 +15,7 @@ class RegisterDealer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
@@ -759,11 +760,15 @@ class RegisterDealer extends StatelessWidget {
                                 loginCubit.registerDealer(
                                   email: loginCubit.emailController.text,
                                   name: loginCubit.nameController.text,
-                                  password: loginCubit.passwordController.text,
+                                  password:
+                                      loginCubit.passwordController.text,
                                   phone: loginCubit.phoneController.text,
-                                  detailsService: loginCubit.detailsServiceController.text,
-                                  location: loginCubit.locationController.text,
-                                  priceService: loginCubit.priceServiceController.text,
+                                  detailsService: loginCubit
+                                      .detailsServiceController.text,
+                                  location:
+                                      loginCubit.locationController.text,
+                                  priceService:
+                                      loginCubit.priceServiceController.text,
                                   workTime: loginCubit.emailController.text,
                                 );
                               },
@@ -808,10 +813,8 @@ class RegisterDealer extends StatelessWidget {
             ),
           );
         },
-        listener: (context, state)
-        {
-          if(state is SuccessRegisterDealer)
-          {
+        listener: (context, state) {
+          if (state is SuccessRegisterDealer) {
             navigatorFinished(context, const MainScreen());
           }
         },
