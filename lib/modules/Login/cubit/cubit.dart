@@ -100,7 +100,11 @@ class LoginCubit extends Cubit<LoginState> {
       password: password,
     )
         .then((value) {
-      createAccount(email: email, name: name, uId: value.user!.uid);
+      createAccount(
+        email: email,
+        name: name,
+        uId: value.user!.uid,
+      );
     }).catchError((error) {
       print(error.toString());
       emit(ErrorRegisterClient(error));

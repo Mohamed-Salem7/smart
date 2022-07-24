@@ -92,50 +92,51 @@ class RegisterCliente extends StatelessWidget {
                         color: Color(0xff7b7890),
                         height: size.height * 0.001,
                       ),
-                      textHeightBehavior:
-                          TextHeightBehavior(applyHeightToFirstAscent: false),
                       textAlign: TextAlign.right,
                       softWrap: false,
                     ),
                     SizedBox(
-                      height: size.height * 0.02,
+                      height: size.height * 0.01,
                     ),
-                    Container(
-                      height: size.height * 0.05,
-                      width: size.width * 0.895,
-                      decoration: BoxDecoration(
-                          color: const Color(0xffF5F6FA),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width * 0.02,
-                            vertical: size.height * 0.01),
-                        child: TextFormField(
-                          onTap: () {},
-                          keyboardType: TextInputType.name,
-                          controller: nameController,
-                          validator: (value) {
-                            if (value == null) {
-                              return 'رجاءا أدخل إسمك';
-                            }
-                            return null;
-                          },
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontFamily: 'Tajawal',
-                            height: size.height * 0.002,
-                            fontSize: 16,
-                            color: const Color(0xff0f0a39),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.width * 0.02,
+                          vertical: size.height * 0.01),
+                      child: TextFormField(
+                        onTap: () {},
+                        keyboardType: TextInputType.name,
+                        controller: nameController,
+                        validator: (value) {
+                          if (value == null) {
+                            return 'رجاءا أدخل إسمك';
+                          }
+                          return null;
+                        },
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          height: size.height * 0.002,
+                          fontSize: 16,
+                          color: const Color(0xff0f0a39),
+                        ),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'أدخل إسمك',
+                          filled: true,
+                          fillColor: const Color(0xffF5F6FA),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20,),
                           ),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'أدخل إسمك',
-                            hintStyle: TextStyle(
-                              fontFamily: 'Tajawal',
-                              fontSize: 16,
-                              color: const Color(0xffcbc9d9),
-                              height: size.height * 0.001,
-                            ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20,),
+                          ),
+                          hintStyle: TextStyle(
+                            fontFamily: 'Tajawal',
+                            fontSize: 16,
+                            color: const Color(0xffcbc9d9),
+                            height: size.height * 0.001,
                           ),
                         ),
                       ),
@@ -154,41 +155,43 @@ class RegisterCliente extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.01,
                     ),
-                    Container(
-                      height: size.height * 0.05,
-                      width: size.width * 0.895,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xffF5F6FA),
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                        child: TextFormField(
-                          controller: emailController,
-                          onTap: () {},
-                          textAlign: TextAlign.start,
-                          keyboardType: TextInputType.emailAddress,
-                          validator: (value) {
-                            if (value == null) {
-                              return 'رجاءا أدخل بريدك الإلكتروني';
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'أدخل بريدك الإلكتروني',
-                            hintStyle: TextStyle(
-                              fontFamily: 'Tajawal',
-                              fontSize: 16,
-                              color: Color(0xffcbc9d9),
-                            ),
-                          ),
-                          style: TextStyle(
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                      child: TextFormField(
+                        controller: emailController,
+                        onTap: () {},
+                        textAlign: TextAlign.start,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null) {
+                            return 'رجاءا أدخل بريدك الإلكتروني';
+                          }
+                          return null;
+                        },
+                        decoration:  InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'أدخل بريدك الإلكتروني',
+                          hintStyle: const TextStyle(
                             fontFamily: 'Tajawal',
                             fontSize: 16,
-                            height: size.height * 0.001,
+                            color: Color(0xffcbc9d9),
                           ),
+                          filled: true,
+                          fillColor: const Color(0xffF5F6FA),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20,),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20,),
+                          ),
+                        ),
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 16,
+                          height: size.height * 0.001,
                         ),
                       ),
                     ),
@@ -206,55 +209,56 @@ class RegisterCliente extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.01,
                     ),
-                    Container(
-                      height: size.height * 0.05,
-                      width: size.width * 0.895,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xffF5F6FA),
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                        child: TextFormField(
-                          controller: passwordController,
-                          onTap: () {},
-                          textAlign: TextAlign.start,
-                          keyboardType: TextInputType.visiblePassword,
-                          validator: (value) {
-                            if (value == null) {
-                              return 'رجاءا أدخل كلمة المرور';
-                            }
-                            return null;
-                          },
-                          obscureText: LoginCubit.get(context).isPassword,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            suffixIcon: LoginCubit.get(context).suffix != null
-                                ? IconButton(
-                                    onPressed: () {
-                                      LoginCubit.get(context)
-                                          .changeVisibilityPassword();
-                                    },
-                                    icon: Icon(
-                                      LoginCubit.get(context).suffix,
-                                      color: Color(0xffF6C52F),
-                                    ),
-                                  )
-                                : null,
-                            hintText: 'أدخل كلمة المرور',
-                            hintStyle: const TextStyle(
-                              fontFamily: 'Tajawal',
-                              fontSize: 16,
-                              color: Color(0xffcbc9d9),
-                            ),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                      child: TextFormField(
+                        controller: passwordController,
+                        onTap: () {},
+                        textAlign: TextAlign.start,
+                        keyboardType: TextInputType.visiblePassword,
+                        validator: (value) {
+                          if (value == null) {
+                            return 'رجاءا أدخل كلمة المرور';
+                          }
+                          return null;
+                        },
+                        obscureText: LoginCubit.get(context).isPassword,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          suffixIcon: LoginCubit.get(context).suffix != null
+                              ? IconButton(
+                                  onPressed: () {
+                                    LoginCubit.get(context)
+                                        .changeVisibilityPassword();
+                                  },
+                                  icon: Icon(
+                                    LoginCubit.get(context).suffix,
+                                    color: Color(0xffF6C52F),
+                                  ),
+                                )
+                              : null,
+                          hintText: 'أدخل كلمة المرور',
+                          filled: true,
+                          fillColor: const Color(0xffF5F6FA),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20,),
                           ),
-                          style: const TextStyle(
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20,),
+                          ),
+                          hintStyle: const TextStyle(
                             fontFamily: 'Tajawal',
                             fontSize: 16,
-                            //height: size.height * 0.0055,
-                            color: Color(0xff0F0A39),
+                            color: Color(0xffcbc9d9),
                           ),
+                        ),
+                        style: const TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 16,
+                          color: Color(0xff0F0A39),
                         ),
                       ),
                     ),
