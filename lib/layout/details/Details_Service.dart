@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_service/layout/details/Details_Order.dart';
-import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
+import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../modules/Home/cubit/state.dart';
+import 'Details_Order.dart';
 
 class DetailsService extends StatelessWidget {
   const DetailsService({Key? key}) : super(key: key);
@@ -14,7 +13,6 @@ class DetailsService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    bool isShow = true;
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: BlocConsumer<HomeCubit, HomeState>(
@@ -27,7 +25,7 @@ class DetailsService extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          height: size.height * 0.3,
+                          height: size.height * 0.32,
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             color: Color(0xffF6C52F),
@@ -42,13 +40,25 @@ class DetailsService extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.02,
-                                vertical: size.height * 0.01),
+                                horizontal: size.width * 0.02),
                             child: Stack(
                               alignment: AlignmentDirectional.center,
                               children: [
                                 Stack(
                                   children: [
+                                    Positioned(
+                                      top: size.height * 0.08,
+                                      right: size.width * 0.05,
+                                      child: IconButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          print('aaaaaaaaaa');
+                                        },
+                                        icon: const Icon(
+                                          Icons.arrow_back_ios,
+                                        ),
+                                      ),
+                                    ),
                                     Positioned(
                                       top: size.height * 0.1,
                                       right: size.width * 0.2,
@@ -69,19 +79,6 @@ class DetailsService extends StatelessWidget {
                                     ),
                                     Positioned(
                                       top: size.height * 0.08,
-                                      right: size.width * 0.05,
-                                      child: IconButton(
-                                        onPressed: () {
-                                          navigatorFinished(
-                                              context, const MainScreen());
-                                        },
-                                        icon: const Icon(
-                                          Icons.arrow_back_ios,
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: size.height * 0.08,
                                       left: size.width * 0.02,
                                       child: IconButton(
                                         onPressed: () {
@@ -96,21 +93,21 @@ class DetailsService extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.only(
-                                      start: size.width * 0.06,
-                                      top: size.height * 0.06),
-                                  child: SizedBox(
+                                      start: size.width * 0.06),
+                                  child: Container(
                                     height: size.height * 0.115,
                                     child: ListView.separated(
-                                      physics: const BouncingScrollPhysics(),
                                       scrollDirection: Axis.horizontal,
+                                      //طريق الحركة
                                       itemBuilder: (context, index) => Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           SizedBox(
-                                            height: size.height * 0.05,
+                                            height: size.height * 0.08,
                                           ),
                                           InkWell(
                                             onTap: () {
+                                              print(index);
                                               HomeCubit.get(context)
                                                   .changeName(index);
                                             },
@@ -144,10 +141,9 @@ class DetailsService extends StatelessWidget {
                                       ),
                                       separatorBuilder: (context, index) =>
                                           SizedBox(
-                                        width: size.width * 0.02,
+                                        width: 10.0,
                                       ),
-                                      itemCount:
-                                          HomeCubit.get(context).name.length,
+                                      itemCount: 7,
                                     ),
                                   ),
                                 ),
@@ -155,194 +151,197 @@ class DetailsService extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Positioned(
-                          top: size.height * 0.24,
-                          right: size.width * 0.1,
-                          left: size.width * 0.1,
+                        Padding(
+                          padding: EdgeInsets.only(top: size.height * 0.22),
                           child: Container(
-                            height: isShow ? size.height * 0.22 : size.height * 0.2 ,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                20,
+                            child: ListView.separated(
+                              physics: const BouncingScrollPhysics(),
+                              //scrollDirection: Axis.horizontal,
+                              //طريق الحركة
+                              itemBuilder: (context, index) => Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width * 0.08),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: size.height * 0.24,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        boxShadow: <BoxShadow>[
+                                          BoxShadow(
+                                              color: Colors.black12,
+                                              offset: Offset.fromDirection(
+                                                1.5,
+                                                10,
+                                              ),
+                                              spreadRadius: 0,
+                                              blurRadius: 10.0),
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
+                                        color: Colors.white,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: size.width * 0.025,
+                                                vertical: size.height * 0.005),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  HomeCubit.get(context).name[
+                                                      HomeCubit.get(context)
+                                                          .nameIndex],
+                                                  style: const TextStyle(
+                                                    fontFamily: 'Tajawal',
+                                                    fontSize: 21,
+                                                    color: Color(0xff383838),
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.2380952380952381,
+                                                  ),
+                                                  textHeightBehavior:
+                                                      const TextHeightBehavior(
+                                                          applyHeightToFirstAscent:
+                                                              false),
+                                                  textAlign: TextAlign.right,
+                                                  softWrap: false,
+                                                ),
+                                                const Spacer(),
+                                                IconButton(
+                                                  onPressed: () {},
+                                                  icon: const Icon(
+                                                    UniconsLine.circle,
+                                                    color: Color(0xff707070),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          const Divider(
+                                            color: Color(0xffBDC4CC),
+                                            height: 0.5,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: size.width * 0.025,
+                                                vertical: size.height * 0.005),
+                                            child: const Text(
+                                              'اصلاح أعطال الطبلون',
+                                              style: TextStyle(
+                                                fontFamily: 'Tajawal',
+                                                fontSize: 16,
+                                                color: Color(0xff383838),
+                                                height: 1.625,
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0),
+                                            child: Row(
+                                              children: [
+                                                const Text(
+                                                  '350-200',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Tajawal',
+                                                    fontSize: 12,
+                                                    color:
+                                                        const Color(0xff000000),
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.9166666666666667,
+                                                  ),
+                                                  textHeightBehavior:
+                                                      TextHeightBehavior(
+                                                          applyHeightToFirstAscent:
+                                                              false),
+                                                  textAlign: TextAlign.right,
+                                                ),
+                                                const Text(
+                                                  'شيكل',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Tajawal',
+                                                    fontSize: 12,
+                                                    color:
+                                                        const Color(0xff000000),
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.9166666666666667,
+                                                  ),
+                                                  textHeightBehavior:
+                                                      TextHeightBehavior(
+                                                          applyHeightToFirstAscent:
+                                                              false),
+                                                  textAlign: TextAlign.right,
+                                                ),
+                                                const Spacer(),
+                                                IconButton(
+                                                  onPressed: ()
+                                                  {
+                                                  },
+                                                  icon: const Icon(
+                                                    UniconsLine.minus_circle,
+                                                    color: Color(0xff5300BF),
+                                                    size: 25,
+                                                  ),
+                                                ),
+                                                const Text(
+                                                  '0',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Tajawal',
+                                                    fontSize: 20,
+                                                    color: Color(0xff000000),
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 2.5,
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                  onPressed: ()
+                                                  {
+                                                  },
+                                                  icon: const Icon(
+                                                    UniconsLine.plus_circle,
+                                                    size: 25,
+                                                    color: Color(0xff5300BF),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: size.width * 0.025,
+                                                vertical: size.height * 0.005),
+                                            child: Row(
+                                              children: const [
+                                                Spacer(),
+                                                Text(
+                                                  'اجمالي المبلغ',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Tajawal',
+                                                    fontSize: 12,
+                                                    color: Color(0xff383838),
+                                                    height: 1.625,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: size.height * 0.01,
+                                    ),
+                                  ],
+                                ),
                               ),
-                              color: const Color(0xffffffff),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: size.height * 0.02,
-                                      right: size.width * 0.02,
-                                      left: size.width * 0.02),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        HomeCubit.get(context).name[
-                                            HomeCubit.get(context).nameIndex],
-                                        style: TextStyle(
-                                          fontFamily: 'Tajawal',
-                                          fontSize: 21,
-                                          color: Color(0xff383838),
-                                          fontWeight: FontWeight.w700,
-                                          height: size.height * 0.0015,
-                                        ),
-                                        textHeightBehavior:
-                                            const TextHeightBehavior(
-                                                applyHeightToFirstAscent:
-                                                    false),
-                                        textAlign: TextAlign.right,
-                                        softWrap: false,
-                                      ),
-                                      const Spacer(),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          UniconsLine.circle,
-                                          color: Color(0xff707070),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Divider(
-                                  color: Color(0xffBDC4CC),
-                                  height: size.height * 0.001,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Text(
-                                    'اصلاح أعطال الطبلون',
-                                    style: TextStyle(
-                                      fontFamily: 'Tajawal',
-                                      fontSize: 16,
-                                      color: Color(0xff383838),
-                                      height: size.height * 0.002,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: size.width * 0.025),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        '350-200',
-                                        style: TextStyle(
-                                          fontFamily: 'Tajawal',
-                                          fontSize: 12,
-                                          color: const Color(0xff000000),
-                                          fontWeight: FontWeight.w700,
-                                          height: size.height * 0.002,
-                                        ),
-                                        textHeightBehavior:
-                                            const TextHeightBehavior(
-                                                applyHeightToFirstAscent:
-                                                    false),
-                                        textAlign: TextAlign.right,
-                                      ),
-                                      Text(
-                                        'شيكل',
-                                        style: TextStyle(
-                                          fontFamily: 'Tajawal',
-                                          fontSize: 12,
-                                          color: const Color(0xff000000),
-                                          fontWeight: FontWeight.w700,
-                                          height: size.height * 0.002,
-                                        ),
-                                        textHeightBehavior:
-                                            const TextHeightBehavior(
-                                                applyHeightToFirstAscent:
-                                                    false),
-                                        textAlign: TextAlign.right,
-                                      ),
-                                      const Spacer(),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          UniconsLine.minus_circle,
-                                          color: Color(0xff5300BF),
-                                          size: 25,
-                                        ),
-                                      ),
-                                      Text(
-                                        '0',
-                                        style: TextStyle(
-                                          fontFamily: 'Tajawal',
-                                          fontSize: 20,
-                                          color: const Color(0xff000000),
-                                          fontWeight: FontWeight.w700,
-                                          height: size.height * 0.003,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          UniconsLine.plus_circle,
-                                          size: 25,
-                                          color: Color(0xff5300BF),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                if (isShow)
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: size.width * 0.025),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          ' إجمالي المبلغ :',
-                                          style: TextStyle(
-                                            fontFamily: 'Tajawal',
-                                            fontSize: 12,
-                                            color: const Color(0xff5300bf),
-                                            fontWeight: FontWeight.w700,
-                                            height: size.height * 0.0025,
-                                          ),
-                                          textHeightBehavior:
-                                              const TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                      false),
-                                          textAlign: TextAlign.right,
-                                        ),
-                                        Text(
-                                          '400',
-                                          style: TextStyle(
-                                            fontFamily: 'Tajawal',
-                                            fontSize: 12,
-                                            color: const Color(0xff000000),
-                                            fontWeight: FontWeight.w700,
-                                            height: size.height * 0.002,
-                                          ),
-                                          textHeightBehavior:
-                                              const TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                      false),
-                                          textAlign: TextAlign.right,
-                                        ),
-                                        Text(
-                                          'شيكل',
-                                          style: TextStyle(
-                                            fontFamily: 'Tajawal',
-                                            fontSize: 12,
-                                            color: const Color(0xff000000),
-                                            fontWeight: FontWeight.w700,
-                                            height: size.height * 0.0025,
-                                          ),
-                                          textHeightBehavior:
-                                              const TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                      false),
-                                          textAlign: TextAlign.right,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                              ],
+                              separatorBuilder: (context, index) => SizedBox(
+                                height: 0,
+                              ),
+                              itemCount: 5,
                             ),
                           ),
                         ),
@@ -360,8 +359,7 @@ class DetailsService extends StatelessWidget {
                       child: Column(
                         children: [
                           InkWell(
-                            onTap: ()
-                            {
+                            onTap: () {
                               navigatorTo(context, const DetailsOrder());
                             },
                             child: Align(
