@@ -147,24 +147,25 @@ class DetailsService extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: size.height * 0.23),
-                          child: ListView.builder(
-                            itemCount: HomeCubit.get(context).electricityList.length,
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) => buildProduct(
-                              context,
-                              size,
-                              HomeCubit.get(context).electricityList[index],
+                        if (HomeCubit.get(context).nameIndex == 1)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount:
+                                  HomeCubit.get(context).electricityList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).electricityList[index],
+                              ),
                             ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -234,7 +235,7 @@ Color color2(int i, context) {
 }
 
 Widget buildProduct(
-        BuildContext context, Size size,ServiceModel serviceModel) =>
+        BuildContext context, Size size, ServiceModel serviceModel) =>
     Padding(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
       child: Column(
@@ -323,8 +324,8 @@ Widget buildProduct(
                           fontWeight: FontWeight.w700,
                           height: 1.9166666666666667,
                         ),
-                        textHeightBehavior: TextHeightBehavior(
-                            applyHeightToFirstAscent: false),
+                        textHeightBehavior:
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.right,
                       ),
                       const Text(
@@ -336,8 +337,8 @@ Widget buildProduct(
                           fontWeight: FontWeight.w700,
                           height: 1.9166666666666667,
                         ),
-                        textHeightBehavior: TextHeightBehavior(
-                            applyHeightToFirstAscent: false),
+                        textHeightBehavior:
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.right,
                       ),
                       const Spacer(),
