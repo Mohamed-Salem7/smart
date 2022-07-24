@@ -151,7 +151,7 @@ class DetailsService extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (HomeCubit.get(context).nameIndex == 1)
+                        if (HomeCubit.get(context).nameIndex == 1 || HomeCubit.get(context).nameIndex == 0)
                           Padding(
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
