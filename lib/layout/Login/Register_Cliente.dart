@@ -16,9 +16,6 @@ class RegisterCliente extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final formKey = GlobalKey<FormState>();
-    var nameController = TextEditingController();
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
@@ -108,18 +105,7 @@ class RegisterCliente extends StatelessWidget {
                             vertical: size.height * 0.01),
                         child: TextFormField(
                           autofocus: true,
-                          // onTap: () {
-                          //   // showTimePicker(
-                          //   //   context: context,
-                          //   //   initialTime: TimeOfDay.now(),
-                          //   // ).then((value) {
-                          //   //   nameController.text =
-                          //   //       value!.format(context).toString();
-                          //   // });
-                          //
-                          // },
                           keyboardType: TextInputType.name,
-
                           controller: loginCubit.nameController,
                           onTap: ()
                           {

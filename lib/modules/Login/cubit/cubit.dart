@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/models/Register_Model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_service/models/User_Model.dart';
 import 'package:smart_service/modules/Login/cubit/state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -47,15 +48,26 @@ class LoginCubit extends Cubit<LoginState> {
     emit(ChangeVisibilityPassword());
   }
 
-
   var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-  void saveTextFormField(String value)
-  {
+  var phoneController = TextEditingController();
+  var locationController = TextEditingController();
+  var priceServiceController = TextEditingController();
+  var detailsServiceController = TextEditingController();
+  var selectService = TextEditingController();
+  var timeJobController = TextEditingController();
+
+  void saveTextFormField(String value) {
     value = nameController.text;
     value = emailController.text;
     value = passwordController.text;
+    value = phoneController.text;
+    value = locationController.text;
+    value = priceServiceController.text;
+    value = detailsServiceController.text;
+    value = selectService.text;
+    value = timeJobController.text;
     emit(SaveTextFormField());
   }
 
@@ -63,21 +75,21 @@ class LoginCubit extends Cubit<LoginState> {
     required String email,
     required String password,
   }) async {
-    emit(LoadingLoginUserState());
+    emit(LoadingLoginState());
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
       email: email,
       password: password,
     )
         .then((value) {
-      emit(SuccessLoginUserState());
+      emit(SuccessLoginState(value.user!.uid));
     }).catchError((error) {
       print(error.toString());
       emit(ErrorLoginUserState(error));
     });
   }
 
-  void createAccount({
+  void createAccountCliente({
     required String email,
     required String name,
     required String uId,
@@ -112,7 +124,7 @@ class LoginCubit extends Cubit<LoginState> {
       password: password,
     )
         .then((value) {
-      createAccount(
+      createAccountCliente(
         email: email,
         name: name,
         uId: value.user!.uid,
@@ -120,6 +132,72 @@ class LoginCubit extends Cubit<LoginState> {
     }).catchError((error) {
       print(error.toString());
       emit(ErrorRegisterClient(error.toString()));
+    });
+  }
+
+  void createAccountDealer({
+    required String email,
+    required String name,
+    required String uId,
+    required String phone,
+    required String detailsService,
+    required String location,
+    required String priceService,
+    required String workTime,
+  }) {
+    UserModel userModel = UserModel(
+      name: name,
+      email: email,
+      uId: uId,
+      phone: phone,
+      detailsService: detailsService,
+      location: location,
+      priceService: priceService,
+      workTime: workTime,
+    );
+    FirebaseFirestore.instance
+        .collection('user')
+        .doc()
+        .collection('dealer')
+        .doc(uId)
+        .set(userModel.toMap())
+        .then((value) {
+      emit(SuccessRegisterDealer());
+    }).catchError((error) {
+      emit(ErrorRegisterDealer(error));
+    });
+  }
+
+  void registerDealer({
+    required String email,
+    required String name,
+    required String password,
+    required String phone,
+    required String detailsService,
+    required String location,
+    required String priceService,
+    required String workTime,
+  }) async {
+    emit(LoadingRegisterDealer());
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    )
+        .then((value) {
+      createAccountDealer(
+        email: email,
+        name: name,
+        phone: phone,
+        detailsService: detailsService,
+        location: location,
+        priceService: priceService,
+        workTime: workTime,
+        uId: value.user!.uid,
+      );
+    }).catchError((error) {
+      print(error.toString());
+      emit(ErrorRegisterDealer(error.toString()));
     });
   }
 

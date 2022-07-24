@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
@@ -12,19 +15,11 @@ class RegisterDealer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var nameController = TextEditingController();
-    var phoneController = TextEditingController();
-    var locationController = TextEditingController();
-    var priceServiceController = TextEditingController();
-    var detailsServiceController = TextEditingController();
-    var streetController = TextEditingController();
-    var timeJobController = TextEditingController();
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
     return BlocProvider(
       create: (context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit,LoginState>(
+      child: BlocConsumer<LoginCubit, LoginState>(
         builder: (context, state) {
+          var loginCubit = LoginCubit.get(context);
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -115,7 +110,10 @@ class RegisterDealer extends StatelessWidget {
                             child: TextFormField(
                               onTap: () {},
                               keyboardType: TextInputType.name,
-                              controller: nameController,
+                              controller: loginCubit.nameController,
+                              onChanged: (value) {
+                                loginCubit.saveTextFormField(value);
+                              },
                               validator: (value) {
                                 if (value == null) {
                                   return 'رجاءا أدخل إسمك';
@@ -134,11 +132,15 @@ class RegisterDealer extends StatelessWidget {
                                 fillColor: const Color(0xffF5F6FA),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 border: InputBorder.none,
                                 hintText: 'أدخل إسمك',
@@ -169,8 +171,11 @@ class RegisterDealer extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 horizontal: size.width * 0.02),
                             child: TextFormField(
-                              controller: emailController,
+                              controller: loginCubit.emailController,
                               onTap: () {},
+                              onChanged: (value) {
+                                loginCubit.saveTextFormField(value);
+                              },
                               textAlign: TextAlign.start,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
@@ -184,11 +189,15 @@ class RegisterDealer extends StatelessWidget {
                                 fillColor: const Color(0xffF5F6FA),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 border: InputBorder.none,
                                 hintText: 'أدخل بريدك الإلكتروني',
@@ -198,8 +207,7 @@ class RegisterDealer extends StatelessWidget {
                                   color: Color(0xffcbc9d9),
                                 ),
                               ),
-
-                              style:  TextStyle(
+                              style: TextStyle(
                                 fontFamily: 'Tajawal',
                                 fontSize: 16,
                                 height: size.height * 0.001,
@@ -224,7 +232,10 @@ class RegisterDealer extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 horizontal: size.width * 0.02),
                             child: TextFormField(
-                              controller: passwordController,
+                              controller: loginCubit.passwordController,
+                              onChanged: (value) {
+                                loginCubit.saveTextFormField(value);
+                              },
                               onTap: () {},
                               textAlign: TextAlign.start,
                               keyboardType: TextInputType.visiblePassword,
@@ -240,14 +251,17 @@ class RegisterDealer extends StatelessWidget {
                                 fillColor: const Color(0xffF5F6FA),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 border: InputBorder.none,
-
                                 suffixIcon:
                                     LoginCubit.get(context).suffix != null
                                         ? IconButton(
@@ -313,17 +327,20 @@ class RegisterDealer extends StatelessWidget {
                                       fontSize: 16,
                                       color: Color(0xff0f0a39),
                                     ),
-
                                     decoration: InputDecoration(
                                       filled: true,
                                       fillColor: const Color(0xffF5F6FA),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.circular(20,),
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.circular(20,),
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
                                       ),
                                       border: InputBorder.none,
                                       hintText: 'رقم الجوال',
@@ -336,7 +353,10 @@ class RegisterDealer extends StatelessWidget {
                                     ),
                                     onTap: () {},
                                     keyboardType: TextInputType.phone,
-                                    controller: phoneController,
+                                    controller: loginCubit.phoneController,
+                                    onChanged: (value) {
+                                      loginCubit.saveTextFormField(value);
+                                    },
                                   ),
                                 ),
                               ),
@@ -388,7 +408,6 @@ class RegisterDealer extends StatelessWidget {
                                 applyHeightToFirstAscent: false),
                             textAlign: TextAlign.right,
                             softWrap: false,
-
                           ),
                           Row(
                             children: [
@@ -416,11 +435,15 @@ class RegisterDealer extends StatelessWidget {
                                       fillColor: const Color(0xffF5F6FA),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.circular(20,),
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.circular(20,),
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
                                       ),
                                       border: InputBorder.none,
                                       hintText: 'أدخل موقعك',
@@ -433,7 +456,10 @@ class RegisterDealer extends StatelessWidget {
                                     ),
                                     onTap: () {},
                                     keyboardType: TextInputType.streetAddress,
-                                    controller: locationController,
+                                    controller: loginCubit.locationController,
+                                    onChanged: (value) {
+                                      loginCubit.saveTextFormField(value);
+                                    },
                                   ),
                                 ),
                               ),
@@ -466,46 +492,49 @@ class RegisterDealer extends StatelessWidget {
                             textAlign: TextAlign.right,
                             softWrap: false,
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                height: size.height * 0.05,
-                                width: size.width * 0.435,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xffF5F6FA),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: size.width * 0.02,
-                                      vertical: size.height * 0.01),
-                                  child: Text(
-                                    'الخدمة',
-                                    style: TextStyle(
-                                      fontFamily: 'Tajawal',
-                                      fontSize: 16,
-                                      color: const Color(0xffcbc9d9),
-                                      height: size.height * 0.01,
-                                    ),
-                                    textHeightBehavior: TextHeightBehavior(
-                                        applyHeightToFirstAscent: false),
-                                    textAlign: TextAlign.right,
-                                    softWrap: false,
-                                  ),
+                          TextFormField(
+                            validator: (value) {
+                              if (value == null) {
+                                return 'رجاءا أدخل نوع خدمتك';
+                              }
+                              return null;
+                            },
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 16,
+                              color: Color(0xff0f0a39),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: const Color(0xffF5F6FA),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(
+                                  20,
                                 ),
                               ),
-                              SizedBox(
-                                width: size.width * 0.02,
-                              ),
-                              Container(
-                                height: size.height * 0.05,
-                                width: size.width * 0.435,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xffF5F6FA),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(
+                                  20,
                                 ),
                               ),
-                            ],
+                              border: InputBorder.none,
+                              hintText: 'خدمة فرعية أو رئيسية',
+                              hintStyle: TextStyle(
+                                fontFamily: 'Tajawal',
+                                fontSize: 16,
+                                color: Color(0xffcbc9d9),
+                                height: size.height * 0.001,
+                              ),
+                            ),
+                            onTap: () {},
+                            controller: loginCubit.selectService,
+                            onChanged: (value) {
+                              loginCubit.saveTextFormField(value);
+                            },
                           ),
                           SizedBox(
                             height: size.height * 0.02,
@@ -548,11 +577,15 @@ class RegisterDealer extends StatelessWidget {
                                 fillColor: const Color(0xffF5F6FA),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 border: InputBorder.none,
                                 hintText: 'أدخل سعر الخدمة',
@@ -565,7 +598,10 @@ class RegisterDealer extends StatelessWidget {
                               ),
                               onTap: () {},
                               keyboardType: TextInputType.number,
-                              controller: priceServiceController,
+                              controller: loginCubit.priceServiceController,
+                              onChanged: (value) {
+                                loginCubit.saveTextFormField(value);
+                              },
                             ),
                           ),
                           SizedBox(
@@ -611,11 +647,15 @@ class RegisterDealer extends StatelessWidget {
                                 fillColor: const Color(0xffF5F6FA),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 border: InputBorder.none,
                                 hintText: ' أدخل تفاصيل الخدمة الخاصة بك',
@@ -627,68 +667,10 @@ class RegisterDealer extends StatelessWidget {
                                 ),
                               ),
                               onTap: () {},
-                              controller: detailsServiceController,
-                            ),
-                          ),
-                          SizedBox(
-                            height: size.height * 0.02,
-                          ),
-                          const Text(
-                            'العنوان',
-                            style: TextStyle(
-                              fontFamily: 'Tajawal',
-                              fontSize: 14,
-                              color: Color(0xff7b7890),
-                              height: 1.7142857142857142,
-                            ),
-                            textHeightBehavior: TextHeightBehavior(
-                                applyHeightToFirstAscent: false),
-                            textAlign: TextAlign.right,
-                            softWrap: false,
-                          ),
-                          SizedBox(
-                            height: size.height * 0.01,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.02,
-                                vertical: size.height * 0.01),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null) {
-                                  return 'رجاءا أدخل عنوانك';
-                                }
-                                return null;
+                              controller: loginCubit.detailsServiceController,
+                              onChanged: (value) {
+                                loginCubit.saveTextFormField(value);
                               },
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                fontFamily: 'Tajawal',
-                                fontSize: 16,
-                                color: Color(0xff0f0a39),
-                              ),
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: const Color(0xffF5F6FA),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
-                                ),
-                                border: InputBorder.none,
-                                hintText: 'أدخل العنوان',
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 16,
-                                  color: Color(0xffcbc9d9),
-                                  height: size.height * 0.001,
-                                ),
-                              ),
-                              onTap: () {},
-                              keyboardType: TextInputType.streetAddress,
-                              controller: streetController,
                             ),
                           ),
                           SizedBox(
@@ -732,11 +714,15 @@ class RegisterDealer extends StatelessWidget {
                                 fillColor: const Color(0xffF5F6FA),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20,),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                                 border: InputBorder.none,
                                 hintText: 'أدخل وقت العمل',
@@ -747,40 +733,67 @@ class RegisterDealer extends StatelessWidget {
                                   height: size.height * 0.001,
                                 ),
                               ),
-                              onTap: () {},
-                              controller: timeJobController,
+                              keyboardType: TextInputType.datetime,
+                              onTap: () {
+                                showTimePicker(
+                                  context: context,
+                                  initialTime: TimeOfDay.now(),
+                                ).then((value) {
+                                  loginCubit.timeJobController.text =
+                                      value!.format(context).toString();
+                                });
+                              },
+                              controller: loginCubit.timeJobController,
+                              onChanged: (value) {
+                                loginCubit.saveTextFormField(value);
+                              },
                             ),
                           ),
                           SizedBox(
                             height: size.height * 0.07,
                           ),
-                          InkWell(
-                            onTap: () {
-                              navigatorFinished(context, MainScreen());
-                            },
-                            child: Container(
-                              height: size.height * 0.05,
-                              width: size.width * 0.895,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xff5300BF),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'تسجيل مزود الخدمة',
-                                  style: TextStyle(
-                                    fontFamily: 'Tajawal',
-                                    fontSize: 16,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.5,
+                          BuildCondition(
+                            condition: state is! LoadingRegisterDealer,
+                            builder: (context) => InkWell(
+                              onTap: () {
+                                loginCubit.registerDealer(
+                                  email: loginCubit.emailController.text,
+                                  name: loginCubit.nameController.text,
+                                  password: loginCubit.passwordController.text,
+                                  phone: loginCubit.phoneController.text,
+                                  detailsService: loginCubit.detailsServiceController.text,
+                                  location: loginCubit.locationController.text,
+                                  priceService: loginCubit.priceServiceController.text,
+                                  workTime: loginCubit.emailController.text,
+                                );
+                              },
+                              child: Container(
+                                height: size.height * 0.05,
+                                width: size.width * 0.895,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color(0xff5300BF),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'تسجيل مزود الخدمة',
+                                    style: TextStyle(
+                                      fontFamily: 'Tajawal',
+                                      fontSize: 16,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w700,
+                                      height: 1.5,
+                                    ),
+                                    textHeightBehavior: TextHeightBehavior(
+                                        applyHeightToFirstAscent: false),
+                                    textAlign: TextAlign.center,
+                                    softWrap: false,
                                   ),
-                                  textHeightBehavior: TextHeightBehavior(
-                                      applyHeightToFirstAscent: false),
-                                  textAlign: TextAlign.center,
-                                  softWrap: false,
                                 ),
                               ),
+                            ),
+                            fallback: (context) => const Center(
+                              child: CircularProgressIndicator(),
                             ),
                           ),
                           SizedBox(
@@ -795,7 +808,13 @@ class RegisterDealer extends StatelessWidget {
             ),
           );
         },
-        listener: (context, state) {},
+        listener: (context, state)
+        {
+          if(state is SuccessRegisterDealer)
+          {
+            navigatorFinished(context, const MainScreen());
+          }
+        },
       ),
     );
   }

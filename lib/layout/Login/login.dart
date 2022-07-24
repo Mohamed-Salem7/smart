@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smart_service/Shared/cache_helper.dart';
 import 'package:smart_service/layout/Login/Register.dart';
 import 'package:smart_service/layout/Login/Screen_Verifying1.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/modules/Login/cubit/cubit.dart';
 import 'package:smart_service/modules/Login/cubit/state.dart';
 import 'package:unicons/unicons.dart';
@@ -18,16 +20,22 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
     var size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
         if (state is SuccessLoginState) {
-          navigatorFinished(context, const Verifying2());
+          CacheHelper.saveData(
+            key: 'uId',
+            value: state.uid,
+          ).then(
+                (value) => navigatorFinished(context,
+              const MainScreen(),
+            ),
+          );
         }
       }, builder: (context, state) {
+        var loginCubit = LoginCubit.get(context);
         return Form(
           //key: formKey,
           child: Scaffold(
@@ -98,8 +106,12 @@ class LoginScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: size.width * 0.02),
                               child: TextFormField(
-                                controller: emailController,
+                                controller: loginCubit.emailController,
                                 onTap: () {},
+                                onChanged: (value)
+                                {
+                                  loginCubit.saveTextFormField(value);
+                                },
                                 textAlign: TextAlign.end,
                                 keyboardType: TextInputType.emailAddress,
                                 validator: (value) {
@@ -158,8 +170,12 @@ class LoginScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: size.width * 0.02),
                               child: TextFormField(
-                                controller: passwordController,
+                                controller: loginCubit.passwordController,
                                 onTap: () {},
+                                onChanged: (value)
+                                {
+                                  loginCubit.saveTextFormField(value);
+                                },
                                 textAlign: TextAlign.end,
                                 keyboardType: TextInputType.visiblePassword,
                                 validator: (value) {
@@ -215,8 +231,8 @@ class LoginScreen extends StatelessWidget {
                                 clipBehavior: Clip.hardEdge,
                                 onPressed: () {
                                   LoginCubit.get(context).loginUser(
-                                    email: emailController.text,
-                                    password: passwordController.text,
+                                    email: loginCubit.emailController.text,
+                                    password: loginCubit.passwordController.text,
                                   );
                                 },
                                 style: ButtonStyle(

@@ -5,9 +5,8 @@ class UserModel
   late String uId;
   late String phone;
   late String location;
-  late double priceService;
+  late String priceService;
   late String detailsService;
-  late String street;
   late String workTime;
 
   UserModel({
@@ -18,7 +17,6 @@ class UserModel
     required this.location,
     required this.priceService,
     required this.detailsService,
-    required this.street,
     required this.workTime,
 
   });
@@ -32,7 +30,6 @@ class UserModel
     location = json['location'] ?? ' ';
     priceService = json['priceService'] ?? ' ';
     detailsService = json['detailsService'] ?? ' ';
-    street = json['street'] ?? ' ';
     workTime = json['workTime'] ?? ' ';
   }
 
@@ -47,7 +44,6 @@ class UserModel
         'location' : location,
         'priceService' : priceService,
         'detailsService' : detailsService,
-        'street' : street,
         'workTime' : workTime,
       };
   }

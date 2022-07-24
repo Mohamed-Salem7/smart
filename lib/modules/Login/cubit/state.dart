@@ -10,7 +10,11 @@ class SuccessResendState extends LoginState {}
 
 class LoadingLoginState extends LoginState {}
 
-class SuccessLoginState extends LoginState {}
+class SuccessLoginState extends LoginState
+{
+  final String uid;
+  SuccessLoginState(this.uid);
+}
 
 class ErrorLoginState extends LoginState
 {
@@ -40,3 +44,15 @@ class ErrorRegisterClient extends LoginState {
 }
 
 class SaveTextFormField extends LoginState {}
+
+
+
+class SuccessRegisterDealer extends LoginState {}
+
+class ErrorRegisterDealer extends LoginState {
+  final String error;
+  ErrorRegisterDealer(this.error);
+}
+
+
+class LoadingRegisterDealer extends LoginState {}
