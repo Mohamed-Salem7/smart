@@ -38,3 +38,5 @@ class ErrorRegisterClient extends LoginState {
   final String error;
   ErrorRegisterClient(this.error);
 }
+
+class SaveTextFormField extends LoginState {}

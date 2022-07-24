@@ -767,7 +767,7 @@ class RegisterDealer extends StatelessWidget {
                               ),
                               child: const Center(
                                 child: Text(
-                                  'التالي',
+                                  'تسجيل مزود الخدمة',
                                   style: TextStyle(
                                     fontFamily: 'Tajawal',
                                     fontSize: 16,

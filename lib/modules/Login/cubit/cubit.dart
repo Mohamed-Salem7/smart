@@ -47,6 +47,18 @@ class LoginCubit extends Cubit<LoginState> {
     emit(ChangeVisibilityPassword());
   }
 
+
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  void saveTextFormField(String value)
+  {
+    value = nameController.text;
+    value = emailController.text;
+    value = passwordController.text;
+    emit(SaveTextFormField());
+  }
+
   void loginUser({
     required String email,
     required String password,
@@ -107,7 +119,7 @@ class LoginCubit extends Cubit<LoginState> {
       );
     }).catchError((error) {
       print(error.toString());
-      emit(ErrorRegisterClient(error));
+      emit(ErrorRegisterClient(error.toString()));
     });
   }
 
