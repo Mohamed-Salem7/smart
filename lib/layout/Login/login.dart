@@ -29,7 +29,8 @@ class LoginScreen extends StatelessWidget {
             key: 'uId',
             value: state.uid,
           ).then(
-                (value) => navigatorFinished(context,
+            (value) => navigatorFinished(
+              context,
               const MainScreen(),
             ),
           );
@@ -108,8 +109,7 @@ class LoginScreen extends StatelessWidget {
                               child: TextFormField(
                                 controller: loginCubit.emailController,
                                 onTap: () {},
-                                onChanged: (value)
-                                {
+                                onChanged: (value) {
                                   loginCubit.saveTextFormField(value);
                                 },
                                 textAlign: TextAlign.end,
@@ -172,8 +172,7 @@ class LoginScreen extends StatelessWidget {
                               child: TextFormField(
                                 controller: loginCubit.passwordController,
                                 onTap: () {},
-                                onChanged: (value)
-                                {
+                                onChanged: (value) {
                                   loginCubit.saveTextFormField(value);
                                 },
                                 textAlign: TextAlign.end,
@@ -187,22 +186,25 @@ class LoginScreen extends StatelessWidget {
                                 maxLengthEnforcement: MaxLengthEnforcement
                                     .truncateAfterCompositionEnds,
                                 obscureText: LoginCubit.get(context).isPassword,
-                                decoration:  InputDecoration(
+                                decoration: InputDecoration(
                                   border: InputBorder.none,
                                   suffixIcon: const Icon(
                                     Icons.lock_outline,
                                     color: Color(0xff5300BF),
                                   ),
-                                  prefixIcon: LoginCubit.get(context).suffix != null ? IconButton(
-                                    onPressed: ()
-                                    {
-                                      LoginCubit.get(context).changeVisibilityPassword();
-                                    },
-                                    icon:  Icon(
-                                      LoginCubit.get(context).suffix,
-                                      color: Color(0xff5300BF),
-                                    ),
-                                  ) : null,
+                                  prefixIcon:
+                                      LoginCubit.get(context).suffix != null
+                                          ? IconButton(
+                                              onPressed: () {
+                                                LoginCubit.get(context)
+                                                    .changeVisibilityPassword();
+                                              },
+                                              icon: Icon(
+                                                LoginCubit.get(context).suffix,
+                                                color: Color(0xff5300BF),
+                                              ),
+                                            )
+                                          : null,
                                   hintText: '******',
                                   hintStyle: const TextStyle(
                                     fontFamily: 'Tajawal',
@@ -210,7 +212,7 @@ class LoginScreen extends StatelessWidget {
                                     color: Color(0xffEEDFF9),
                                   ),
                                 ),
-                                style:  const TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 16,
                                   //height: size.height * 0.0055,
@@ -232,7 +234,8 @@ class LoginScreen extends StatelessWidget {
                                 onPressed: () {
                                   LoginCubit.get(context).loginUser(
                                     email: loginCubit.emailController.text,
-                                    password: loginCubit.passwordController.text,
+                                    password:
+                                        loginCubit.passwordController.text,
                                   );
                                 },
                                 style: ButtonStyle(
@@ -245,11 +248,11 @@ class LoginScreen extends StatelessWidget {
                                 child: const Text(
                                   'تسجيل الدخول',
                                   style: TextStyle(
-                                      fontFamily: 'Tajawal',
-                                      fontSize: 18,
-                                      color: Color(0xffffffff),
-                                      fontWeight: FontWeight.w700,
-                                      height: 2),
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 18,
+                                    color: Color(0xffffffff),
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                   textAlign: TextAlign.center,
                                   softWrap: false,
                                 ),

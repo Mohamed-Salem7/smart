@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_service/layout/Login/login.dart';
+import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/layout/on_board/on_boarding.dart';
+
+import '../../Shared/constant.dart';
 
 class ScreenShot extends StatefulWidget {
   const ScreenShot({Key? key}) : super(key: key);
@@ -12,7 +16,7 @@ class ScreenShot extends StatefulWidget {
 
 class _ScreenShotState extends State<ScreenShot> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
     loadPage();
   }
@@ -25,7 +29,11 @@ class _ScreenShotState extends State<ScreenShot> {
     );
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => OnBordingScreen()),
+        MaterialPageRoute(
+          builder: (context) => OnBordingScreen() != null
+              ? (uId != null ? MainScreen() : LoginScreen())
+              : OnBordingScreen(),
+        ),
         ModalRoute.withName('/ScreenOne'));
   }
 

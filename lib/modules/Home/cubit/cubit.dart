@@ -8,6 +8,7 @@ import 'package:smart_service/layout/About_Us.dart';
 import 'package:smart_service/layout/Home_Screen.dart';
 import 'package:smart_service/layout/Logout_Screen.dart';
 import 'package:smart_service/layout/Notification_Screen.dart';
+import 'package:smart_service/models/Service_Model.dart';
 import 'package:smart_service/models/User_Model.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
@@ -92,11 +93,32 @@ class HomeCubit extends Cubit<HomeState> {
         .doc(uId)
         .get()
         .then((value) {
-      userModel = UserModel.fromJson(value.data()) ;
+      userModel = UserModel.fromJson(value.data());
       emit(SuccessGetUserData());
     }).catchError((error) {
       print(error.toString());
       emit(ErrorGetUserData(error));
+    });
+  }
+
+  List<ServiceModel> electricityList = [];
+
+  Future<void> getElectricity() async {
+    electricityList = [];
+    emit(LoadingGetElectricityState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc()
+        .collection('Electricity')
+        .get()
+        .then((value) {
+          value.docs.forEach((element) {
+            electricityList.add(ServiceModel.fromJson(element.data()));
+            print(electricityList);
+          });
+          print('Hello');
+      emit(SuccessGetElectricityState());
+    }).catchError((error){
+      emit(ErrorGetElectricityState(error.toString()));
     });
   }
 }
