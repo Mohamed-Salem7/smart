@@ -102,10 +102,11 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   List<ServiceModel> electricityList = [];
+  List<ServiceModel> allList = [];
 
   Future<void> getElectricity() async {
     electricityList = [];
-    emit(LoadingGetElectricityState());
+    emit(LoadingGetServiceState());
     await FirebaseFirestore.instance.collection('houses_repair')
         .doc('1')
         .collection('Electricity')
@@ -113,12 +114,108 @@ class HomeCubit extends Cubit<HomeState> {
         .then((value) {
           value.docs.forEach((element) {
             electricityList.add(ServiceModel.fromJson(element.data()));
-            print(electricityList.length);
-            print(electricityList);
+            allList.add(ServiceModel.fromJson(element.data()));
           });
-      emit(SuccessGetElectricityState());
+      emit(SuccessGetServiceState());
     }).catchError((error){
-      emit(ErrorGetElectricityState(error.toString()));
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+
+  List<ServiceModel> pipesList =[];
+  Future<void> getPipes() async {
+    electricityList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('1')
+        .collection('Pipes')
+        .get()
+        .then((value) {
+          value.docs.forEach((element) {
+            pipesList.add(ServiceModel.fromJson(element.data()));
+            allList.add(ServiceModel.fromJson(element.data()));
+          });
+      emit(SuccessGetServiceState());
+    }).catchError((error){
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<ServiceModel> conditionerList = [];
+  Future<void> getConditioners() async {
+    conditionerList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('1')
+        .collection('Conditioners')
+        .get()
+        .then((value) {
+          value.docs.forEach((element) {
+            conditionerList.add(ServiceModel.fromJson(element.data()));
+            allList.add(ServiceModel.fromJson(element.data()));
+          });
+      emit(SuccessGetServiceState());
+    }).catchError((error){
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+
+  List<ServiceModel> maintenanceList = [];
+  Future<void> getMaintenance() async {
+    maintenanceList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('1')
+        .collection('Maintenance')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        maintenanceList.add(ServiceModel.fromJson(element.data()));
+        allList.add(ServiceModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error){
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<ServiceModel> paintList = [];
+  Future<void> getPaint() async {
+    paintList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('1')
+        .collection('Paint')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        paintList.add(ServiceModel.fromJson(element.data()));
+        allList.add(ServiceModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error){
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<ServiceModel> cleanerList = [];
+  Future<void> getHouseCleaning() async {
+    cleanerList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('1')
+        .collection('House_Cleaning')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        cleanerList.add(ServiceModel.fromJson(element.data()));
+        allList.add(ServiceModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error){
+      emit(ErrorGetServiceState(error.toString()));
     });
   }
 }

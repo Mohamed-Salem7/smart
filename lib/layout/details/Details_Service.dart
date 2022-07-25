@@ -15,7 +15,13 @@ class DetailsService extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => HomeCubit()..getElectricity(),
+      create: (context) => HomeCubit()
+        ..getElectricity()
+        ..getPipes()
+        ..getConditioners()
+        ..getMaintenance()
+        ..getPaint()
+        ..getHouseCleaning(),
       child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -106,7 +112,6 @@ class DetailsService extends StatelessWidget {
                                           ),
                                           InkWell(
                                             onTap: () {
-                                              print(index);
                                               HomeCubit.get(context)
                                                   .changeName(index);
                                             },
@@ -151,7 +156,21 @@ class DetailsService extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (HomeCubit.get(context).nameIndex == 1 || HomeCubit.get(context).nameIndex == 0)
+                        if (HomeCubit.get(context).nameIndex == 0)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount: HomeCubit.get(context).allList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).allList[index],
+                              ),
+                            ),
+                          ),
+                        if (HomeCubit.get(context).nameIndex == 1)
                           Padding(
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
@@ -163,6 +182,81 @@ class DetailsService extends StatelessWidget {
                                 context,
                                 size,
                                 HomeCubit.get(context).electricityList[index],
+                              ),
+                            ),
+                          ),
+                        if (HomeCubit.get(context).nameIndex == 2)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount:
+                                  HomeCubit.get(context).pipesList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).pipesList[index],
+                              ),
+                            ),
+                          ),
+                        if (HomeCubit.get(context).nameIndex == 3)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount:
+                                  HomeCubit.get(context).conditionerList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).conditionerList[index],
+                              ),
+                            ),
+                          ),
+                        if (HomeCubit.get(context).nameIndex == 4)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount:
+                                  HomeCubit.get(context).maintenanceList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).maintenanceList[index],
+                              ),
+                            ),
+                          ),
+                        if (HomeCubit.get(context).nameIndex == 5)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount:
+                                  HomeCubit.get(context).paintList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).paintList[index],
+                              ),
+                            ),
+                          ),
+                        if (HomeCubit.get(context).nameIndex == 6)
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount:
+                                  HomeCubit.get(context).cleanerList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).cleanerList[index],
                               ),
                             ),
                           ),
@@ -268,14 +362,12 @@ Widget buildProduct(
                   child: Row(
                     children: [
                       Text(
-                        HomeCubit.get(context)
-                            .name[HomeCubit.get(context).nameIndex],
+                        serviceModel.title,
                         style: const TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 21,
                           color: Color(0xff383838),
                           fontWeight: FontWeight.w700,
-                          height: 1.2380952380952381,
                         ),
                         textHeightBehavior: const TextHeightBehavior(
                             applyHeightToFirstAscent: false),
@@ -322,20 +414,20 @@ Widget buildProduct(
                           fontSize: 12,
                           color: const Color(0xff000000),
                           fontWeight: FontWeight.w700,
-                          height: 1.9166666666666667,
+                          height: size.height * 0.002,
                         ),
                         textHeightBehavior:
                             TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.right,
                       ),
-                      const Text(
+                      Text(
                         'شيكل',
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 12,
                           color: const Color(0xff000000),
                           fontWeight: FontWeight.w700,
-                          height: 1.9166666666666667,
+                          height: size.height * 0.002,
                         ),
                         textHeightBehavior:
                             TextHeightBehavior(applyHeightToFirstAscent: false),
@@ -350,14 +442,14 @@ Widget buildProduct(
                           size: 25,
                         ),
                       ),
-                      const Text(
+                      Text(
                         '0',
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 20,
                           color: Color(0xff000000),
                           fontWeight: FontWeight.w700,
-                          height: 2.5,
+                          height: size.height * 0.003,
                         ),
                       ),
                       IconButton(
@@ -376,16 +468,46 @@ Widget buildProduct(
                       horizontal: size.width * 0.025,
                       vertical: size.height * 0.005),
                   child: Row(
-                    children: const [
-                      Spacer(),
+                    children: [
+                      const Spacer(),
                       Text(
-                        'اجمالي المبلغ',
+                        'إجمالي المبلغ : ',
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 12,
-                          color: Color(0xff383838),
-                          height: 1.625,
+                          color: const Color(0xff5300bf),
+                          fontWeight: FontWeight.w700,
+                          height: size.height * 0.002,
                         ),
+                        textHeightBehavior:
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.right,
+                      ),
+                      Text(
+                        '400',
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 12,
+                          color: const Color(0xff000000),
+                          fontWeight: FontWeight.w700,
+                          height: size.height * 0.002,
+                        ),
+                        textHeightBehavior:
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.right,
+                      ),
+                      Text(
+                        'شيكل',
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
+                          fontSize: 12,
+                          color: const Color(0xff000000),
+                          fontWeight: FontWeight.w700,
+                          height: size.height * 0.002,
+                        ),
+                        textHeightBehavior:
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                        textAlign: TextAlign.right,
                       ),
                     ],
                   ),

@@ -18,12 +18,12 @@ class ErrorGetUserData extends HomeState {
   ErrorGetUserData(this.error);
 }
 
-class LoadingGetElectricityState extends HomeState {}
+class LoadingGetServiceState extends HomeState {}
 
-class SuccessGetElectricityState extends HomeState {}
+class SuccessGetServiceState extends HomeState {}
 
-class ErrorGetElectricityState extends HomeState {
+class ErrorGetServiceState extends HomeState {
   final String error;
-  ErrorGetElectricityState(this.error);
+  ErrorGetServiceState(this.error);
 }
 
