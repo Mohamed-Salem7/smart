@@ -346,9 +346,9 @@ class AboutUs extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         'البريد الإلكتروني',
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           fontFamily: 'Tajawal',
                                           fontSize: 14,
                                           color: const Color(0xff383838),

@@ -27,3 +27,14 @@ class ErrorGetServiceState extends HomeState {
   ErrorGetServiceState(this.error);
 }
 
+
+
+class LoadingGetServicesState extends HomeState {}
+
+class SuccessGetServicesState extends HomeState {}
+
+class ErrorGetServicesState extends HomeState {
+  final String error;
+  ErrorGetServicesState(this.error);
+}
+

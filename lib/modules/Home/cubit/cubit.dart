@@ -9,6 +9,7 @@ import 'package:smart_service/layout/Home_Screen.dart';
 import 'package:smart_service/layout/Logout_Screen.dart';
 import 'package:smart_service/layout/Notification_Screen.dart';
 import 'package:smart_service/models/Service_Model.dart';
+import 'package:smart_service/models/Services_Model.dart';
 import 'package:smart_service/models/User_Model.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
@@ -101,6 +102,24 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+  List<ServicesModel> servicesList =[];
+  Future<void> getServices() async
+  {
+    emit(LoadingGetServicesState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .get()
+        .then((value) {
+          value.docs.forEach((element) {
+            servicesList.add(ServicesModel.fromJson(element.data()));
+            print(servicesList.length);
+          });
+          emit(SuccessGetServicesState());
+    }).catchError((error){
+      emit(ErrorGetServicesState(error));
+    });
+  }
+
   List<ServiceModel> electricityList = [];
   List<ServiceModel> allList = [];
 
@@ -112,18 +131,19 @@ class HomeCubit extends Cubit<HomeState> {
         .collection('Electricity')
         .get()
         .then((value) {
-          value.docs.forEach((element) {
-            electricityList.add(ServiceModel.fromJson(element.data()));
-            allList.add(ServiceModel.fromJson(element.data()));
-          });
+      value.docs.forEach((element) {
+        electricityList.add(ServiceModel.fromJson(element.data()));
+        allList.add(ServiceModel.fromJson(element.data()));
+      });
       emit(SuccessGetServiceState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
 
 
-  List<ServiceModel> pipesList =[];
+  List<ServiceModel> pipesList = [];
+
   Future<void> getPipes() async {
     electricityList = [];
     emit(LoadingGetServiceState());
@@ -132,17 +152,18 @@ class HomeCubit extends Cubit<HomeState> {
         .collection('Pipes')
         .get()
         .then((value) {
-          value.docs.forEach((element) {
-            pipesList.add(ServiceModel.fromJson(element.data()));
-            allList.add(ServiceModel.fromJson(element.data()));
-          });
+      value.docs.forEach((element) {
+        pipesList.add(ServiceModel.fromJson(element.data()));
+        allList.add(ServiceModel.fromJson(element.data()));
+      });
       emit(SuccessGetServiceState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
 
   List<ServiceModel> conditionerList = [];
+
   Future<void> getConditioners() async {
     conditionerList = [];
     emit(LoadingGetServiceState());
@@ -151,18 +172,19 @@ class HomeCubit extends Cubit<HomeState> {
         .collection('Conditioners')
         .get()
         .then((value) {
-          value.docs.forEach((element) {
-            conditionerList.add(ServiceModel.fromJson(element.data()));
-            allList.add(ServiceModel.fromJson(element.data()));
-          });
+      value.docs.forEach((element) {
+        conditionerList.add(ServiceModel.fromJson(element.data()));
+        allList.add(ServiceModel.fromJson(element.data()));
+      });
       emit(SuccessGetServiceState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
 
 
   List<ServiceModel> maintenanceList = [];
+
   Future<void> getMaintenance() async {
     maintenanceList = [];
     emit(LoadingGetServiceState());
@@ -176,12 +198,13 @@ class HomeCubit extends Cubit<HomeState> {
         allList.add(ServiceModel.fromJson(element.data()));
       });
       emit(SuccessGetServiceState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
 
   List<ServiceModel> paintList = [];
+
   Future<void> getPaint() async {
     paintList = [];
     emit(LoadingGetServiceState());
@@ -195,12 +218,13 @@ class HomeCubit extends Cubit<HomeState> {
         allList.add(ServiceModel.fromJson(element.data()));
       });
       emit(SuccessGetServiceState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
 
   List<ServiceModel> cleanerList = [];
+
   Future<void> getHouseCleaning() async {
     cleanerList = [];
     emit(LoadingGetServiceState());
@@ -214,7 +238,7 @@ class HomeCubit extends Cubit<HomeState> {
         allList.add(ServiceModel.fromJson(element.data()));
       });
       emit(SuccessGetServiceState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
