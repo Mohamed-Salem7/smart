@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +56,7 @@ class LoginCubit extends Cubit<LoginState> {
   var detailsServiceController = TextEditingController();
   var selectService = TextEditingController();
   var timeJobController = TextEditingController();
+  var dateServiceController = TextEditingController();
 
   void saveTextFormField(String value) {
     value = nameController.text;
@@ -68,6 +68,7 @@ class LoginCubit extends Cubit<LoginState> {
     value = detailsServiceController.text;
     value = selectService.text;
     value = timeJobController.text;
+    value = dateServiceController.text;
     emit(SaveTextFormField());
   }
 

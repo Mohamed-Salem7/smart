@@ -335,17 +335,17 @@ Widget buildProduct(
       child: Column(
         children: [
           Container(
-            height: size.height * 0.24,
+            height: size.height * 0.22,
             decoration: BoxDecoration(
               boxShadow: <BoxShadow>[
                 BoxShadow(
-                    color: Colors.black12,
-                    offset: Offset.fromDirection(
-                      1.5,
-                      10,
-                    ),
-                    spreadRadius: 0,
-                    blurRadius: 10.0),
+                  color: Colors.black12,
+                  offset: Offset.fromDirection(
+                    1.5,
+                    10,
+                  ),
+                  blurRadius: 10.0,
+                ),
               ],
               borderRadius: BorderRadius.circular(
                 20,
