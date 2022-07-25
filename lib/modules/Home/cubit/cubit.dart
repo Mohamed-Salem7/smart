@@ -98,7 +98,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(SuccessGetUserData());
     }).catchError((error) {
       print(error.toString());
-      emit(ErrorGetUserData(error));
+      emit(ErrorGetUserData(error.toString()));
     });
   }
 
@@ -112,7 +112,6 @@ class HomeCubit extends Cubit<HomeState> {
         .then((value) {
           value.docs.forEach((element) {
             servicesList.add(ServicesModel.fromJson(element.data()));
-            print(servicesList.length);
           });
           emit(SuccessGetServicesState());
     }).catchError((error){
@@ -242,4 +241,15 @@ class HomeCubit extends Cubit<HomeState> {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
+
+  // void logoutUser()
+  // async {
+  //   emit(LoadingLogoutState());
+  //   await FirebaseAuth.instance
+  //       .signOut().then((value) {
+  //     emit(SuccessLogoutState());
+  //   }).catchError((error){
+  //     emit(ErrorLogoutState(error.toString()));
+  //   });
+  // }
 }

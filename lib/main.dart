@@ -10,15 +10,14 @@ import 'package:smart_service/layout/on_board/splash_screen.dart';
 import 'Shared/cache_helper.dart';
 import 'Shared/constant.dart';
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
 
   await CacheHelper.init();
-
   uId = CacheHelper.getData(key: 'uId');
+  print(uId);
 
   runApp(const MyApp());
 }
@@ -40,10 +39,7 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       title: 'Smart Service',
-      home:  ScreenShot(),
+      home: ScreenShot(),
     );
-
   }
 }
-
-

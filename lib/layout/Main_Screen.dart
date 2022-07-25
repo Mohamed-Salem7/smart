@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_service/Shared/cache_helper.dart';
 import 'package:smart_service/layout/Login/Register.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/layout/Login/login.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 
 import '../modules/Home/cubit/cubit.dart';
@@ -12,9 +14,11 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => HomeCubit()..getElectricity(),
+      create: (BuildContext context) => HomeCubit(),
       child: BlocConsumer<HomeCubit, HomeState>(
-        listener: (context, state) {},
+        listener: (context, state)
+        {
+        },
         builder: (context, state) {
           var homeCubit = HomeCubit.get(context);
           return Scaffold(

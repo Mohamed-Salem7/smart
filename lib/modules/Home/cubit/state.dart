@@ -38,3 +38,14 @@ class ErrorGetServicesState extends HomeState {
   ErrorGetServicesState(this.error);
 }
 
+// class LoadingLogoutState extends HomeState {}
+//
+// class SuccessLogoutState extends HomeState
+// {
+//
+// }
+//
+// class ErrorLogoutState extends HomeState {
+//   final String error;
+//   ErrorLogoutState(this.error);
+// }
