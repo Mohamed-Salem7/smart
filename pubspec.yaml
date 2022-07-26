@@ -92,6 +92,9 @@ flutter:
     - family: Tajawal
       fonts:
         - asset: assets/images/tajawal.ttf
+    - family: Metropolis
+      fonts:
+        - asset: assets/images/metropolis.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

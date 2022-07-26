@@ -184,7 +184,7 @@ Color color2(int i, context) {
 Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
     int index) =>
     Padding(
-      padding: EdgeInsetsDirectional.only(end: size.width * 0.08),
+      padding: EdgeInsetsDirectional.only(end: size.width * 0.05,start: size.width * 0.05),
       child: Column(
         children: [
           Container(
@@ -304,7 +304,7 @@ double name(Size size, int index) {
 }
 
 Widget timenew(int index, Size size) {
-  if (index == 1)
+  if (index == 1) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
@@ -329,6 +329,7 @@ Widget timenew(int index, Size size) {
         softWrap: false,
       ),
     );
+  }
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(

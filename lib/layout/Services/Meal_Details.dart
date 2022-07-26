@@ -77,109 +77,122 @@ class MealDetails extends StatelessWidget {
                                       width: double.infinity,
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Row(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
                                             children: [
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'سوبر ميجا ديل - مكس',
                                                     style: TextStyle(
                                                       fontFamily: 'Tajawal',
-                                                      fontSize: 13,
-                                                      color: Color(0xff383838),
-                                                      fontWeight: FontWeight.w700,
-                                                      height: size.height * 0.001,
+                                                      fontSize: 14,
+                                                      color: const Color(
+                                                          0xff383838),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      height:
+                                                          size.height * 0.002,
                                                     ),
                                                     textHeightBehavior:
-                                                    TextHeightBehavior(
-                                                        applyHeightToFirstAscent:
-                                                        false),
+                                                        TextHeightBehavior(
+                                                            applyHeightToFirstAscent:
+                                                                false),
                                                     textAlign: TextAlign.right,
                                                     softWrap: false,
                                                   ),
                                                   SizedBox(
-                                                    height: size.height * 0.006,
+                                                    height: size.height * 0.002,
                                                   ),
                                                   Row(
-                                                    children: [
+                                                    children: const [
                                                       Icon(
                                                         Icons.star,
                                                         color: Colors.amber,
                                                       ),
                                                       Text(
-                                                        '4.0',
+                                                        '4.9',
                                                         style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Colors.amber),
+                                                            fontSize: 12,
+                                                            color:
+                                                                Colors.amber),
                                                       )
                                                     ],
                                                   )
                                                 ],
                                               ),
-                                              Spacer(),
-                                              Text(
+                                              const Spacer(),
+                                              const Text(
                                                 '54.99',
                                                 style: TextStyle(
-                                                    fontSize: 22.0,
-                                                    fontWeight: FontWeight.bold),
+                                                  fontFamily: 'Metropolis',
+                                                  fontSize: 31,
+                                                  color:
+                                                      const Color(0xff4a4b4d),
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                softWrap: false,
                                               ),
-                                              SizedBox(
-                                                height: size.height * 0.01,
+
+                                              Text(
+                                                'شيكل',
+                                                style: TextStyle(
+                                                  fontFamily: 'Tajawal',
+                                                  fontSize: 14,
+                                                  color:
+                                                      const Color(0xff000000),
+                                                  fontWeight: FontWeight.w500,
+                                                  height: size.height * 0.002,
+                                                ),
+                                                textHeightBehavior:
+                                                    TextHeightBehavior(
+                                                        applyHeightToFirstAscent:
+                                                            false),
                                               ),
-                                              Text('شيكل')
                                             ],
                                           ),
                                           SizedBox(
-                                            height: size.height * 0.04,
+                                            height: size.height * 0.03,
                                           ),
                                           Text(
                                             'الوصف',
                                             style: TextStyle(
                                               fontFamily: 'Tajawal',
-                                              fontSize: 13,
-                                              color: Color(0xff383838),
-                                              fontWeight: FontWeight.w400,
-                                              height: size.height * 0.001,
+                                              fontSize: 14,
+                                              color: const Color(0xff4a4b4d),
+                                              fontWeight: FontWeight.w700,
                                             ),
-                                            textHeightBehavior:
-                                            TextHeightBehavior(
-                                                applyHeightToFirstAscent:
-                                                false),
                                             textAlign: TextAlign.right,
                                             softWrap: false,
                                           ),
                                           SizedBox(
-                                            height: size.height * 0.02,
+                                            height: size.height * 0.01,
                                           ),
                                           Text(
                                             'سوبر ميجا ديل - مكس تحتوي 12 قطعة دجاج + بطاطا',
                                             style: TextStyle(
                                               fontFamily: 'Tajawal',
-                                              fontSize: 10,
-                                              color: Color(0xff383838),
-                                              fontWeight: FontWeight.w500,
-                                              height: size.height * 0.001,
+                                              fontSize: 12,
+                                              color: const Color(0xff7c7d7e),
+                                              height: 1.5833333333333333,
                                             ),
-                                            textHeightBehavior:
-                                            TextHeightBehavior(
-                                                applyHeightToFirstAscent:
-                                                false),
+                                            textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
                                             textAlign: TextAlign.right,
-                                            softWrap: false,
                                           ),
                                           SizedBox(
-                                            height: size.height*0.025,
+                                            height: size.height * 0.025,
                                           ),
                                           const Divider(
                                             color: Color(0xffBDC4CC),
                                             height: 0.1,
                                           ),
                                           SizedBox(
-                                            height: size.height*0.025,
+                                            height: size.height * 0.025,
                                           ),
                                           Text(
                                             'تخصيص الطلب',
@@ -191,58 +204,60 @@ class MealDetails extends StatelessWidget {
                                               height: size.height * 0.001,
                                             ),
                                             textHeightBehavior:
-                                            TextHeightBehavior(
-                                                applyHeightToFirstAscent:
-                                                false),
+                                                TextHeightBehavior(
+                                                    applyHeightToFirstAscent:
+                                                        false),
                                             textAlign: TextAlign.right,
                                             softWrap: false,
                                           ),
                                           Spacer(),
-                                          Row(children: [
-                                            Text(
-                                              'عدد الوجبات',
-                                              style: TextStyle(
-                                                fontFamily: 'Tajawal',
-                                                fontSize: 14,
-                                                color: Color(0xff383838),
-                                                fontWeight: FontWeight.w600,
-                                                height: size.height * 0.001,
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'عدد الوجبات',
+                                                style: TextStyle(
+                                                  fontFamily: 'Tajawal',
+                                                  fontSize: 14,
+                                                  color: Color(0xff383838),
+                                                  fontWeight: FontWeight.w600,
+                                                  height: size.height * 0.001,
+                                                ),
+                                                textHeightBehavior:
+                                                    TextHeightBehavior(
+                                                        applyHeightToFirstAscent:
+                                                            false),
+                                                textAlign: TextAlign.right,
+                                                softWrap: false,
                                               ),
-                                              textHeightBehavior:
-                                              TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                  false),
-                                              textAlign: TextAlign.right,
-                                              softWrap: false,
-                                            ),
-                                            Spacer(),
-                                            IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                UniconsLine.minus_circle,
-                                                color: Color(0xff5300BF),
-                                                size: 25,
+                                              Spacer(),
+                                              IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  UniconsLine.minus_circle,
+                                                  color: Color(0xff5300BF),
+                                                  size: 25,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              '0',
-                                              style: TextStyle(
-                                                fontFamily: 'Tajawal',
-                                                fontSize: 20,
-                                                color: Color(0xff000000),
-                                                fontWeight: FontWeight.w700,
-                                                height: size.height * 0.003,
+                                              Text(
+                                                '0',
+                                                style: TextStyle(
+                                                  fontFamily: 'Tajawal',
+                                                  fontSize: 20,
+                                                  color: Color(0xff000000),
+                                                  fontWeight: FontWeight.w700,
+                                                  height: size.height * 0.003,
+                                                ),
                                               ),
-                                            ),
-                                            IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                UniconsLine.plus_circle,
-                                                size: 25,
-                                                color: Color(0xff5300BF),
+                                              IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  UniconsLine.plus_circle,
+                                                  size: 25,
+                                                  color: Color(0xff5300BF),
+                                                ),
                                               ),
-                                            ),
-                                          ],)
+                                            ],
+                                          )
                                         ],
                                       ),
                                     ),
@@ -272,9 +287,8 @@ class MealDetails extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               InkWell(
-                                onTap: ()
-                                {
-                                  navigatorTo(context,ChooseMeal());
+                                onTap: () {
+                                  navigatorTo(context, ChooseMeal());
                                 },
                                 child: Container(
                                   height: size.height * 0.05,
@@ -307,7 +321,7 @@ class MealDetails extends StatelessWidget {
                                       style: TextStyle(
                                         fontFamily: 'Tajawal',
                                         fontSize: 14,
-                                        color:  Color(0xff5300bf),
+                                        color: Color(0xff5300bf),
                                         fontWeight: FontWeight.w500,
                                       ),
                                       textAlign: TextAlign.center,
@@ -320,8 +334,7 @@ class MealDetails extends StatelessWidget {
                                 width: size.width * 0.03,
                               ),
                               InkWell(
-                                onTap: ()
-                                {
+                                onTap: () {
                                   navigatorTo(context, const DetailsOrder());
                                 },
                                 child: Container(

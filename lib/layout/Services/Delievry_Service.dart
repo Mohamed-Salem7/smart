@@ -262,7 +262,7 @@ Widget buildProduct(
         navigatorTo(context, ChooseMeal());
       },
       child: Padding(
-        padding: EdgeInsetsDirectional.only(end: size.width * 0.08),
+        padding: EdgeInsetsDirectional.only(end: size.width * 0.05,start: size.width * 0.05),
         child: Column(
           children: [
             Container(
