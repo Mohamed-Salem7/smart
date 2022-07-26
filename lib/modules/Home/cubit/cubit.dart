@@ -40,6 +40,15 @@ class HomeCubit extends Cubit<HomeState> {
     'تنظيف منازل'
   ];
 
+  List<String> name2 = [
+    'الكل',
+    'مطاعم',
+    'كافيهات',
+    'سوبر ماركت',
+    'شركات توصيل',
+    'أرجيلة',
+  ];
+
   List<String> nameOrder = [
     'تفاصيل الطلب :',
     'تفاصيل الدفع :',

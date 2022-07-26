@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smart_service/layout/Services/Delievry_Service.dart';
 import 'package:smart_service/layout/details/Details_Service.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/models/Services_Model.dart';
@@ -154,7 +155,7 @@ class HomeScreen extends StatelessWidget {
                                   color: Color(0xffcbc9d9),
                                   height: size.height * 0.001,
                                 ),
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.search_sharp,
                                   color: Color(0xffcbc9d9),
                                 ),
@@ -170,7 +171,7 @@ class HomeScreen extends StatelessWidget {
                             left: size.width * 0.05),
                         child: ListView.separated(
                           physics: const BouncingScrollPhysics(),
-                          itemCount:  HomeCubit.get(context).servicesList.length,
+                          itemCount: HomeCubit.get(context).servicesList.length,
                           itemBuilder: (context, index) => buildService(
                             context,
                             size,
@@ -218,8 +219,10 @@ Widget buildService(
         padding: EdgeInsets.symmetric(
             horizontal: size.width * 0.02, vertical: size.height * 0.01),
         child: InkWell(
+          focusColor: Colors.red,
+          splashColor: Colors.red,
           onTap: () {
-            navigatorTo(context, DetailsService());
+            navigatorTo(context, DeliveryServiceList());
           },
           child: Row(
             children: [
