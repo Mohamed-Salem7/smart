@@ -8,6 +8,7 @@ import 'package:smart_service/layout/About_Us.dart';
 import 'package:smart_service/layout/Home_Screen.dart';
 import 'package:smart_service/layout/Logout_Screen.dart';
 import 'package:smart_service/layout/Notification_Screen.dart';
+import 'package:smart_service/models/Deleviry_Service.dart';
 import 'package:smart_service/models/Service_Model.dart';
 import 'package:smart_service/models/Services_Model.dart';
 import 'package:smart_service/models/User_Model.dart';
@@ -46,7 +47,6 @@ class HomeCubit extends Cubit<HomeState> {
     'كافيهات',
     'سوبر ماركت',
     'شركات توصيل',
-    'أرجيلة',
   ];
 
   List<String> nameOrder = [
@@ -251,6 +251,86 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+
+
+  List<DeliveryModel> all2List = [];
+  List<DeliveryModel> listRestaurants= [];
+  Future<void> getRestaurants() async {
+    listRestaurants = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('2')
+        .collection('Restaurants')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        listRestaurants.add(DeliveryModel.fromJson(element.data()));
+        all2List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+
+  List<DeliveryModel> listCafes= [];
+  Future<void> getCafes() async {
+    listCafes = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('2')
+        .collection('Cafes')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        listCafes.add(DeliveryModel.fromJson(element.data()));
+        all2List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<DeliveryModel> marketList =[];
+  Future<void> getMarkets() async {
+    marketList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('2')
+        .collection('Market')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        marketList.add(DeliveryModel.fromJson(element.data()));
+        all2List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+
+  List<DeliveryModel> listDelivery= [];
+  Future<void> getDelivery() async {
+    listDelivery = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance.collection('houses_repair')
+        .doc('2')
+        .collection('Delivery_Companies')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        listDelivery.add(DeliveryModel.fromJson(element.data()));
+        all2List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
   // void logoutUser()
   // async {
   //   emit(LoadingLogoutState());

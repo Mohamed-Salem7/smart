@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
-import 'package:smart_service/layout/Services/Meal_Details.dart';
+import 'package:smart_service/layout/Services/Delievry_Houses/Meal_Details.dart';
 import 'package:smart_service/models/Service_Model.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';

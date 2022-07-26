@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_service/Shared/constant.dart';
-import 'package:smart_service/layout/details/Details_Service.dart';
-import 'package:smart_service/layout/details/Revision_Details_Order.dart';
+import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
+import 'package:smart_service/layout/Services/Maintenance_Houses/Revision_Details_Order.dart';
 import 'package:smart_service/modules/Login/cubit/state.dart';
 import 'package:text_form_field_wrapper/text_form_field_wrapper.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../modules/Login/cubit/cubit.dart';
+import '../../../modules/Login/cubit/cubit.dart';
 
 class DetailsOrder extends StatelessWidget {
   const DetailsOrder({Key? key}) : super(key: key);

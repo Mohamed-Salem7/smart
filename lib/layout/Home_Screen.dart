@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:smart_service/layout/Services/Delievry_Service.dart';
-import 'package:smart_service/layout/details/Details_Service.dart';
+import 'package:smart_service/layout/Services/Delievry_Houses/Delievry_Service.dart';
+import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/models/Services_Model.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
@@ -173,10 +173,10 @@ class HomeScreen extends StatelessWidget {
                           physics: const BouncingScrollPhysics(),
                           itemCount: HomeCubit.get(context).servicesList.length,
                           itemBuilder: (context, index) => buildService(
-                            context,
-                            size,
-                            HomeCubit.get(context).servicesList[index],
-                          ),
+                              context,
+                              size,
+                              HomeCubit.get(context).servicesList[index],
+                              index),
                           separatorBuilder: (context, index) => SizedBox(
                             height: size.height * 0.01,
                           ),
@@ -195,8 +195,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-Widget buildService(
-        BuildContext context, Size size, ServicesModel servicesModel) =>
+Widget buildService(BuildContext context, Size size,
+        ServicesModel servicesModel, int index) =>
     Container(
       height: size.height * 0.1,
       decoration: BoxDecoration(
@@ -222,7 +222,10 @@ Widget buildService(
           focusColor: Colors.red,
           splashColor: Colors.red,
           onTap: () {
-            navigatorTo(context, DeliveryServiceList());
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة صيانة المنازل')
+              navigatorTo(context, DetailsService());
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة التوصيل المنزلي')
+              navigatorTo(context, DeliveryServiceList());
           },
           child: Row(
             children: [

@@ -1,13 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
-import 'package:smart_service/layout/Services/Choose_Meal.dart';
+import 'package:smart_service/layout/Services/Delievry_Houses/Choose_Meal.dart';
+import 'package:smart_service/models/Deleviry_Service.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../models/Service_Model.dart';
+import '../../../models/Service_Model.dart';
 
 class DeliveryServiceList extends StatelessWidget {
   const DeliveryServiceList({Key? key}) : super(key: key);
@@ -17,10 +19,10 @@ class DeliveryServiceList extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => HomeCubit()
-        ..getElectricity()
-        ..getPipes()
-        ..getConditioners()
-        ..getMaintenance(),
+        ..getRestaurants()
+        ..getCafes()
+        ..getMarkets()
+        ..getDelivery(),
       child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -153,15 +155,14 @@ class DeliveryServiceList extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
-                              itemCount: HomeCubit.get(context).allList.length,
+                              itemCount: HomeCubit.get(context).all2List.length,
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) => buildProduct(
-                                context,
-                                size,
-                                HomeCubit.get(context).allList[index],
-                                index
-                              ),
+                                  context,
+                                  size,
+                                  HomeCubit.get(context).all2List[index],
+                                  index),
                             ),
                           ),
                         if (HomeCubit.get(context).nameIndex == 1)
@@ -169,15 +170,14 @@ class DeliveryServiceList extends StatelessWidget {
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
                               itemCount:
-                                  HomeCubit.get(context).electricityList.length,
+                                  HomeCubit.get(context).listRestaurants.length,
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) => buildProduct(
-                                context,
-                                size,
-                                HomeCubit.get(context).electricityList[index],
-                                index
-                              ),
+                                  context,
+                                  size,
+                                  HomeCubit.get(context).listRestaurants[index],
+                                  index),
                             ),
                           ),
                         if (HomeCubit.get(context).nameIndex == 2)
@@ -185,15 +185,14 @@ class DeliveryServiceList extends StatelessWidget {
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
                               itemCount:
-                                  HomeCubit.get(context).pipesList.length,
+                                  HomeCubit.get(context).listCafes.length,
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) => buildProduct(
-                                context,
-                                size,
-                                HomeCubit.get(context).pipesList[index],
-                                index
-                              ),
+                                  context,
+                                  size,
+                                  HomeCubit.get(context).listCafes[index],
+                                  index),
                             ),
                           ),
                         if (HomeCubit.get(context).nameIndex == 3)
@@ -201,15 +200,14 @@ class DeliveryServiceList extends StatelessWidget {
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
                               itemCount:
-                                  HomeCubit.get(context).conditionerList.length,
+                                  HomeCubit.get(context).marketList.length,
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) => buildProduct(
-                                context,
-                                size,
-                                HomeCubit.get(context).conditionerList[index],
-                                index
-                              ),
+                                  context,
+                                  size,
+                                  HomeCubit.get(context).marketList[index],
+                                  index),
                             ),
                           ),
                         if (HomeCubit.get(context).nameIndex == 4)
@@ -217,15 +215,14 @@ class DeliveryServiceList extends StatelessWidget {
                             padding: EdgeInsets.only(top: size.height * 0.23),
                             child: ListView.builder(
                               itemCount:
-                                  HomeCubit.get(context).maintenanceList.length,
+                                  HomeCubit.get(context).listDelivery.length,
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) => buildProduct(
-                                context,
-                                size,
-                                HomeCubit.get(context).maintenanceList[index],
-                                index
-                              ),
+                                  context,
+                                  size,
+                                  HomeCubit.get(context).listDelivery[index],
+                                  index),
                             ),
                           ),
                       ],
@@ -254,15 +251,16 @@ Color color2(int i, context) {
 Widget buildProduct(
   BuildContext context,
   Size size,
-  ServiceModel serviceModel,
-    int index,
+  DeliveryModel serviceModel,
+  int index,
 ) =>
     InkWell(
       onTap: () {
         navigatorTo(context, ChooseMeal());
       },
       child: Padding(
-        padding: EdgeInsetsDirectional.only(end: size.width * 0.05,start: size.width * 0.05),
+        padding: EdgeInsetsDirectional.only(
+            end: size.width * 0.05, start: size.width * 0.05),
         child: Column(
           children: [
             Container(
@@ -290,9 +288,12 @@ Widget buildProduct(
                   ),
                   CircleAvatar(
                     radius: size.width * 0.09,
-                    backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/ar/3/3b/KFC.png'),),
+                    backgroundImage: NetworkImage(
+                      '${serviceModel.image}',
+                    ),
+                  ),
                   SizedBox(
-                    width: size.width * 0.05,
+                    width: size.width * 0.03,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -308,32 +309,37 @@ Widget buildProduct(
                           height: size.height * 0.001,
                         ),
                         textHeightBehavior:
-                        TextHeightBehavior(applyHeightToFirstAscent: false),
+                            TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.right,
                         softWrap: false,
                       ),
                       SizedBox(
-                        height: size.height * 0.02,
+                        height: size.height * 0.01,
                       ),
-                      Text(
-                        'مطعم للوجبات السريعة',
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          fontSize: 14,
-                          color: Color(0xa8000000),
-                          height: size.height * 0.001,
+                      Container(
+                        width: size.width * 0.37,
+                        child: Text(
+                          serviceModel.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontFamily: 'Tajawal',
+                            fontSize: 14,
+                            color: Color(0xa8000000),
+                            height: size.height * 0.001,
+                          ),
+                          textHeightBehavior:
+                              TextHeightBehavior(applyHeightToFirstAscent: false),
+                          textAlign: TextAlign.right,
                         ),
-                        textHeightBehavior:
-                        TextHeightBehavior(applyHeightToFirstAscent: false),
-                        textAlign: TextAlign.right,
                       ),
                       SizedBox(
                         height: size.height * 0.025,
                       ),
-                      timenew(index, size),
+                      timenew(index, size,serviceModel),
                     ],
                   ),
-                  const Spacer(),
+                  Spacer(),
                   const Icon(
                     Icons.arrow_forward_ios_outlined,
                     color: Color(
@@ -351,7 +357,6 @@ Widget buildProduct(
       ),
     );
 
-
 double name(Size size, int index) {
   if (index == 0)
     return size.width * 0.15;
@@ -363,32 +368,7 @@ double name(Size size, int index) {
     return size.width * 0.27;
 }
 
-Widget timenew(int index, Size size) {
-  if (index == 1)
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          4,
-        ),
-        color: Color.fromARGB(226, 220, 12, 12),
-      ),
-      height: size.height * 0.032,
-      width: size.width * 0.25,
-      alignment: AlignmentDirectional.center,
-      child: Text(
-        'مغلق الآن',
-        style: TextStyle(
-          fontFamily: 'Tajawal',
-          fontSize: 16,
-          color: Colors.white,
-          fontWeight: FontWeight.w100,
-          height: size.height * 0.001,
-        ),
-        textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
-        textAlign: TextAlign.right,
-        softWrap: false,
-      ),
-    );
+Widget timenew(int index, Size size,DeliveryModel deliveryModel) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(
@@ -400,7 +380,7 @@ Widget timenew(int index, Size size) {
     width: size.width * 0.25,
     alignment: AlignmentDirectional.center,
     child: Text(
-      'مفتوح الآن',
+      deliveryModel.state,
       style: TextStyle(
         fontFamily: 'Tajawal',
         fontSize: 16,
