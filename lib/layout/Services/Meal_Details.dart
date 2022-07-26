@@ -138,7 +138,6 @@ class MealDetails extends StatelessWidget {
                                                 textAlign: TextAlign.start,
                                                 softWrap: false,
                                               ),
-
                                               Text(
                                                 'شيكل',
                                                 style: TextStyle(
@@ -150,7 +149,7 @@ class MealDetails extends StatelessWidget {
                                                   height: size.height * 0.002,
                                                 ),
                                                 textHeightBehavior:
-                                                    TextHeightBehavior(
+                                                    const TextHeightBehavior(
                                                         applyHeightToFirstAscent:
                                                             false),
                                               ),

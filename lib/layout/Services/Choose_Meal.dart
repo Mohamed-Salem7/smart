@@ -10,7 +10,6 @@ import 'package:smart_service/modules/Home/cubit/state.dart';
 
 import 'package:unicons/unicons.dart';
 
-
 class ChooseMeal extends StatelessWidget {
   const ChooseMeal({Key? key}) : super(key: key);
 
@@ -18,7 +17,8 @@ class ChooseMeal extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => HomeCubit()..getElectricity()
+      create: (context) => HomeCubit()
+        ..getElectricity()
         ..getPipes()
         ..getConditioners()
         ..getMaintenance(),
@@ -58,14 +58,16 @@ class ChooseMeal extends StatelessWidget {
                                     width: size.width,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             IconButton(
                                               onPressed: () {
-                                                navigatorTo(context, MainScreen());
+                                                navigatorTo(
+                                                    context, MainScreen());
                                               },
                                               icon: const Icon(
                                                 Icons.arrow_back_ios,
@@ -83,8 +85,10 @@ class ChooseMeal extends StatelessWidget {
                                                 fontWeight: FontWeight.w700,
                                                 height: 0.6,
                                               ),
-                                              textHeightBehavior: TextHeightBehavior(
-                                                  applyHeightToFirstAscent: false),
+                                              textHeightBehavior:
+                                                  TextHeightBehavior(
+                                                      applyHeightToFirstAscent:
+                                                          false),
                                               textAlign: TextAlign.right,
                                               softWrap: false,
                                             ),
@@ -102,7 +106,7 @@ class ChooseMeal extends StatelessWidget {
                                           ],
                                         ),
                                         SizedBox(
-                                          height: size.height*0.03,
+                                          height: size.height * 0.03,
                                         ),
                                         Text(
                                           'تجد هنا قائمة بالوجبات المتوفرة داخل المطعم',
@@ -114,12 +118,14 @@ class ChooseMeal extends StatelessWidget {
                                             height: size.height * 0.001,
                                           ),
                                           textHeightBehavior:
-                                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                                              TextHeightBehavior(
+                                                  applyHeightToFirstAscent:
+                                                      false),
                                           textAlign: TextAlign.right,
                                           softWrap: false,
                                         ),
                                         SizedBox(
-                                          height: size.height*0.01,
+                                          height: size.height * 0.01,
                                         ),
                                         Text(
                                           'يمكنك اختيار ما تريد تناوله اليوم',
@@ -131,7 +137,9 @@ class ChooseMeal extends StatelessWidget {
                                             height: size.height * 0.001,
                                           ),
                                           textHeightBehavior:
-                                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                                              TextHeightBehavior(
+                                                  applyHeightToFirstAscent:
+                                                      false),
                                           textAlign: TextAlign.right,
                                           softWrap: false,
                                         ),
@@ -139,7 +147,6 @@ class ChooseMeal extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),
@@ -182,9 +189,10 @@ Color color2(int i, context) {
 }
 
 Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
-    int index) =>
+        int index) =>
     Padding(
-      padding: EdgeInsetsDirectional.only(end: size.width * 0.05,start: size.width * 0.05),
+      padding: EdgeInsetsDirectional.only(
+          end: size.width * 0.05, start: size.width * 0.05),
       child: Column(
         children: [
           Container(
@@ -212,7 +220,9 @@ Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
                 ),
                 CircleAvatar(
                   radius: size.width * 0.09,
-                  backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/ar/3/3b/KFC.png'),),
+                  backgroundImage: NetworkImage(
+                      'https://upload.wikimedia.org/wikipedia/ar/3/3b/KFC.png'),
+                ),
                 SizedBox(
                   width: size.width * 0.05,
                 ),
@@ -221,10 +231,10 @@ Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: size.height*0.001,
+                      height: size.height * 0.001,
                     ),
                     Container(
-                      width: size.width*0.58,
+                      width: size.width * 0.58,
                       child: Row(
                         children: [
                           Text(
@@ -236,14 +246,21 @@ Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
                               fontWeight: FontWeight.w700,
                               height: size.height * 0.001,
                             ),
-                            textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                            textHeightBehavior: TextHeightBehavior(
+                                applyHeightToFirstAscent: false),
                             textAlign: TextAlign.right,
                             softWrap: false,
                           ),
-                          Spacer(),
-                          Icon(Icons.star,color: Colors.amber,),
-                          Text('4.0',style: TextStyle(fontSize: 10,color: Colors.amber),)
+                          const Spacer(),
+                          const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size: 20,
+                          ),
+                          Text(
+                            '4.9',
+                            style: TextStyle(fontSize: 12, color: Colors.amber),
+                          )
                         ],
                       ),
                     ),
@@ -259,26 +276,52 @@ Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
                         height: size.height * 0.001,
                       ),
                       textHeightBehavior:
-                      TextHeightBehavior(applyHeightToFirstAscent: false),
+                          TextHeightBehavior(applyHeightToFirstAscent: false),
                       textAlign: TextAlign.right,
                     ),
                     Container(
-                      width: size.width*0.58,
-                      child: Row(children: [
-                        Text('33.99 شيكل',style: TextStyle(fontSize: 13.0,fontWeight: FontWeight.w400),),
-                        Spacer(),
-                        InkWell(
-                          onTap: (){
-                            navigatorTo(context, MealDetails());
-                          },
-                          child: CircleAvatar(
-                            backgroundColor: Color(0xff5300BF),
-                            foregroundColor: Colors.white,
-                            radius: size.height*0.02,
-                            child: Icon(Iconsax.add),
+                      width: size.width * 0.58,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '54.99',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 14,
+                              color: const Color(0xff000000),
+                              fontWeight: FontWeight.w500,
+                              height: size.height * 0.002,
+                            ),
+                            textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                            textAlign: TextAlign.right,
                           ),
-                        )
-                      ],),
+                          Text(
+                            'شيكل',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 14,
+                              color: const Color(0xff000000),
+                              fontWeight: FontWeight.w500,
+                              height: size.height * 0.002,
+                            ),
+                            textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
+                            textAlign: TextAlign.right,
+                          ),
+                          Spacer(),
+                          InkWell(
+                            onTap: () {
+                              navigatorTo(context, MealDetails());
+                            },
+                            child: CircleAvatar(
+                              backgroundColor: Color(0xff5300BF),
+                              foregroundColor: Colors.white,
+                              radius: size.height * 0.02,
+                              child: Icon(Iconsax.add),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
