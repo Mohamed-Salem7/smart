@@ -17,7 +17,6 @@ import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import '../../../Shared/constant.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -69,17 +68,17 @@ class HomeCubit extends Cubit<HomeState> {
     'لدي مشكلة في الكهرباء',
   ];
 
-  final List<Map<String, dynamic>> items = [
-    {
-      'value': 'ar',
-      'label': 'العربية',
-    },
-    {
-      'value': 'en',
-      'label': 'English',
-    },
+  String language = 'العربية';
+   List<String> items = [
+    'العربية',
+    'English',
   ];
 
+   void changeValueLanguage(String value)
+   {
+     language = value;
+     emit(ChangeValueLanguage());
+   }
 
   int nameIndex = 0;
 
@@ -102,9 +101,9 @@ class HomeCubit extends Cubit<HomeState> {
         icon: Icon(Iconsax.notification), label: 'الإشعارات'),
     const BottomNavigationBarItem(
         icon: Icon(Iconsax.info_circle), label: 'عنا'),
-    const BottomNavigationBarItem(icon: Icon(Iconsax.setting), label: 'إعدادات'),
+    const BottomNavigationBarItem(
+        icon: Icon(Iconsax.setting), label: 'إعدادات'),
   ];
-
 
   RegisterModel? userModel;
 
@@ -123,19 +122,19 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  List<ServicesModel> servicesList =[];
-  Future<void> getServices() async
-  {
+  List<ServicesModel> servicesList = [];
+
+  Future<void> getServices() async {
     emit(LoadingGetServicesState());
     await FirebaseFirestore.instance
         .collection('houses_repair')
         .get()
         .then((value) {
-          value.docs.forEach((element) {
-            servicesList.add(ServicesModel.fromJson(element.data()));
-          });
-          emit(SuccessGetServicesState());
-    }).catchError((error){
+      value.docs.forEach((element) {
+        servicesList.add(ServicesModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServicesState());
+    }).catchError((error) {
       emit(ErrorGetServicesState(error));
     });
   }
@@ -146,7 +145,8 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getElectricity() async {
     electricityList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('1')
         .collection('Electricity')
         .get()
@@ -161,13 +161,13 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-
   List<ServiceModel> pipesList = [];
 
   Future<void> getPipes() async {
     electricityList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('1')
         .collection('Pipes')
         .get()
@@ -187,7 +187,8 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getConditioners() async {
     conditionerList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('1')
         .collection('Conditioners')
         .get()
@@ -202,13 +203,13 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-
   List<ServiceModel> maintenanceList = [];
 
   Future<void> getMaintenance() async {
     maintenanceList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('1')
         .collection('Maintenance')
         .get()
@@ -228,7 +229,8 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getPaint() async {
     paintList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('1')
         .collection('Paint')
         .get()
@@ -248,7 +250,8 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getHouseCleaning() async {
     cleanerList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('1')
         .collection('House_Cleaning')
         .get()
@@ -263,14 +266,14 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-
-
   List<DeliveryModel> all2List = [];
-  List<DeliveryModel> listRestaurants= [];
+  List<DeliveryModel> listRestaurants = [];
+
   Future<void> getRestaurants() async {
     listRestaurants = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('2')
         .collection('Restaurants')
         .get()
@@ -285,12 +288,13 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+  List<DeliveryModel> listCafes = [];
 
-  List<DeliveryModel> listCafes= [];
   Future<void> getCafes() async {
     listCafes = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('2')
         .collection('Cafes')
         .get()
@@ -305,11 +309,13 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  List<DeliveryModel> marketList =[];
+  List<DeliveryModel> marketList = [];
+
   Future<void> getMarkets() async {
     marketList = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('2')
         .collection('Market')
         .get()
@@ -324,12 +330,13 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+  List<DeliveryModel> listDelivery = [];
 
-  List<DeliveryModel> listDelivery= [];
   Future<void> getDelivery() async {
     listDelivery = [];
     emit(LoadingGetServiceState());
-    await FirebaseFirestore.instance.collection('houses_repair')
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
         .doc('2')
         .collection('Delivery_Companies')
         .get()
@@ -343,13 +350,12 @@ class HomeCubit extends Cubit<HomeState> {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
-  void logoutUser()
-  async {
+
+  void logoutUser() async {
     emit(LoadingLogoutState());
-    await FirebaseAuth.instance
-        .signOut().then((value) {
+    await FirebaseAuth.instance.signOut().then((value) {
       emit(SuccessLogoutState());
-    }).catchError((error){
+    }).catchError((error) {
       emit(ErrorLogoutState(error.toString()));
     });
   }

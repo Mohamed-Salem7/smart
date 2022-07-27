@@ -1,4 +1,5 @@
 import 'package:buildcondition/buildcondition.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -95,7 +96,7 @@ class SettingsScreen extends StatelessWidget {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  navigatorTo(context, const LanguageScreen());
+                                  //navigatorTo(context, const LanguageScreen());
                                 },
                                 child: Container(
                                   height: size.height * 0.08,
@@ -115,33 +116,66 @@ class SettingsScreen extends StatelessWidget {
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
-                                        horizontal: size.width * 0.03),
+                                        horizontal: size.width * 0.03,
+                                        vertical: size.height * 0.01),
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         CircleAvatar(
                                           radius: 25,
                                           backgroundColor: Color(0xff5300bf),
-                                          child: Icon(Icons.language,color: Colors.white,),
+                                          child: Icon(
+                                            Icons.language,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: size.width * 0.03,
                                         ),
-                                        Text(
-                                          'اللغة',
-                                          style: TextStyle(
-                                            fontFamily: 'Tajawal',
-                                            fontSize: 18,
-                                            color: const Color(0xff5300bf),
-                                            fontWeight: FontWeight.w700,
-                                            height: size.height * 0.0015,
-                                          ),
-                                          textAlign: TextAlign.end,
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'اللغة',
+                                              style: TextStyle(
+                                                fontFamily: 'Tajawal',
+                                                fontSize: 18,
+                                                color: const Color(0xff5300bf),
+                                                fontWeight: FontWeight.w700,
+                                                height: size.height * 0.0015,
+                                              ),
+                                              textAlign: TextAlign.end,
+                                            ),
+                                            Expanded(
+                                              child: DropdownButton(
+                                                dropdownColor:
+                                                    const Color(0xff5300bf),
+                                                underline: SizedBox(),
+                                                value: homeCubit.language,
+                                                onChanged: (value) {
+                                                  homeCubit.changeValueLanguage(value as String);
+                                                },
+                                                items:
+                                                    homeCubit.items.map((value) {
+                                                  return DropdownMenuItem(
+                                                    child: Text(value,style: TextStyle(color: Colors.grey.shade400,),),
+                                                    value: value,
+                                                  );
+                                                }).toList(),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         const Spacer(),
-                                        const Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          color: Color(
-                                            0xffCBC9D9,
+                                        const Center(
+                                          child: Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Color(
+                                              0xffCBC9D9,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -153,8 +187,7 @@ class SettingsScreen extends StatelessWidget {
                                 height: size.height * 0.02,
                               ),
                               InkWell(
-                                onTap: ()
-                                {
+                                onTap: () {
                                   final ratingModel = RatingModel(
                                     id: 1,
                                     title: null,
@@ -167,16 +200,24 @@ class SettingsScreen extends StatelessWidget {
                                       ratingSurvey4: 'What can we improve on?',
                                       ratingSurvey5: 'What you liked the most?',
                                       items: [
-                                        RatingCriterionModel(id: 1, name: 'Quality of service'),
-                                        RatingCriterionModel(id: 2, name: 'Competence of attendants'),
-                                        RatingCriterionModel(id: 3, name: 'Cleaning the environment'),
-                                        RatingCriterionModel(id: 4, name: 'Waiting time'),
+                                        RatingCriterionModel(
+                                            id: 1, name: 'Quality of service'),
+                                        RatingCriterionModel(
+                                            id: 2,
+                                            name: 'Competence of attendants'),
+                                        RatingCriterionModel(
+                                            id: 3,
+                                            name: 'Cleaning the environment'),
+                                        RatingCriterionModel(
+                                            id: 4, name: 'Waiting time'),
                                       ],
                                     ),
                                   );
                                   showModalBottomSheet(
                                     context: context,
-                                    builder: (context) => RatingWidget(controller: MockRatingController(ratingModel)),
+                                    builder: (context) => RatingWidget(
+                                        controller:
+                                            MockRatingController(ratingModel)),
                                   );
                                 },
                                 child: Container(
@@ -203,7 +244,10 @@ class SettingsScreen extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 25,
                                           backgroundColor: Color(0xff5300bf),
-                                          child: Icon(Iconsax.ranking,color: Colors.white,),
+                                          child: Icon(
+                                            Iconsax.ranking,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: size.width * 0.03,
@@ -260,7 +304,10 @@ class SettingsScreen extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 25,
                                           backgroundColor: Color(0xff5300bf),
-                                          child: Icon(Icons.help_outline,color: Colors.white,),
+                                          child: Icon(
+                                            Icons.help_outline,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: size.width * 0.03,
@@ -292,8 +339,7 @@ class SettingsScreen extends StatelessWidget {
                                 height: size.height * 0.02,
                               ),
                               InkWell(
-                                onTap: ()
-                                {
+                                onTap: () {
                                   homeCubit.logoutUser();
                                 },
                                 child: Container(
@@ -320,7 +366,10 @@ class SettingsScreen extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 25,
                                           backgroundColor: Colors.red,
-                                          child: Icon(Icons.logout,color: Colors.white,),
+                                          child: Icon(
+                                            Icons.logout,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: size.width * 0.03,
@@ -360,13 +409,13 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            fallback: (context) => const Center(child: CircularProgressIndicator(),),
+            fallback: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         },
-        listener: (context, state)
-        {
-          if(state is SuccessLogoutState)
-          {
+        listener: (context, state) {
+          if (state is SuccessLogoutState) {
             CacheHelper.removeData(key: 'uId').then((value) {
               navigatorFinished(context, LoginScreen());
             });
@@ -387,7 +436,8 @@ class MockRatingController extends RatingController {
   }
 
   @override
-  Future<void> saveRatingCallback(int rate, List<RatingCriterionModel> selectedCriterions) async {
+  Future<void> saveRatingCallback(
+      int rate, List<RatingCriterionModel> selectedCriterions) async {
     print('Rating saved!\nRate: $rate\nsSelectedItems: $selectedCriterions');
     await Future.delayed(const Duration(seconds: 3));
   }

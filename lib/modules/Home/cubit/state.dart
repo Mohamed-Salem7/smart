@@ -40,6 +40,7 @@ class ErrorGetServicesState extends HomeState {
 
 class LoadingLogoutState extends HomeState {}
 
+
 class SuccessLogoutState extends HomeState
 {
 
@@ -49,3 +50,4 @@ class ErrorLogoutState extends HomeState {
   final String error;
   ErrorLogoutState(this.error);
 }
+class ChangeValueLanguage extends HomeState {}

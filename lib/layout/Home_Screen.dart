@@ -1,3 +1,4 @@
+import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,176 +18,197 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var searchController = TextEditingController();
     return BlocProvider(
-      create: (context) => HomeCubit()..getServices(),
+      create: (context) => HomeCubit()..getServices()..getUserData(),
       child: BlocConsumer<HomeCubit, HomeState>(
         builder: (context, state) {
-          return Scaffold(
-            body: Column(
-              children: [
-                Expanded(
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: size.height * 0.35,
-                        decoration: const BoxDecoration(
-                          color: Color(0xffF6C52F),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(
-                              50,
-                            ),
-                            bottomRight: Radius.circular(
-                              50,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: size.height * 0.17,
-                        right: size.width * 0.08,
-                        child: Text(
-                          'مرحباً, منال منصور',
-                          style: TextStyle(
-                            fontFamily: 'Tajawal',
-                            fontSize: 18,
-                            color: const Color(0xff5300bf),
-                            fontWeight: FontWeight.w700,
-                            height: size.height * 0.001,
-                          ),
-                          textHeightBehavior: TextHeightBehavior(
-                              applyHeightToFirstAscent: false),
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                      Positioned(
-                        top: size.height * 0.2,
-                        right: size.width * 0.08,
-                        child: Text(
-                          'كيف يمكننا مساعدتك؟',
-                          style: TextStyle(
-                            fontFamily: 'Tajawal',
-                            fontSize: 14,
-                            color: const Color(0xff0f0a39),
-                            height: size.height * 0.001,
-                          ),
-                          textHeightBehavior: TextHeightBehavior(
-                              applyHeightToFirstAscent: false),
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                      Positioned(
-                        top: size.height * 0.1,
-                        right: size.width * 0.08,
-                        left: size.width * 0.08,
-                        child: Container(
-                          height: size.height * 0.05,
+          return BuildCondition(
+            condition: HomeCubit.get(context).userModel != null,
+            builder: (context) => Scaffold(
+              body: Column(
+                children: [
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: size.height * 0.35,
                           decoration: const BoxDecoration(
                             color: Color(0xffF6C52F),
-                            boxShadow: [
-                              BoxShadow(
-                                offset: Offset(0, 1),
-                                color: Color(0xff5300BF),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(
+                                50,
                               ),
-                            ],
+                              bottomRight: Radius.circular(
+                                50,
+                              ),
+                            ),
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.02,
-                                vertical: size.height * 0.01),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.location_on,
+                        ),
+                        Positioned(
+                          top: size.height * 0.17,
+                          right: size.width * 0.07,
+                          child: Text(
+                            ' مرحبا,ً',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 18,
+                              color: const Color(0xff5300bf),
+                              fontWeight: FontWeight.w700,
+                              height: size.height * 0.001,
+                            ),
+                            textHeightBehavior: TextHeightBehavior(
+                                applyHeightToFirstAscent: false),
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                        Positioned(
+                          top: size.height * 0.17,
+                          right: size.width * 0.2,
+                          child: Text(
+                            '${HomeCubit.get(context).userModel!.name}',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 18,
+                              color: const Color(0xff5300bf),
+                              fontWeight: FontWeight.w700,
+                              height: size.height * 0.001,
+                            ),
+                            textHeightBehavior: TextHeightBehavior(
+                                applyHeightToFirstAscent: false),
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                        Positioned(
+                          top: size.height * 0.2,
+                          right: size.width * 0.08,
+                          child: Text(
+                            'كيف يمكننا مساعدتك؟',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 14,
+                              color: const Color(0xff0f0a39),
+                              height: size.height * 0.001,
+                            ),
+                            textHeightBehavior: TextHeightBehavior(
+                                applyHeightToFirstAscent: false),
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                        Positioned(
+                          top: size.height * 0.1,
+                          right: size.width * 0.08,
+                          left: size.width * 0.08,
+                          child: Container(
+                            height: size.height * 0.05,
+                            decoration: const BoxDecoration(
+                              color: Color(0xffF6C52F),
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: Offset(0, 1),
                                   color: Color(0xff5300BF),
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  width: size.width * 0.03,
-                                ),
-                                Text(
-                                  'حدد موقعك',
-                                  style: TextStyle(
-                                    fontFamily: 'Tajawal',
-                                    fontSize: 16,
-                                    color: const Color(0xff000000),
-                                    height: size.height * 0.0001,
-                                  ),
-                                  textHeightBehavior: TextHeightBehavior(
-                                      applyHeightToFirstAscent: false),
-                                  textAlign: TextAlign.center,
-                                  softWrap: false,
-                                ),
-                                const Spacer(),
-                                const Icon(
-                                  Icons.keyboard_arrow_down_sharp,
-                                  color: Color(0xff5300BF),
-                                  size: 30,
                                 ),
                               ],
                             ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.02,
+                                  vertical: size.height * 0.01),
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.location_on,
+                                    color: Color(0xff5300BF),
+                                    size: 30,
+                                  ),
+                                  SizedBox(
+                                    width: size.width * 0.03,
+                                  ),
+                                  Text(
+                                    'حدد موقعك',
+                                    style: TextStyle(
+                                      fontFamily: 'Tajawal',
+                                      fontSize: 16,
+                                      color: const Color(0xff000000),
+                                      height: size.height * 0.0001,
+                                    ),
+                                    textHeightBehavior: TextHeightBehavior(
+                                        applyHeightToFirstAscent: false),
+                                    textAlign: TextAlign.center,
+                                    softWrap: false,
+                                  ),
+                                  const Spacer(),
+                                  const Icon(
+                                    Icons.keyboard_arrow_down_sharp,
+                                    color: Color(0xff5300BF),
+                                    size: 30,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        top: size.height * 0.24,
-                        right: size.width * 0.08,
-                        left: size.width * 0.08,
-                        child: Container(
-                          height: size.height * 0.05,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              10,
+                        Positioned(
+                          top: size.height * 0.24,
+                          right: size.width * 0.08,
+                          left: size.width * 0.08,
+                          child: Container(
+                            height: size.height * 0.05,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                              color: const Color(0xffffffff),
                             ),
-                            color: const Color(0xffffffff),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.02,
-                                vertical: size.height * 0.01),
-                            child: TextFormField(
-                              onTap: () {},
-                              textAlign: TextAlign.start,
-                              controller: searchController,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'ما الخدمة التي تبحث عنها',
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 16,
-                                  color: Color(0xffcbc9d9),
-                                  height: size.height * 0.001,
-                                ),
-                                prefixIcon: const Icon(
-                                  Icons.search_sharp,
-                                  color: Color(0xffcbc9d9),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.02,
+                                  vertical: size.height * 0.01),
+                              child: TextFormField(
+                                onTap: () {},
+                                textAlign: TextAlign.start,
+                                controller: searchController,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'ما الخدمة التي تبحث عنها',
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 16,
+                                    color: Color(0xffcbc9d9),
+                                    height: size.height * 0.001,
+                                  ),
+                                  prefixIcon: const Icon(
+                                    Icons.search_sharp,
+                                    color: Color(0xffcbc9d9),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: size.height * 0.3,
-                            right: size.width * 0.05,
-                            left: size.width * 0.05),
-                        child: ListView.separated(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: HomeCubit.get(context).servicesList.length,
-                          itemBuilder: (context, index) => buildService(
-                              context,
-                              size,
-                              HomeCubit.get(context).servicesList[index],
-                              index),
-                          separatorBuilder: (context, index) => SizedBox(
-                            height: size.height * 0.01,
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: size.height * 0.3,
+                              right: size.width * 0.05,
+                              left: size.width * 0.05),
+                          child: ListView.separated(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: HomeCubit.get(context).servicesList.length,
+                            itemBuilder: (context, index) => buildService(
+                                context,
+                                size,
+                                HomeCubit.get(context).servicesList[index],
+                                index),
+                            separatorBuilder: (context, index) => SizedBox(
+                              height: size.height * 0.01,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
+            fallback: (context) => const Center(child: CircularProgressIndicator(),),
           );
         },
         listener: (context, state) {},
