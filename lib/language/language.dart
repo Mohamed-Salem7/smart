@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../Shared/constant.dart';
+
 class ProviderLanguage with ChangeNotifier {
-  bool isAr = true;
+
   String language = 'العربية';
   Map<String, Object> textAr = {
     "Home": "الرئيسية",

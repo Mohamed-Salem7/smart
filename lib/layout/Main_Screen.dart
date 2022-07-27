@@ -27,7 +27,7 @@ class MainScreen extends StatelessWidget {
           var homeCubit = HomeCubit.get(context);
           var lang = Provider.of<ProviderLanguage>(context,listen: true);
           return Directionality(
-            textDirection: lang.isAr ? TextDirection.rtl : TextDirection.ltr,
+            textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
             child: Scaffold(
               body: homeCubit.screen[homeCubit.currentIndex],
               bottomNavigationBar: BottomNavigationBar(

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_service/language/language.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 
+import '../Shared/constant.dart';
 import '../modules/Home/cubit/state.dart';
 
 class AboutUs extends StatelessWidget {
@@ -41,8 +42,8 @@ class AboutUs extends StatelessWidget {
                       ),
                       Positioned(
                         top: size.height * 0.155,
-                        right: lang.isAr ? size.width * 0.25 : 0,
-                        left: lang.isAr ? 0 : size.width * 0.25,
+                        right: isAr ? size.width * 0.25 : 0,
+                        left: isAr ? 0 : size.width * 0.25,
                         child: Row(
                           children: [
                             Text(
@@ -64,8 +65,8 @@ class AboutUs extends StatelessWidget {
                       ),
                       Positioned(
                         top: size.height * 0.15,
-                        right: lang.isAr ? size.width * 0.1 : 0,
-                        left: lang.isAr ? 0 : size.width * 0.1,
+                        right: isAr ? size.width * 0.1 : 0,
+                        left: isAr ? 0 : size.width * 0.1,
                         child: Row(
                           children: const [
                             Icon(Icons.info_outlined),
@@ -119,7 +120,7 @@ class AboutUs extends StatelessWidget {
                                 left: size.width * 0.04),
                             child: Text(
                               lang.getText('Dec') as String,
-                              textDirection: lang.isAr
+                              textDirection: isAr
                                   ? TextDirection.rtl
                                   : TextDirection.ltr,
                               style: const TextStyle(
@@ -205,8 +206,8 @@ class AboutUs extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(
-                                    right: lang.isAr ? size.width * 0.04 : 0,
-                                    left: lang.isAr ? 0 : size.width * 0.04),
+                                    right: isAr ? size.width * 0.04 : 0,
+                                    left: isAr ? 0 : size.width * 0.04),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

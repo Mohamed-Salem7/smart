@@ -20,3 +20,4 @@ void navigatorFinished(context, widget) => Navigator.pushAndRemoveUntil(
 );
 
 String uId = ' ';
+bool isAr = true;

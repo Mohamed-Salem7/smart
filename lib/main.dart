@@ -19,8 +19,10 @@ void main() async {
   if (uId != null) {
     uId = CacheHelper.getData(key: 'uId');
   }
-  print(uId);
 
+  print(uId);
+  isAr = CacheHelper.getData(key: 'isAr');
+  print(isAr);
   runApp(
     ChangeNotifierProvider<ProviderLanguage>(
       create: (context) => ProviderLanguage(),

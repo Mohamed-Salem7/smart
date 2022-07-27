@@ -75,6 +75,10 @@ class HomeCubit extends Cubit<HomeState> {
     'العربية',
     'English',
   ];
+  List<String> items2 = [
+    'English',
+    'العربية',
+  ];
 
   void changeValueLanguage(String value) {
     language = value;

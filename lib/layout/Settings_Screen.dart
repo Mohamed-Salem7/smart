@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
         builder: (context, state) {
           var size = MediaQuery.of(context).size;
           var homeCubit = HomeCubit.get(context);
-          var lang =  Provider.of<ProviderLanguage>(context);
+          var lang = Provider.of<ProviderLanguage>(context);
           return BuildCondition(
             condition: homeCubit.userModel != null,
             builder: (context) => Scaffold(
@@ -137,10 +137,12 @@ class SettingsScreen extends StatelessWidget {
                                           width: size.width * 0.03,
                                         ),
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              lang.getText('Language') as String,
+                                              lang.getText('Language')
+                                                  as String,
                                               style: TextStyle(
                                                 fontFamily: 'Tajawal',
                                                 fontSize: 18,
@@ -155,18 +157,34 @@ class SettingsScreen extends StatelessWidget {
                                                 dropdownColor:
                                                     const Color(0xff5300bf),
                                                 underline: SizedBox(),
-                                                value: lang.language,
+                                                value: isAr ? 'العربية': 'English',
                                                 onChanged: (value) {
-                                                  //Provider.of<ProviderLanguage>(context,listen: false).changeLanguage(value as bool);
                                                   lang.changeLan(value as String);
-                                                },
-                                                items:
-                                                    homeCubit.items.map((value) {
-                                                  return DropdownMenuItem(
-                                                    child: Text(value,style: TextStyle(color: Colors.grey.shade400,),),
-                                                    value: value,
+                                                  CacheHelper.saveData(
+                                                    key: 'isAr',
+                                                    value: isAr,
                                                   );
-                                                }).toList(),
+                                                  print(isAr);
+                                                },
+                                                items: isAr ? homeCubit.items.map((value) {return DropdownMenuItem(
+                                                    value: value,
+                                                    child: Text(
+                                                      value,
+                                                      style: TextStyle(
+                                                        color: Colors
+                                                            .grey.shade400,
+                                                      ),
+                                                    ),
+                                                  );}).toList() : homeCubit.items2.map((value) {return DropdownMenuItem(
+                                                  value: value,
+                                                  child: Text(
+                                                    value,
+                                                    style: TextStyle(
+                                                      color: Colors
+                                                          .grey.shade400,
+                                                    ),
+                                                  ),
+                                                );}).toList(),
                                               ),
                                             ),
                                           ],
@@ -368,7 +386,7 @@ class SettingsScreen extends StatelessWidget {
                                         horizontal: size.width * 0.03),
                                     child: Row(
                                       children: [
-                                        CircleAvatar(
+                                        const CircleAvatar(
                                           radius: 25,
                                           backgroundColor: Colors.red,
                                           child: Icon(

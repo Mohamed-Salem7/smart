@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             condition: HomeCubit.get(context).userModel != null,
             builder: (context) => Scaffold(
               body: Directionality(
-                textDirection: lang.isAr ? TextDirection.rtl : TextDirection.ltr,
+                textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
                 child: Column(
                   children: [
                     Expanded(
@@ -50,13 +50,13 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Positioned(
                             top: size.height * 0.17,
-                            right: lang.isAr ? size.width * 0.07 : 0,
-                            left: lang.isAr ? 0 : size.width * 0.07,
+                            right: isAr ? size.width * 0.07 : 0,
+                            left: isAr? 0 : size.width * 0.07,
                             child: Row(
                               children: [
                                 Text(
                                   lang.getText('Hello') as String,
-                                  textDirection: lang.isAr ? TextDirection.rtl : TextDirection.ltr,
+                                  textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
                                   style: TextStyle(
                                     fontFamily: 'Tajawal',
                                     fontSize: 18,
@@ -73,13 +73,13 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Positioned(
                             top: size.height * 0.17,
-                            right:lang.isAr ? size.width * 0.2 : 0,
-                            left:lang.isAr ? 0 :  size.width * 0.2 ,
+                            right:isAr ? size.width * 0.2 : 0,
+                            left:isAr ? 0 :  size.width * 0.2 ,
                             child: Row(
                               children: [
                                 Text(
                                   '${HomeCubit.get(context).userModel!.name}',
-                                  textDirection: lang.isAr ? TextDirection.rtl : TextDirection.ltr,
+                                  textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
                                   style: TextStyle(
                                     fontFamily: 'Tajawal',
                                     fontSize: 18,
@@ -95,8 +95,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Positioned(
                             top: size.height * 0.2,
-                            right: lang.isAr ? size.width * 0.07 : 0,
-                            left: lang.isAr ? 0 : size.width * 0.07,
+                            right: isAr ? size.width * 0.07 : 0,
+                            left: isAr ? 0 : size.width * 0.07,
                             child: Row(
                               children: [
                                 Text(
