@@ -363,7 +363,7 @@ class AboutUs extends StatelessWidget {
                                         height: size.height * 0.007,
                                       ),
                                       Text(
-                                        HomeCubit.get(context).userModel!.email,
+                                        'mh_jo.2015@hotmail.com',
                                         style: TextStyle(
                                           fontFamily: 'Tajawal',
                                           fontSize: 14,

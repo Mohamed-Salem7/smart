@@ -91,16 +91,7 @@ class LoginCubit extends Cubit<LoginState> {
     });
   }
 
-  void logoutUser()
-  async {
-    emit(LoadingLogoutState());
-    await FirebaseAuth.instance
-        .signOut().then((value) {
-         emit(SuccessLogoutState());
-    }).catchError((error){
-      emit(ErrorLogoutState(error.toString()));
-    });
-  }
+
 
   void createAccountCliente({
     required String email,

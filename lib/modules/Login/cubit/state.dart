@@ -57,11 +57,4 @@ class ErrorRegisterDealer extends LoginState {
 
 class LoadingRegisterDealer extends LoginState {}
 
-class LoadingLogoutState extends LoginState {}
 
-class SuccessLogoutState extends LoginState {}
-
-class ErrorLogoutState extends LoginState {
-  final String error;
-  ErrorLogoutState(this.error);
-}

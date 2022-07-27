@@ -6,9 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smart_service/layout/About_Us.dart';
 import 'package:smart_service/layout/Home_Screen.dart';
-import 'package:smart_service/layout/Logout_Screen.dart';
+import 'package:smart_service/layout/Setting/Settings_Screen.dart';
 import 'package:smart_service/layout/Notification_Screen.dart';
 import 'package:smart_service/models/Deleviry_Service.dart';
+import 'package:smart_service/models/Register_Model.dart';
 import 'package:smart_service/models/Service_Model.dart';
 import 'package:smart_service/models/Services_Model.dart';
 import 'package:smart_service/models/User_Model.dart';
@@ -28,7 +29,7 @@ class HomeCubit extends Cubit<HomeState> {
     const HomeScreen(),
     const NotificationScreen(),
     const AboutUs(),
-    const LogoutScreen(),
+    const SettingsScreen(),
   ];
 
   List<String> name = [
@@ -68,6 +69,17 @@ class HomeCubit extends Cubit<HomeState> {
     'لدي مشكلة في الكهرباء',
   ];
 
+  final List<Map<String, dynamic>> items = [
+    {
+      'value': 'ar',
+      'label': 'العربية',
+    },
+    {
+      'value': 'en',
+      'label': 'English',
+    },
+  ];
+
 
   int nameIndex = 0;
 
@@ -90,11 +102,11 @@ class HomeCubit extends Cubit<HomeState> {
         icon: Icon(Iconsax.notification), label: 'الإشعارات'),
     const BottomNavigationBarItem(
         icon: Icon(Iconsax.info_circle), label: 'عنا'),
-    const BottomNavigationBarItem(icon: Icon(Iconsax.logout), label: 'خروج'),
+    const BottomNavigationBarItem(icon: Icon(Iconsax.setting), label: 'إعدادات'),
   ];
 
 
-  UserModel? userModel;
+  RegisterModel? userModel;
 
   Future<void> getUserData() async {
     emit(LoadingGetUserData());
@@ -103,7 +115,7 @@ class HomeCubit extends Cubit<HomeState> {
         .doc(uId)
         .get()
         .then((value) {
-      userModel = UserModel.fromJson(value.data());
+      userModel = RegisterModel.fromJson(value.data());
       emit(SuccessGetUserData());
     }).catchError((error) {
       print(error.toString());
@@ -331,14 +343,14 @@ class HomeCubit extends Cubit<HomeState> {
       emit(ErrorGetServiceState(error.toString()));
     });
   }
-  // void logoutUser()
-  // async {
-  //   emit(LoadingLogoutState());
-  //   await FirebaseAuth.instance
-  //       .signOut().then((value) {
-  //     emit(SuccessLogoutState());
-  //   }).catchError((error){
-  //     emit(ErrorLogoutState(error.toString()));
-  //   });
-  // }
+  void logoutUser()
+  async {
+    emit(LoadingLogoutState());
+    await FirebaseAuth.instance
+        .signOut().then((value) {
+      emit(SuccessLogoutState());
+    }).catchError((error){
+      emit(ErrorLogoutState(error.toString()));
+    });
+  }
 }
