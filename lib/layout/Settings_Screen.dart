@@ -5,12 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:rating/rating.dart';
-import 'package:select_form_field/select_form_field.dart';
 import 'package:smart_service/Shared/cache_helper.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Login/login.dart';
-import 'package:smart_service/layout/Setting/Language_Screen.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 
@@ -142,7 +140,7 @@ class SettingsScreen extends StatelessWidget {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'اللغة',
+                                              lang.getText('Language') as String,
                                               style: TextStyle(
                                                 fontFamily: 'Tajawal',
                                                 fontSize: 18,
@@ -260,7 +258,7 @@ class SettingsScreen extends StatelessWidget {
                                           width: size.width * 0.03,
                                         ),
                                         Text(
-                                          'تقييمك لخدماتنا',
+                                          lang.getText('Rating') as String,
                                           style: TextStyle(
                                             fontFamily: 'Tajawal',
                                             fontSize: 18,
@@ -320,7 +318,7 @@ class SettingsScreen extends StatelessWidget {
                                           width: size.width * 0.03,
                                         ),
                                         Text(
-                                          'طلب مساعدة',
+                                          lang.getText('Help') as String,
                                           style: TextStyle(
                                             fontFamily: 'Tajawal',
                                             fontSize: 18,
@@ -382,7 +380,7 @@ class SettingsScreen extends StatelessWidget {
                                           width: size.width * 0.03,
                                         ),
                                         Text(
-                                          'خروج',
+                                          lang.getText('Logout') as String,
                                           style: TextStyle(
                                             fontFamily: 'Tajawal',
                                             fontSize: 18,

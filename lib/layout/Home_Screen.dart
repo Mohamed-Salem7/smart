@@ -95,18 +95,23 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Positioned(
                             top: size.height * 0.2,
-                            right: size.width * 0.08,
-                            child: Text(
-                              'كيف يمكننا مساعدتك؟',
-                              style: TextStyle(
-                                fontFamily: 'Tajawal',
-                                fontSize: 14,
-                                color: const Color(0xff0f0a39),
-                                height: size.height * 0.001,
-                              ),
-                              textHeightBehavior: TextHeightBehavior(
-                                  applyHeightToFirstAscent: false),
-                              textAlign: TextAlign.right,
+                            right: lang.isAr ? size.width * 0.07 : 0,
+                            left: lang.isAr ? 0 : size.width * 0.07,
+                            child: Row(
+                              children: [
+                                Text(
+                                  lang.getText('How_We_can_Help_you') as String,
+                                  style: TextStyle(
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 14,
+                                    color: const Color(0xff0f0a39),
+                                    height: size.height * 0.001,
+                                  ),
+                                  textHeightBehavior: TextHeightBehavior(
+                                      applyHeightToFirstAscent: false),
+                                  textAlign: TextAlign.right,
+                                ),
+                              ],
                             ),
                           ),
                           Positioned(
@@ -139,7 +144,7 @@ class HomeScreen extends StatelessWidget {
                                       width: size.width * 0.03,
                                     ),
                                     Text(
-                                      'حدد موقعك',
+                                      lang.getText('Select_your_location') as String,
                                       style: TextStyle(
                                         fontFamily: 'Tajawal',
                                         fontSize: 16,
@@ -184,7 +189,7 @@ class HomeScreen extends StatelessWidget {
                                   controller: searchController,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'ما الخدمة التي تبحث عنها',
+                                    hintText: lang.getText('What_service_are_you_looking_for') as String,
                                     hintStyle: TextStyle(
                                       fontFamily: 'Tajawal',
                                       fontSize: 16,
@@ -305,7 +310,7 @@ Widget buildService(BuildContext context, Size size,
                     height: size.height * 0.01,
                   ),
                   Text(
-                    'تفاصيل عن الخدمة',
+                    Provider.of<ProviderLanguage>(context).getText('Details_about_service') as String,
                     style: TextStyle(
                       fontFamily: 'Tajawal',
                       fontSize: 14,

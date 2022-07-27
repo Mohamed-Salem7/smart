@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/About_Us.dart';
 import 'package:smart_service/layout/Home_Screen.dart';
-import 'package:smart_service/layout/Setting/Settings_Screen.dart';
+import 'package:smart_service/layout/Settings_Screen.dart';
 import 'package:smart_service/layout/Notification_Screen.dart';
 import 'package:smart_service/models/Deleviry_Service.dart';
 import 'package:smart_service/models/Register_Model.dart';
