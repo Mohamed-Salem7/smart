@@ -7,6 +7,7 @@ import 'package:rating/rating.dart';
 import 'package:select_form_field/select_form_field.dart';
 import 'package:smart_service/Shared/cache_helper.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/bloc/language_bloc.dart';
 import 'package:smart_service/layout/Login/login.dart';
 import 'package:smart_service/layout/Setting/Language_Screen.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
@@ -156,6 +157,12 @@ class SettingsScreen extends StatelessWidget {
                                                 underline: SizedBox(),
                                                 value: homeCubit.language,
                                                 onChanged: (value) {
+                                                  if (value == 'العربية') {
+                                                    BlocProvider.of<LanguageBloc>(context)..add(LoadLanguage(locale: Locale('ar','SA')));
+                                                  }else
+                                                    {
+                                                      BlocProvider.of<LanguageBloc>(context)..add(LoadLanguage(locale: Locale('en','US')));
+                                                    }
                                                   homeCubit.changeValueLanguage(value as String);
                                                 },
                                                 items:

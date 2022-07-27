@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smart_service/bloc/language.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Delievry_Service.dart';
 import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
 import 'package:smart_service/Shared/constant.dart';
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                           top: size.height * 0.17,
                           right: size.width * 0.07,
                           child: Text(
-                            ' مرحبا,ً',
+                            'مرحبا',
                             style: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 18,
