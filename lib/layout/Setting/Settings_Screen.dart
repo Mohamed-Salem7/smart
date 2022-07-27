@@ -3,11 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 import 'package:rating/rating.dart';
 import 'package:select_form_field/select_form_field.dart';
 import 'package:smart_service/Shared/cache_helper.dart';
 import 'package:smart_service/Shared/constant.dart';
-import 'package:smart_service/bloc/language_bloc.dart';
+import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Login/login.dart';
 import 'package:smart_service/layout/Setting/Language_Screen.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
@@ -24,6 +25,7 @@ class SettingsScreen extends StatelessWidget {
         builder: (context, state) {
           var size = MediaQuery.of(context).size;
           var homeCubit = HomeCubit.get(context);
+          var lang =  Provider.of<ProviderLanguage>(context);
           return BuildCondition(
             condition: homeCubit.userModel != null,
             builder: (context) => Scaffold(
@@ -155,15 +157,10 @@ class SettingsScreen extends StatelessWidget {
                                                 dropdownColor:
                                                     const Color(0xff5300bf),
                                                 underline: SizedBox(),
-                                                value: homeCubit.language,
+                                                value: lang.language,
                                                 onChanged: (value) {
-                                                  if (value == 'العربية') {
-                                                    BlocProvider.of<LanguageBloc>(context)..add(LoadLanguage(locale: Locale('ar','SA')));
-                                                  }else
-                                                    {
-                                                      BlocProvider.of<LanguageBloc>(context)..add(LoadLanguage(locale: Locale('en','US')));
-                                                    }
-                                                  homeCubit.changeValueLanguage(value as String);
+                                                  //Provider.of<ProviderLanguage>(context,listen: false).changeLanguage(value as bool);
+                                                  lang.changeLan(value as String);
                                                 },
                                                 items:
                                                     homeCubit.items.map((value) {
@@ -175,6 +172,9 @@ class SettingsScreen extends StatelessWidget {
                                               ),
                                             ),
                                           ],
+                                        ),
+                                        SizedBox(
+                                          width: 20,
                                         ),
                                         const Spacer(),
                                         const Center(

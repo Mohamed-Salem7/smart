@@ -2,11 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
-import 'package:smart_service/bloc/language_bloc.dart';
-import 'package:smart_service/layout/Login/Register_Dealer.dart';
-import 'package:smart_service/layout/Login/login.dart';
-import 'package:smart_service/layout/Main_Screen.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/on_board/splash_screen.dart';
 
 import 'Shared/cache_helper.dart';
@@ -24,9 +21,12 @@ void main() async {
   }
   print(uId);
 
-  runApp(BlocProvider<LanguageBloc>(
-      create: (context) => LanguageBloc(LanguageState.initial()),
-      child: MyApp()));
+  runApp(
+    ChangeNotifierProvider<ProviderLanguage>(
+      create: (context) => ProviderLanguage(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -35,24 +35,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguageBloc, LanguageState>(
-      builder: (context, state) {
-        return MaterialApp(
-          locale: state.locale,
-          localizationsDelegates: const[
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: [
-            Locale('ar', 'AE'),
-            Locale('en', 'US'),
-          ],
-          debugShowCheckedModeBanner: false,
-          title: 'Smart Service',
-          home: ScreenShot(),
-        );
-      },
+    return const MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('ar', 'AE'),
+        Locale('en', 'US'),
+      ],
+      debugShowCheckedModeBanner: false,
+      title: 'Smart Service',
+      home: ScreenShot(),
     );
   }
 }

@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/About_Us.dart';
 import 'package:smart_service/layout/Home_Screen.dart';
 import 'package:smart_service/layout/Setting/Settings_Screen.dart';
@@ -69,16 +71,15 @@ class HomeCubit extends Cubit<HomeState> {
   ];
 
   String language = 'العربية';
-   List<String> items = [
+  List<String> items = [
     'العربية',
     'English',
   ];
 
-   void changeValueLanguage(String value)
-   {
-     language = value;
-     emit(ChangeValueLanguage());
-   }
+  void changeValueLanguage(String value) {
+    language = value;
+    emit(ChangeValueLanguage());
+  }
 
   int nameIndex = 0;
 
@@ -96,13 +97,21 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<BottomNavigationBarItem> item = [
     const BottomNavigationBarItem(
-        icon: Icon(UniconsLine.home_alt), label: 'الرئيسية'),
+      icon: Icon(UniconsLine.home_alt),
+      label: 'الرئيسية',
+    ),
     const BottomNavigationBarItem(
-        icon: Icon(Iconsax.notification), label: 'الإشعارات'),
+      icon: Icon(Iconsax.notification),
+      label: 'الإشعارات',
+    ),
     const BottomNavigationBarItem(
-        icon: Icon(Iconsax.info_circle), label: 'عنا'),
+      icon: Icon(Iconsax.info_circle),
+      label: 'عنا',
+    ),
     const BottomNavigationBarItem(
-        icon: Icon(Iconsax.setting), label: 'إعدادات'),
+      icon: Icon(Iconsax.setting),
+      label: 'إعدادات',
+    ),
   ];
 
   RegisterModel? userModel;
