@@ -59,6 +59,7 @@ dependencies:
   fake_cloud_firestore: ^1.2.4
   intl: ^0.17.0
   select_form_field: ^2.2.0
+  rating: ^1.0.0-dev.1
 
 dev_dependencies:
   flutter_test:

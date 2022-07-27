@@ -16,6 +16,7 @@ void main() async {
   await Firebase.initializeApp();
 
   await CacheHelper.init();
+
   if (uId != null) {
     uId = CacheHelper.getData(key: 'uId');
   }

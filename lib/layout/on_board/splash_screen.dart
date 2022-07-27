@@ -29,11 +29,7 @@ class _ScreenShotState extends State<ScreenShot> {
     );
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(
-          builder: (context) => OnBordingScreen() != null
-              ? (uId != null ? MainScreen() : LoginScreen())
-              : OnBordingScreen(),
-        ),
+        MaterialPageRoute(builder: (context) => OnBordingScreen() != null ? (uId != null ? MainScreen() : LoginScreen()) : OnBordingScreen()),
         ModalRoute.withName('/ScreenOne'));
   }
 

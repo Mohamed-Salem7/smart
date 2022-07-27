@@ -2,6 +2,7 @@ import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:rating/rating.dart';
 import 'package:select_form_field/select_form_field.dart';
 import 'package:smart_service/Shared/cache_helper.dart';
 import 'package:smart_service/Shared/constant.dart';
@@ -152,7 +153,32 @@ class SettingsScreen extends StatelessWidget {
                                 height: size.height * 0.02,
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: ()
+                                {
+                                  final ratingModel = RatingModel(
+                                    id: 1,
+                                    title: null,
+                                    subtitle: 'Rate our app:',
+                                    ratingConfig: RatingConfigModel(
+                                      id: 1,
+                                      ratingSurvey1: 'What can we improve on?',
+                                      ratingSurvey2: 'What can we improve on?',
+                                      ratingSurvey3: 'What can we improve on?',
+                                      ratingSurvey4: 'What can we improve on?',
+                                      ratingSurvey5: 'What you liked the most?',
+                                      items: [
+                                        RatingCriterionModel(id: 1, name: 'Quality of service'),
+                                        RatingCriterionModel(id: 2, name: 'Competence of attendants'),
+                                        RatingCriterionModel(id: 3, name: 'Cleaning the environment'),
+                                        RatingCriterionModel(id: 4, name: 'Waiting time'),
+                                      ],
+                                    ),
+                                  );
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (context) => RatingWidget(controller: MockRatingController(ratingModel)),
+                                  );
+                                },
                                 child: Container(
                                   height: size.height * 0.08,
                                   decoration: BoxDecoration(
@@ -348,5 +374,21 @@ class SettingsScreen extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class MockRatingController extends RatingController {
+  MockRatingController(RatingModel ratingModel) : super(ratingModel);
+
+  @override
+  Future<void> ignoreForEverCallback() async {
+    print('Rating ignored forever!');
+    await Future.delayed(const Duration(seconds: 3));
+  }
+
+  @override
+  Future<void> saveRatingCallback(int rate, List<RatingCriterionModel> selectedCriterions) async {
+    print('Rating saved!\nRate: $rate\nsSelectedItems: $selectedCriterions');
+    await Future.delayed(const Duration(seconds: 3));
   }
 }
