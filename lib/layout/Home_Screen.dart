@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                             child: Row(
                               children: [
                                 Text(
-                                  '${HomeCubit.get(context).userModel!.name}',
+                                   HomeCubit.get(context).userModel!.name,
                                   textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
                                   style: TextStyle(
                                     fontFamily: 'Tajawal',
@@ -250,7 +250,7 @@ Widget buildService(BuildContext context, Size size,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
+            color: Colors.white10,
             offset: Offset.fromDirection(
               1.5,
               10,
@@ -293,7 +293,7 @@ Widget buildService(BuildContext context, Size size,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    servicesModel.title,
+                    isAr ? servicesModel.title : servicesModel.name,
                     style: TextStyle(
                       fontFamily: 'Tajawal',
                       fontSize: 16,

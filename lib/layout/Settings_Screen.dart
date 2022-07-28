@@ -166,7 +166,8 @@ class SettingsScreen extends StatelessWidget {
                                                   );
                                                   print(isAr);
                                                 },
-                                                items: isAr ? homeCubit.items.map((value) {return DropdownMenuItem(
+                                                items:  homeCubit.items.map((value) {
+                                                  return DropdownMenuItem(
                                                     value: value,
                                                     child: Text(
                                                       value,
@@ -175,16 +176,7 @@ class SettingsScreen extends StatelessWidget {
                                                             .grey.shade400,
                                                       ),
                                                     ),
-                                                  );}).toList() : homeCubit.items2.map((value) {return DropdownMenuItem(
-                                                  value: value,
-                                                  child: Text(
-                                                    value,
-                                                    style: TextStyle(
-                                                      color: Colors
-                                                          .grey.shade400,
-                                                    ),
-                                                  ),
-                                                );}).toList(),
+                                                  );}).toList(),
                                               ),
                                             ),
                                           ],

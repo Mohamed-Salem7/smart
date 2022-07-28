@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Choose_Meal.dart';
 import 'package:smart_service/models/Deleviry_Service.dart';
@@ -26,209 +28,228 @@ class DeliveryServiceList extends StatelessWidget {
       child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
+            var lang = Provider.of<ProviderLanguage>(context);
             return Scaffold(
-              body: Column(
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: size.height * 0.32,
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Color(0xffF6C52F),
-                            borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(
-                                40,
-                              ),
-                              bottomLeft: Radius.circular(
-                                40,
+              body: Directionality(
+                textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: size.height * 0.32,
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                              color: Color(0xffF6C52F),
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(
+                                  40,
+                                ),
+                                bottomLeft: Radius.circular(
+                                  40,
+                                ),
                               ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.02),
-                            child: Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: [
-                                Stack(
-                                  children: [
-                                    Positioned(
-                                      top: size.height * 0.08,
-                                      right: size.width * 0.05,
-                                      child: IconButton(
-                                        onPressed: () {
-                                          navigatorTo(context, MainScreen());
-                                        },
-                                        icon: const Icon(
-                                          Icons.arrow_back_ios,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.02),
+                              child: Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Positioned(
+                                        top: size.height * 0.08,
+                                        right: isAr ? size.width * 0.05 : 0,
+                                        left: isAr ? 0 : size.width * 0.05,
+                                        child: Row(
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(
+                                                Icons.arrow_back_ios,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    ),
-                                    Positioned(
-                                      top: size.height * 0.1,
-                                      right: size.width * 0.2,
-                                      child: const Text(
-                                        'خدمة التوصيل المنزلي',
-                                        style: TextStyle(
-                                          fontFamily: 'Tajawal',
-                                          fontSize: 20,
-                                          color: const Color(0xff0f0a39),
-                                          fontWeight: FontWeight.w700,
-                                          height: 0.6,
-                                        ),
-                                        textHeightBehavior: TextHeightBehavior(
-                                            applyHeightToFirstAscent: false),
-                                        textAlign: TextAlign.right,
-                                        softWrap: false,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: size.height * 0.08,
-                                      left: size.width * 0.02,
-                                      child: IconButton(
-                                        onPressed: () {
-                                          //navigatorFinished(context, const HomeScreen());
-                                        },
-                                        icon: const Icon(
-                                          UniconsLine.search,
+                                      Positioned(
+                                        top: size.height * 0.1,
+                                        right: isAr ? size.width * 0.15 : 0,
+                                        left: isAr ? 0 : size.width * 0.15,
+                                        child:  Row(
+                                          children: [
+                                            Text(
+                                              lang.getText('Service_Delivery') as String,
+                                              style: const TextStyle(
+                                                fontFamily: 'Tajawal',
+                                                fontSize: 20,
+                                                color: const Color(0xff0f0a39),
+                                                fontWeight: FontWeight.w700,
+                                                height: 0.6,
+                                              ),
+                                              textHeightBehavior: const TextHeightBehavior(
+                                                  applyHeightToFirstAscent: false),
+                                              textAlign: isAr ? TextAlign.right : TextAlign.left,
+                                              softWrap: false,
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  height: size.height * 0.115,
-                                  child: ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) => Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        SizedBox(
-                                          height: size.height * 0.08,
+                                      Positioned(
+                                        top: size.height * 0.08,
+                                        right: isAr ? 0 : size.width * 0.05 ,
+                                        left: isAr ? size.width * 0.05 : 0,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                print('Hello');
+                                              },
+                                              icon: const Icon(
+                                                UniconsLine.search,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        InkWell(
-                                          onTap: () {
-                                            HomeCubit.get(context)
-                                                .changeName(index);
-                                          },
-                                          child: Container(
-                                            height: size.height * 0.035,
-                                            width: name(size, index),
-                                            decoration: BoxDecoration(
-                                                color: color(index, context),
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
-                                            child: Center(
-                                              child: Text(
-                                                HomeCubit.get(context)
-                                                    .name2[index],
-                                                style: TextStyle(
-                                                  fontFamily: 'Tajawal',
-                                                  fontSize: 14,
-                                                  color: color2(index, context),
-                                                  letterSpacing:
-                                                      -0.33764714050292965,
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: size.height * 0.115,
+                                    child: ListView.separated(
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) => Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          SizedBox(
+                                            height: size.height * 0.08,
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              HomeCubit.get(context)
+                                                  .changeName(index);
+                                            },
+                                            child: Container(
+                                              height: size.height * 0.035,
+                                              width: name(size, index),
+                                              decoration: BoxDecoration(
+                                                  color: color(index, context),
+                                                  borderRadius:
+                                                      BorderRadius.circular(15)),
+                                              child: Center(
+                                                child: Text(
+                                                  isAr ? HomeCubit.get(context).name2[index] : HomeCubit.get(context).names2[index],
+                                                  style: TextStyle(
+                                                    fontFamily: 'Tajawal',
+                                                    fontSize: 14,
+                                                    color: color2(index, context),
+                                                    letterSpacing:
+                                                        -0.33764714050292965,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  softWrap: false,
                                                 ),
-                                                textAlign: TextAlign.center,
-                                                softWrap: false,
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
+                                      separatorBuilder: (context, index) =>
+                                          SizedBox(
+                                        width: size.width * 0.02,
+                                      ),
+                                      itemCount:
+                                          HomeCubit.get(context).name2.length,
                                     ),
-                                    separatorBuilder: (context, index) =>
-                                        SizedBox(
-                                      width: size.width * 0.02,
-                                    ),
-                                    itemCount:
-                                        HomeCubit.get(context).name2.length,
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        if (HomeCubit.get(context).nameIndex == 0)
-                          Padding(
-                            padding: EdgeInsets.only(top: size.height * 0.23),
-                            child: ListView.builder(
-                              itemCount: HomeCubit.get(context).all2List.length,
-                              physics: const BouncingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => buildProduct(
-                                  context,
-                                  size,
-                                  HomeCubit.get(context).all2List[index],
-                                  index),
+                          if (HomeCubit.get(context).nameIndex == 0)
+                            Padding(
+                              padding: EdgeInsets.only(top: size.height * 0.23),
+                              child: ListView.builder(
+                                itemCount: HomeCubit.get(context).all2List.length,
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) => buildProduct(
+                                    context,
+                                    size,
+                                    HomeCubit.get(context).all2List[index],
+                                    index),
+                              ),
                             ),
-                          ),
-                        if (HomeCubit.get(context).nameIndex == 1)
-                          Padding(
-                            padding: EdgeInsets.only(top: size.height * 0.23),
-                            child: ListView.builder(
-                              itemCount:
-                                  HomeCubit.get(context).listRestaurants.length,
-                              physics: const BouncingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => buildProduct(
-                                  context,
-                                  size,
-                                  HomeCubit.get(context).listRestaurants[index],
-                                  index),
+                          if (HomeCubit.get(context).nameIndex == 1)
+                            Padding(
+                              padding: EdgeInsets.only(top: size.height * 0.23),
+                              child: ListView.builder(
+                                itemCount:
+                                    HomeCubit.get(context).listRestaurants.length,
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) => buildProduct(
+                                    context,
+                                    size,
+                                    HomeCubit.get(context).listRestaurants[index],
+                                    index),
+                              ),
                             ),
-                          ),
-                        if (HomeCubit.get(context).nameIndex == 2)
-                          Padding(
-                            padding: EdgeInsets.only(top: size.height * 0.23),
-                            child: ListView.builder(
-                              itemCount:
-                                  HomeCubit.get(context).listCafes.length,
-                              physics: const BouncingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => buildProduct(
-                                  context,
-                                  size,
-                                  HomeCubit.get(context).listCafes[index],
-                                  index),
+                          if (HomeCubit.get(context).nameIndex == 2)
+                            Padding(
+                              padding: EdgeInsets.only(top: size.height * 0.23),
+                              child: ListView.builder(
+                                itemCount:
+                                    HomeCubit.get(context).listCafes.length,
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) => buildProduct(
+                                    context,
+                                    size,
+                                    HomeCubit.get(context).listCafes[index],
+                                    index),
+                              ),
                             ),
-                          ),
-                        if (HomeCubit.get(context).nameIndex == 3)
-                          Padding(
-                            padding: EdgeInsets.only(top: size.height * 0.23),
-                            child: ListView.builder(
-                              itemCount:
-                                  HomeCubit.get(context).marketList.length,
-                              physics: const BouncingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => buildProduct(
-                                  context,
-                                  size,
-                                  HomeCubit.get(context).marketList[index],
-                                  index),
+                          if (HomeCubit.get(context).nameIndex == 3)
+                            Padding(
+                              padding: EdgeInsets.only(top: size.height * 0.23),
+                              child: ListView.builder(
+                                itemCount:
+                                    HomeCubit.get(context).marketList.length,
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) => buildProduct(
+                                    context,
+                                    size,
+                                    HomeCubit.get(context).marketList[index],
+                                    index),
+                              ),
                             ),
-                          ),
-                        if (HomeCubit.get(context).nameIndex == 4)
-                          Padding(
-                            padding: EdgeInsets.only(top: size.height * 0.23),
-                            child: ListView.builder(
-                              itemCount:
-                                  HomeCubit.get(context).listDelivery.length,
-                              physics: const BouncingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => buildProduct(
-                                  context,
-                                  size,
-                                  HomeCubit.get(context).listDelivery[index],
-                                  index),
+                          if (HomeCubit.get(context).nameIndex == 4)
+                            Padding(
+                              padding: EdgeInsets.only(top: size.height * 0.23),
+                              child: ListView.builder(
+                                itemCount:
+                                    HomeCubit.get(context).listDelivery.length,
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) => buildProduct(
+                                    context,
+                                    size,
+                                    HomeCubit.get(context).listDelivery[index],
+                                    index),
+                              ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           }),

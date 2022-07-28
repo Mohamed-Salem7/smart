@@ -24,6 +24,8 @@ import '../../../Shared/constant.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(InitialHomeState());
 
+  //static BuildContext get context =>  BlocProvider.of(context);
+
   static HomeCubit get(context) => BlocProvider.of(context);
 
   List<Widget> screen = [
@@ -42,6 +44,15 @@ class HomeCubit extends Cubit<HomeState> {
     'دهان',
     'تنظيف منازل'
   ];
+  List<String> names = [
+    'All',
+    'Electric',
+    'Pipes',
+    'Conditionneurs',
+    'Maintenance',
+    'Peinture',
+    'Cleaning House'
+  ];
 
   List<String> name2 = [
     'الكل',
@@ -49,6 +60,13 @@ class HomeCubit extends Cubit<HomeState> {
     'كافيهات',
     'سوبر ماركت',
     'شركات توصيل',
+  ];
+  List<String> names2 = [
+    'All',
+    'Restaurants',
+    'Cafes',
+    'Market',
+    'Companies Delivery',
   ];
 
   List<String> nameOrder = [

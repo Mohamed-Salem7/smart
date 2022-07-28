@@ -26,149 +26,152 @@ class ChooseMeal extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             return Scaffold(
-              body: Column(
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: size.height * 0.32,
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Color(0xffF6C52F),
-                            borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(
-                                40,
-                              ),
-                              bottomLeft: Radius.circular(
-                                40,
+              body: Directionality(
+                textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: size.height * 0.32,
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                              color: Color(0xffF6C52F),
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(
+                                  40,
+                                ),
+                                bottomLeft: Radius.circular(
+                                  40,
+                                ),
                               ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.02),
-                            child: Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: [
-                                Positioned(
-                                  top: size.height * 0.08,
-                                  right: size.width * 0.05,
-                                  child: Container(
-                                    width: size.width,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            IconButton(
-                                              onPressed: () {
-                                                navigatorTo(
-                                                    context, MainScreen());
-                                              },
-                                              icon: const Icon(
-                                                Icons.arrow_back_ios,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.02),
+                              child: Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Positioned(
+                                    top: size.height * 0.08,
+                                    right: size.width * 0.05,
+                                    child: Container(
+                                      width: size.width,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  navigatorTo(
+                                                      context, MainScreen());
+                                                },
+                                                icon: const Icon(
+                                                  Icons.arrow_back_ios,
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: size.width * 0.05,
-                                            ),
-                                            const Text(
-                                              'مطعم كنتاكي',
-                                              style: TextStyle(
-                                                fontFamily: 'Tajawal',
-                                                fontSize: 20,
-                                                color: const Color(0xff0f0a39),
-                                                fontWeight: FontWeight.w700,
-                                                height: 0.6,
+                                              SizedBox(
+                                                width: size.width * 0.05,
                                               ),
-                                              textHeightBehavior:
-                                                  TextHeightBehavior(
-                                                      applyHeightToFirstAscent:
-                                                          false),
-                                              textAlign: TextAlign.right,
-                                              softWrap: false,
-                                            ),
-                                            SizedBox(
-                                              width: size.width * 0.26,
-                                            ),
-                                            IconButton(
-                                              onPressed: () {
-                                                //navigatorFinished(context, const HomeScreen());
-                                              },
-                                              icon: const Icon(
-                                                UniconsLine.search,
+                                              const Text(
+                                                'مطعم كنتاكي',
+                                                style: TextStyle(
+                                                  fontFamily: 'Tajawal',
+                                                  fontSize: 20,
+                                                  color: const Color(0xff0f0a39),
+                                                  fontWeight: FontWeight.w700,
+                                                  height: 0.6,
+                                                ),
+                                                textHeightBehavior:
+                                                    TextHeightBehavior(
+                                                        applyHeightToFirstAscent:
+                                                            false),
+                                                textAlign: TextAlign.right,
+                                                softWrap: false,
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: size.height * 0.03,
-                                        ),
-                                        Text(
-                                          'تجد هنا قائمة بالوجبات المتوفرة داخل المطعم',
-                                          style: TextStyle(
-                                            fontFamily: 'Tajawal',
-                                            fontSize: 16,
-                                            color: Color(0xff5300BF),
-                                            fontWeight: FontWeight.w700,
-                                            height: size.height * 0.001,
+                                              SizedBox(
+                                                width: size.width * 0.26,
+                                              ),
+                                              IconButton(
+                                                onPressed: () {
+                                                  //navigatorFinished(context, const HomeScreen());
+                                                },
+                                                icon: const Icon(
+                                                  UniconsLine.search,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          textHeightBehavior:
-                                              TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                      false),
-                                          textAlign: TextAlign.right,
-                                          softWrap: false,
-                                        ),
-                                        SizedBox(
-                                          height: size.height * 0.01,
-                                        ),
-                                        Text(
-                                          'يمكنك اختيار ما تريد تناوله اليوم',
-                                          style: TextStyle(
-                                            fontFamily: 'Tajawal',
-                                            fontSize: 14,
-                                            color: Color(0xff383838),
-                                            fontWeight: FontWeight.w300,
-                                            height: size.height * 0.001,
+                                          SizedBox(
+                                            height: size.height * 0.03,
                                           ),
-                                          textHeightBehavior:
-                                              TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                      false),
-                                          textAlign: TextAlign.right,
-                                          softWrap: false,
-                                        ),
-                                      ],
+                                          Text(
+                                            'تجد هنا قائمة بالوجبات المتوفرة داخل المطعم',
+                                            style: TextStyle(
+                                              fontFamily: 'Tajawal',
+                                              fontSize: 16,
+                                              color: Color(0xff5300BF),
+                                              fontWeight: FontWeight.w700,
+                                              height: size.height * 0.001,
+                                            ),
+                                            textHeightBehavior:
+                                                TextHeightBehavior(
+                                                    applyHeightToFirstAscent:
+                                                        false),
+                                            textAlign: TextAlign.right,
+                                            softWrap: false,
+                                          ),
+                                          SizedBox(
+                                            height: size.height * 0.01,
+                                          ),
+                                          Text(
+                                            'يمكنك اختيار ما تريد تناوله اليوم',
+                                            style: TextStyle(
+                                              fontFamily: 'Tajawal',
+                                              fontSize: 14,
+                                              color: Color(0xff383838),
+                                              fontWeight: FontWeight.w300,
+                                              height: size.height * 0.001,
+                                            ),
+                                            textHeightBehavior:
+                                                TextHeightBehavior(
+                                                    applyHeightToFirstAscent:
+                                                        false),
+                                            textAlign: TextAlign.right,
+                                            softWrap: false,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: size.height * 0.23),
-                          child: ListView.builder(
-                            itemCount: HomeCubit.get(context).allList.length,
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) => buildProduct(
-                              context,
-                              size,
-                              HomeCubit.get(context).allList[index],
-                              index,
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.23),
+                            child: ListView.builder(
+                              itemCount: HomeCubit.get(context).allList.length,
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => buildProduct(
+                                context,
+                                size,
+                                HomeCubit.get(context).allList[index],
+                                index,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           }),

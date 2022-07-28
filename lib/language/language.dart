@@ -29,6 +29,13 @@ class ProviderLanguage with ChangeNotifier {
     "Phone" : "رقم الهاتف",
     "Email" : "البريد الإلكتروني",
     "Url" : "موقعنا",
+    "Service_Matin_House" : "خدمة صيانة المنازل",
+    "Next" : "التالي",
+    "Ok" : "موافق",
+    "Back" : "رجوع",
+    "Shekel" : "شيكل",
+    "The_Total_Amount" : "المبلغ الإجمالي : ",
+    "Service_Delivery" : "خدمة التوصيل المنزلي ",
   };
   Map<String, Object> textEn = {
     "Home": "Home",
@@ -54,6 +61,13 @@ class ProviderLanguage with ChangeNotifier {
     "Phone" : "Phone Number",
     "Email" : "Email",
     "Url" : "The our site",
+    "Service_Matin_House" : "Home Maintenance Service",
+    "Next" : "Next",
+    "Ok" : "OK",
+    "Back" : "Back",
+    "Shekel" : "Shekel",
+    "The_Total_Amount" : "The Total Amount : ",
+    "Service_Delivery" : "Home Delivery Service",
   };
 
   changeLanguage(bool language) {
