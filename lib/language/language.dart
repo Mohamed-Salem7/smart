@@ -75,6 +75,7 @@ class ProviderLanguage with ChangeNotifier {
     notifyListeners();
   }
 
+
   changeLan(String lang) {
     if (language != lang) isAr = !isAr;
     language = lang;

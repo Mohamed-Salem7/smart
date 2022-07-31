@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/language/language.dart';
@@ -80,10 +81,12 @@ class DetailsService extends StatelessWidget {
                                         top: size.height * 0.1,
                                         right: isAr ? size.width * 0.15 : 0,
                                         left: isAr ? 0 : size.width * 0.15,
-                                        child:  Row(
+                                        child: Row(
                                           children: [
                                             Text(
-                                              lang.getText('Service_Matin_House') as String,
+                                              lang.getText(
+                                                      'Service_Matin_House')
+                                                  as String,
                                               style: const TextStyle(
                                                 fontFamily: 'Tajawal',
                                                 fontSize: 20,
@@ -91,9 +94,13 @@ class DetailsService extends StatelessWidget {
                                                 fontWeight: FontWeight.w700,
                                                 height: 0.6,
                                               ),
-                                              textHeightBehavior: const TextHeightBehavior(
-                                                  applyHeightToFirstAscent: false),
-                                              textAlign: isAr ? TextAlign.right : TextAlign.left,
+                                              textHeightBehavior:
+                                                  const TextHeightBehavior(
+                                                      applyHeightToFirstAscent:
+                                                          false),
+                                              textAlign: isAr
+                                                  ? TextAlign.right
+                                                  : TextAlign.left,
                                               softWrap: false,
                                             ),
                                           ],
@@ -101,10 +108,11 @@ class DetailsService extends StatelessWidget {
                                       ),
                                       Positioned(
                                         top: size.height * 0.08,
-                                        right: isAr ? 0 : size.width * 0.05 ,
+                                        right: isAr ? 0 : size.width * 0.05,
                                         left: isAr ? size.width * 0.05 : 0,
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
                                           children: [
                                             IconButton(
                                               onPressed: () {
@@ -141,24 +149,36 @@ class DetailsService extends StatelessWidget {
                                                 height: size.height * 0.035,
                                                 width: size.width * 0.22,
                                                 decoration: BoxDecoration(
-                                                    color: color(index, context),
+                                                    color:
+                                                        color(index, context),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
                                                 child: Center(
                                                   child: Padding(
-                                                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.001),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal:
+                                                                size.width *
+                                                                    0.001),
                                                     child: Text(
-                                                      isAr ? HomeCubit.get(context).name[index] : HomeCubit.get(context).names[index],
+                                                      isAr
+                                                          ? HomeCubit.get(
+                                                                  context)
+                                                              .name[index]
+                                                          : HomeCubit.get(
+                                                                  context)
+                                                              .names[index],
                                                       style: TextStyle(
                                                         fontFamily: 'Tajawal',
                                                         fontSize: 14,
-                                                        color:
-                                                            color2(index, context),
+                                                        color: color2(
+                                                            index, context),
                                                         letterSpacing:
                                                             -0.33764714050292965,
                                                       ),
-                                                      textAlign: TextAlign.center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       softWrap: false,
                                                     ),
                                                   ),
@@ -184,7 +204,8 @@ class DetailsService extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
-                                itemCount: HomeCubit.get(context).allList.length,
+                                itemCount:
+                                    HomeCubit.get(context).allList.length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
@@ -198,8 +219,9 @@ class DetailsService extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
-                                itemCount:
-                                    HomeCubit.get(context).electricityList.length,
+                                itemCount: HomeCubit.get(context)
+                                    .electricityList
+                                    .length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
@@ -228,8 +250,9 @@ class DetailsService extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
-                                itemCount:
-                                    HomeCubit.get(context).conditionerList.length,
+                                itemCount: HomeCubit.get(context)
+                                    .conditionerList
+                                    .length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
@@ -243,8 +266,9 @@ class DetailsService extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
-                                itemCount:
-                                    HomeCubit.get(context).maintenanceList.length,
+                                itemCount: HomeCubit.get(context)
+                                    .maintenanceList
+                                    .length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
@@ -312,7 +336,7 @@ class DetailsService extends StatelessWidget {
                                     ),
                                     color: const Color(0xff5300BF),
                                   ),
-                                  child:  Center(
+                                  child: Center(
                                     child: Text(
                                       lang.getText('Next') as String,
                                       style: const TextStyle(
@@ -360,7 +384,7 @@ Widget buildProduct(
       child: Column(
         children: [
           Container(
-            height: size.height * 0.22,
+            height: (HomeCubit.get(context).isSelect && HomeCubit.get(context).count >= 1)?  size.height * 0.2 : size.height * 0.18,
             decoration: BoxDecoration(
               boxShadow: <BoxShadow>[
                 BoxShadow(
@@ -383,11 +407,11 @@ Widget buildProduct(
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: size.width * 0.025,
-                      vertical: size.height * 0.005),
+                      vertical: size.height * 0.002),
                   child: Row(
                     children: [
                       Text(
-                        isAr ?  serviceModel.title : serviceModel.title2,
+                        isAr ? serviceModel.title : serviceModel.title2,
                         style: const TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 21,
@@ -401,12 +425,12 @@ Widget buildProduct(
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          UniconsLine.circle,
-                          color: Color(0xff707070),
-                        ),
-                      )
+                        onPressed: () {
+                          HomeCubit.get(context).changeSelect();
+                          print(HomeCubit.get(context).count);
+                        },
+                        icon: HomeCubit.get(context).select,
+                      ),
                     ],
                   ),
                 ),
@@ -446,7 +470,8 @@ Widget buildProduct(
                         textAlign: TextAlign.right,
                       ),
                       Text(
-                        Provider.of<ProviderLanguage>(context).getText('Shekel') as String,
+                        Provider.of<ProviderLanguage>(context).getText('Shekel')
+                            as String,
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 12,
@@ -460,7 +485,10 @@ Widget buildProduct(
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: ()
+                        {
+                          HomeCubit.get(context).decrementItem();
+                        },
                         icon: const Icon(
                           UniconsLine.minus_circle,
                           color: Color(0xff5300BF),
@@ -468,17 +496,20 @@ Widget buildProduct(
                         ),
                       ),
                       Text(
-                        '0',
+                        '${HomeCubit.get(context).count}',
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 20,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                           fontWeight: FontWeight.w700,
                           height: size.height * 0.003,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: ()
+                        {
+                          HomeCubit.get(context).incrementItem();
+                        },
                         icon: const Icon(
                           UniconsLine.plus_circle,
                           size: 25,
@@ -488,55 +519,58 @@ Widget buildProduct(
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.025,
-                      vertical: size.height * 0.005),
-                  child: Row(
-                    children: [
-                      const Spacer(),
-                      Text(
-                        Provider.of<ProviderLanguage>(context).getText('The_Total_Amount') as String,
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          fontSize: 12,
-                          color: const Color(0xff5300bf),
-                          fontWeight: FontWeight.w700,
-                          height: size.height * 0.002,
+                if (HomeCubit.get(context).isSelect && HomeCubit.get(context).count >= 1)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: size.width * 0.025,
+                        vertical: size.height * 0.005),
+                    child: Row(
+                      children: [
+                        const Spacer(),
+                        Text(
+                          Provider.of<ProviderLanguage>(context)
+                              .getText('The_Total_Amount') as String,
+                          style: TextStyle(
+                            fontFamily: 'Tajawal',
+                            fontSize: 12,
+                            color: const Color(0xff5300bf),
+                            fontWeight: FontWeight.w700,
+                            height: size.height * 0.002,
+                          ),
+                          textHeightBehavior: TextHeightBehavior(
+                              applyHeightToFirstAscent: false),
+                          textAlign: TextAlign.right,
                         ),
-                        textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
-                        textAlign: TextAlign.right,
-                      ),
-                      Text(
-                        serviceModel.price,
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          fontSize: 12,
-                          color: const Color(0xff000000),
-                          fontWeight: FontWeight.w700,
-                          height: size.height * 0.002,
+                        Text(
+                          '${int.parse(serviceModel.price) * HomeCubit.get(context).count}',
+                          style: TextStyle(
+                            fontFamily: 'Tajawal',
+                            fontSize: 12,
+                            color: const Color(0xff000000),
+                            fontWeight: FontWeight.w700,
+                            height: size.height * 0.002,
+                          ),
+                          textHeightBehavior: TextHeightBehavior(
+                              applyHeightToFirstAscent: false),
+                          textAlign: TextAlign.right,
                         ),
-                        textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
-                        textAlign: TextAlign.right,
-                      ),
-                      Text(
-                        Provider.of<ProviderLanguage>(context).getText('Shekel') as String,
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          fontSize: 12,
-                          color: const Color(0xff000000),
-                          fontWeight: FontWeight.w700,
-                          height: size.height * 0.002,
+                        Text(
+                          Provider.of<ProviderLanguage>(context)
+                              .getText('Shekel') as String,
+                          style: TextStyle(
+                            fontFamily: 'Tajawal',
+                            fontSize: 12,
+                            color: const Color(0xff000000),
+                            fontWeight: FontWeight.w700,
+                            height: size.height * 0.002,
+                          ),
+                          textHeightBehavior: TextHeightBehavior(
+                              applyHeightToFirstAscent: false),
+                          textAlign: TextAlign.right,
                         ),
-                        textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
-                        textAlign: TextAlign.right,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           ),

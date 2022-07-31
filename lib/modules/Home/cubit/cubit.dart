@@ -98,9 +98,35 @@ class HomeCubit extends Cubit<HomeState> {
     'العربية',
   ];
 
-  void changeValueLanguage(String value) {
-    language = value;
-    emit(ChangeValueLanguage());
+  bool isSelect = false;
+
+  Icon select = const Icon(Icons.radio_button_off);
+  List<int> num =[];
+  changeSelect() {
+    isSelect = !isSelect;
+    select = isSelect
+        ? const Icon(
+            Icons.radio_button_on,
+            color: Color(0xff5300BF),
+          )
+        : const Icon(
+            Icons.radio_button_off,
+            color: Color(0xff707070),
+          );
+    emit(ChangeSelectItem());
+  }
+
+  int count = 0;
+
+
+  void incrementItem() {
+    count++;
+    emit(IncrementSelectItem());
+  }
+
+  void decrementItem() {
+    if (count >= 1) count--;
+    emit(DecrementSelectItem());
   }
 
   int nameIndex = 0;

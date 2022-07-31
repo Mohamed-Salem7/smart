@@ -14,7 +14,7 @@ class ServiceModel {
     required this.name2,
   });
 
-  ServiceModel.fromJson(Map<String, dynamic> json) {
+  ServiceModel.fromJson(Map<dynamic, dynamic> json) {
     name = json['name'] ?? ' ';
     title = json['title'] ?? ' ';
     price = json['price'] ?? ' ';

@@ -50,4 +50,10 @@ class ErrorLogoutState extends HomeState {
   final String error;
   ErrorLogoutState(this.error);
 }
-class ChangeValueLanguage extends HomeState {}
+
+
+class ChangeSelectItem extends HomeState {}
+
+class IncrementSelectItem extends HomeState {}
+
+class DecrementSelectItem extends HomeState {}
