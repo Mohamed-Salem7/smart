@@ -17,113 +17,116 @@ class RevisionDetails extends StatelessWidget {
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return Scaffold(
-            body: Column(
-              children: [
-                Container(
-                  height: size.height * 0.19,
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF6C52F),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(
-                        50,
-                      ),
-                      bottomLeft: Radius.circular(
-                        50,
+          return Directionality(
+            textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
+            child: Scaffold(
+              body: Column(
+                children: [
+                  Container(
+                    height: size.height * 0.19,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffF6C52F),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(
+                          50,
+                        ),
+                        bottomLeft: Radius.circular(
+                          50,
+                        ),
                       ),
                     ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: size.height * 0.1,
-                        right: size.width * 0.05,
-                        child: IconButton(
-                          onPressed: () {
-                            navigatorFinished(context, const DetailsOrder());
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: size.height * 0.12,
-                        right: size.width * 0.2,
-                        child: Text(
-                          'مراجعة تفاصيل الطلب',
-                          style: TextStyle(
-                            fontFamily: 'Tajawal',
-                            fontSize: 20,
-                            color: const Color(0xff0f0a39),
-                            fontWeight: FontWeight.w700,
-                            height: size.height * 0.001,
-                          ),
-                          textAlign: TextAlign.right,
-                          softWrap: false,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: size.height * 0.05,
-                          ),
-                          buildOrder(context, size),
-                        ],
-                      )),
-                ),
-                Container(
-                  height: size.height * 0.1,
-                  width: double.infinity,
-                  color: Color(0xffFFFFFF),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: size.width * 0.0525,
-                        vertical: size.height * 0.02),
-                    child: Column(
+                    child: Stack(
                       children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Align(
-                            alignment: AlignmentDirectional.centerEnd,
-                            child: Container(
-                              height: size.height * 0.05,
-                              width: size.width * 0.3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                                color: const Color(0xff5300BF),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'موافق',
-                                  style: TextStyle(
-                                    fontFamily: 'Tajawal',
-                                    fontSize: 14,
-                                    color: Color(0xffffffff),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                  softWrap: false,
-                                ),
-                              ),
+                        Positioned(
+                          top: size.height * 0.1,
+                          right: size.width * 0.05,
+                          child: IconButton(
+                            onPressed: () {
+                              navigatorFinished(context, const DetailsOrder());
+                            },
+                            icon: const Icon(
+                              Icons.arrow_back_ios,
                             ),
+                          ),
+                        ),
+                        Positioned(
+                          top: size.height * 0.12,
+                          right: size.width * 0.2,
+                          child: Text(
+                            'مراجعة تفاصيل الطلب',
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              fontSize: 20,
+                              color: const Color(0xff0f0a39),
+                              fontWeight: FontWeight.w700,
+                              height: size.height * 0.001,
+                            ),
+                            textAlign: TextAlign.right,
+                            softWrap: false,
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height * 0.05,
+                            ),
+                            buildOrder(context, size),
+                          ],
+                        )),
+                  ),
+                  Container(
+                    height: size.height * 0.1,
+                    width: double.infinity,
+                    color: Color(0xffFFFFFF),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.width * 0.0525,
+                          vertical: size.height * 0.02),
+                      child: Column(
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: Container(
+                                height: size.height * 0.05,
+                                width: size.width * 0.3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
+                                  color: const Color(0xff5300BF),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'موافق',
+                                    style: TextStyle(
+                                      fontFamily: 'Tajawal',
+                                      fontSize: 14,
+                                      color: Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    softWrap: false,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
