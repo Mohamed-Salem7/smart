@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Main_Screen.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Meal_Details.dart';
 import 'package:smart_service/models/Service_Model.dart';
@@ -55,7 +57,8 @@ class ChooseMeal extends StatelessWidget {
                                 children: [
                                   Positioned(
                                     top: size.height * 0.08,
-                                    right: size.width * 0.05,
+                                    right: isAr ? size.width * 0.05 : 0,
+                                    left: isAr ? 0 : size.width * 0.05,
                                     child: Container(
                                       width: size.width,
                                       child: Column(
@@ -78,12 +81,12 @@ class ChooseMeal extends StatelessWidget {
                                               SizedBox(
                                                 width: size.width * 0.05,
                                               ),
-                                              const Text(
+                                               Text(
                                                 'مطعم كنتاكي',
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontFamily: 'Tajawal',
                                                   fontSize: 20,
-                                                  color: const Color(0xff0f0a39),
+                                                  color:  Color(0xff0f0a39),
                                                   fontWeight: FontWeight.w700,
                                                   height: 0.6,
                                                 ),
@@ -91,7 +94,7 @@ class ChooseMeal extends StatelessWidget {
                                                     TextHeightBehavior(
                                                         applyHeightToFirstAscent:
                                                             false),
-                                                textAlign: TextAlign.right,
+                                                textAlign: isAr ? TextAlign.right : TextAlign.left,
                                                 softWrap: false,
                                               ),
                                               SizedBox(
@@ -110,27 +113,37 @@ class ChooseMeal extends StatelessWidget {
                                           SizedBox(
                                             height: size.height * 0.03,
                                           ),
-                                          Text(
-                                            'تجد هنا قائمة بالوجبات المتوفرة داخل المطعم',
-                                            style: TextStyle(
-                                              fontFamily: 'Tajawal',
-                                              fontSize: 16,
-                                              color: Color(0xff5300BF),
-                                              fontWeight: FontWeight.w700,
-                                              height: size.height * 0.001,
+                                          Container(
+                                            width: size.width * 0.6,
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    Provider.of<ProviderLanguage>(context).getText('Item1') as String,
+                                                    maxLines: 2,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                      fontFamily: 'Tajawal',
+                                                      fontSize: 16,
+                                                      color: Color(0xff5300BF),
+                                                      fontWeight: FontWeight.w700,
+                                                      height: size.height * 0.001,
+                                                    ),
+                                                    textHeightBehavior: TextHeightBehavior(
+                                                            applyHeightToFirstAscent:
+                                                                false),
+                                                    textAlign: isAr ? TextAlign.right : TextAlign.left,
+                                                    softWrap: false,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            textHeightBehavior:
-                                                TextHeightBehavior(
-                                                    applyHeightToFirstAscent:
-                                                        false),
-                                            textAlign: TextAlign.right,
-                                            softWrap: false,
                                           ),
                                           SizedBox(
                                             height: size.height * 0.01,
                                           ),
                                           Text(
-                                            'يمكنك اختيار ما تريد تناوله اليوم',
+                                            Provider.of<ProviderLanguage>(context).getText('Item2') as String,
                                             style: TextStyle(
                                               fontFamily: 'Tajawal',
                                               fontSize: 14,
@@ -138,11 +151,10 @@ class ChooseMeal extends StatelessWidget {
                                               fontWeight: FontWeight.w300,
                                               height: size.height * 0.001,
                                             ),
-                                            textHeightBehavior:
-                                                TextHeightBehavior(
+                                            textHeightBehavior: TextHeightBehavior(
                                                     applyHeightToFirstAscent:
                                                         false),
-                                            textAlign: TextAlign.right,
+                                            textAlign: isAr ? TextAlign.right : TextAlign.left,
                                             softWrap: false,
                                           ),
                                         ],
@@ -300,7 +312,7 @@ Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
                             textAlign: TextAlign.right,
                           ),
                           Text(
-                            'شيكل',
+                            Provider.of<ProviderLanguage>(context).getText('Shekel') as String,
                             style: TextStyle(
                               fontFamily: 'Tajawal',
                               fontSize: 14,
@@ -309,7 +321,7 @@ Widget buildProduct(BuildContext context, Size size, ServiceModel serviceModel,
                               height: size.height * 0.002,
                             ),
                             textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: false),
-                            textAlign: TextAlign.right,
+                            textAlign: isAr ? TextAlign.right : TextAlign.left,
                           ),
                           Spacer(),
                           InkWell(

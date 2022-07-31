@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_service/language/language.dart';
+import 'package:smart_service/layout/Login/login.dart';
+import 'package:smart_service/layout/on_board/on_boarding.dart';
 import 'package:smart_service/layout/on_board/splash_screen.dart';
 
 import 'Shared/cache_helper.dart';
@@ -38,15 +40,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('ar', 'AE'),
-        Locale('en', 'US'),
-      ],
       debugShowCheckedModeBanner: false,
       title: 'Smart Service',
       home: ScreenShot(),

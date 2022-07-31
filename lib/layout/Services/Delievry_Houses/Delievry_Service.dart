@@ -320,38 +320,55 @@ Widget buildProduct(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '${serviceModel.title}',
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          fontSize: 16,
-                          color: Color(0xff383838),
-                          fontWeight: FontWeight.w700,
-                          height: size.height * 0.001,
+                      SizedBox(
+                        width : size.width * 0.58,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                isAr ? '${serviceModel.title}' : '${serviceModel.title2}',
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontFamily: 'Tajawal',
+                                  fontSize: 16,
+                                  color: Color(0xff383838),
+                                  fontWeight: FontWeight.w700,
+                                  height: size.height * 0.001,
+                                ),
+                                textHeightBehavior:
+                                    TextHeightBehavior(applyHeightToFirstAscent: false),
+                                textAlign:  isAr ? TextAlign.right : TextAlign.left,
+                                softWrap: false,
+                              ),
+                            ),
+                          ],
                         ),
-                        textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
-                        textAlign: TextAlign.right,
-                        softWrap: false,
                       ),
                       SizedBox(
                         height: size.height * 0.01,
                       ),
                       Container(
-                        width: size.width * 0.37,
-                        child: Text(
-                          serviceModel.name,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontFamily: 'Tajawal',
-                            fontSize: 14,
-                            color: Color(0xa8000000),
-                            height: size.height * 0.001,
-                          ),
-                          textHeightBehavior:
-                              TextHeightBehavior(applyHeightToFirstAscent: false),
-                          textAlign: TextAlign.right,
+                        width: size.width * 0.47,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                isAr ? serviceModel.name: serviceModel.name2,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontFamily: 'Tajawal',
+                                  fontSize: 14,
+                                  color: Color(0xa8000000),
+                                  height: size.height * 0.001,
+                                ),
+                                textHeightBehavior:
+                                    TextHeightBehavior(applyHeightToFirstAscent: false),
+                                textAlign: isAr ? TextAlign.right : TextAlign.left,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
@@ -401,7 +418,7 @@ Widget timenew(int index, Size size,DeliveryModel deliveryModel) {
     width: size.width * 0.25,
     alignment: AlignmentDirectional.center,
     child: Text(
-      deliveryModel.state,
+      isAr? deliveryModel.state : deliveryModel.state2,
       style: TextStyle(
         fontFamily: 'Tajawal',
         fontSize: 16,

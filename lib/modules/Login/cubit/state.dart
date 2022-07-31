@@ -57,4 +57,6 @@ class ErrorRegisterDealer extends LoginState {
 
 class LoadingRegisterDealer extends LoginState {}
 
+class ChangeDateTime extends LoginState {}
+
 
