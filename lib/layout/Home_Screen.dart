@@ -6,8 +6,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Delievry_Service.dart';
+import 'package:smart_service/layout/Services/E-Shopping/Service.dart';
 import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/layout/Services/Private_Teacher/Service.dart';
 import 'package:smart_service/models/Services_Model.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
@@ -266,10 +268,18 @@ Widget buildService(BuildContext context, Size size,
           focusColor: Colors.red,
           splashColor: Colors.red,
           onTap: () {
-            if (HomeCubit.get(context).servicesList[index].title == 'خدمة صيانة المنازل')
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة صيانة المنازل') {
               navigatorTo(context, DetailsService());
-            if (HomeCubit.get(context).servicesList[index].title == 'خدمة التوصيل المنزلي')
+            }
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة التوصيل المنزلي') {
               navigatorTo(context, DeliveryServiceList());
+            }
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة معلمي الخاص') {
+              navigatorTo(context, PrivateTeacher());
+            }
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة التسوق الإلكتروني') {
+              navigatorTo(context, EShopping());
+            }
           },
           child: Row(
             children: [

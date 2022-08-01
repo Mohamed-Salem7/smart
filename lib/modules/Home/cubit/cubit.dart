@@ -69,6 +69,42 @@ class HomeCubit extends Cubit<HomeState> {
     'Companies Delivery',
   ];
 
+  List<String> name3 = [
+    'الكل',
+    'مراكز تعليمية',
+    'أساتذة خاص',
+  ];
+  List<String> names3 = [
+    'All',
+    'Center Education',
+    'Private Teachers',
+  ];
+
+  List<String> name4 = [
+    'الكل',
+    'مراكز تسوق',
+    'محلات أحذية',
+    'محلات ملابس',
+  ];
+  List<String> names4 = [
+    'All',
+    'Center Shop',
+    'shoe stores',
+    'clothes shop',
+  ];
+
+
+  List<String> name5 = [
+    'الكل',
+    'مراكز تعليمية',
+    'أساتذة خاص',
+  ];
+  List<String> names5 = [
+    'All',
+    'Center Education',
+    'Private Teachers',
+  ];
+
   List<String> nameOrder = [
     'تفاصيل الطلب :',
     'تفاصيل الدفع :',
@@ -408,6 +444,118 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+
+  List<ServiceModel> educationList = [];
+  List<ServiceModel> all3List = [];
+
+  Future<void> getEducationCenter() async {
+    educationList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('3')
+        .collection('Educational_Center')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        educationList.add(ServiceModel.fromJson(element.data()));
+        all3List.add(ServiceModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<ServiceModel> privateTeacherList = [];
+
+  Future<void> getPrivateTeacher() async {
+    privateTeacherList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('3')
+        .collection('Teacher')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        privateTeacherList.add(ServiceModel.fromJson(element.data()));
+        all3List.add(ServiceModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+
+  List<DeliveryModel> all4List = [];
+
+
+  List<DeliveryModel> shopList = [];
+
+  Future<void> getShopCenter() async {
+    shopList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('4')
+        .collection('Shopping_Centers')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        shopList.add(DeliveryModel.fromJson(element.data()));
+        all4List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<DeliveryModel> clothesList = [];
+
+  Future<void> getClothesCenter() async {
+    clothesList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('4')
+        .collection('Clothes')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        clothesList.add(DeliveryModel.fromJson(element.data()));
+        all4List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<DeliveryModel> shoesList = [];
+
+  Future<void> getShoesCenter() async {
+    shoesList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('4')
+        .collection('Shoes')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        shoesList.add(DeliveryModel.fromJson(element.data()));
+        all4List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+
   void logoutUser() async {
     emit(LoadingLogoutState());
     await FirebaseAuth.instance.signOut().then((value) {
@@ -416,4 +564,8 @@ class HomeCubit extends Cubit<HomeState> {
       emit(ErrorLogoutState(error.toString()));
     });
   }
+
+
+
+
 }

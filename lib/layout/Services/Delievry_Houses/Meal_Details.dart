@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Choose_Meal.dart';
-import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Order.dart';
+import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
+
+import '../Details_Order/Details_Order.dart';
 
 class MealDetails extends StatelessWidget {
   const MealDetails({Key? key}) : super(key: key);

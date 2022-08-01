@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_service/Shared/constant.dart';
 import 'package:smart_service/language/language.dart';
+import 'package:smart_service/layout/Main_Screen.dart';
+import 'package:smart_service/layout/Services/Details_Order/Revision_Details.dart';
 import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
-import 'package:smart_service/layout/Services/Maintenance_Houses/Revision_Details_Order.dart';
 import 'package:smart_service/modules/Login/cubit/state.dart';
 import 'package:unicons/unicons.dart';
 
@@ -50,7 +51,7 @@ class DetailsOrder extends StatelessWidget {
                             children: [
                               IconButton(
                                 onPressed: () {
-                                  navigatorFinished(context, const DetailsService());
+                                  navigatorFinished(context, const MainScreen());
                                 },
                                 icon: const Icon(
                                   Icons.arrow_back_ios,
