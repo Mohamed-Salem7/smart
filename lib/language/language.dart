@@ -62,6 +62,11 @@ class ProviderLanguage with ChangeNotifier {
     "Select_Service" : "إختيار الخدمة",
     "Price_Service" : "سعر الخدمة",
     "Time_Job" : "وقت العمل",
+    "Other" : "عذرا لا يوجد خدمات لعرضها",
+    "Service4" : "خدمة العناية الصحية",
+    "Service5" : "خدمة معلمي الخاص",
+    "Service6" : "خدمة التسوق الإلكتروني",
+    "Service7" : "خدمات أخرى",
   };
   Map<String, Object> textEn = {
     "Home": "Home",
@@ -120,6 +125,11 @@ class ProviderLanguage with ChangeNotifier {
     "Select_Service" : "Select Service",
     "Price_Service" : "Price Service",
     "Time_Job" : "Job Time",
+    "Other" : "Sorry, there are no services to display",
+    "Service4" : "health care service",
+    "Service5" : "Private Teacher service",
+    "Service6" : "Online shopping service",
+    "Service7" : "Other Service",
   };
 
   changeLanguage(bool language) {

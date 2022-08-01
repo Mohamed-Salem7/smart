@@ -11,6 +11,7 @@ import 'package:smart_service/modules/Home/cubit/cubit.dart';
 import 'package:smart_service/modules/Home/cubit/state.dart';
 import 'package:unicons/unicons.dart';
 
+import '../Delievry_Houses/Choose_Meal.dart';
 import '../Delievry_Houses/Delievry_Service.dart';
 import '../Details_Order/Details_Order.dart';
 
@@ -83,9 +84,7 @@ class EShopping extends StatelessWidget {
                                         child: Row(
                                           children: [
                                             Text(
-                                              lang.getText(
-                                                      'Service_Matin_House')
-                                                  as String,
+                                              lang.getText('Service6',) as String,
                                               style: const TextStyle(
                                                 fontFamily: 'Tajawal',
                                                 fontSize: 20,
@@ -276,21 +275,24 @@ class EShopping extends StatelessWidget {
 }
 
 Color color(int i, context) {
-  if (i == HomeCubit.get(context).nameIndex) return Color(0xff5300BF);
+  if (i == HomeCubit.get(context).nameIndex) return const Color(0xff5300BF);
 
-  return Color(0xffE0E0E0);
+  return const Color(0xffE0E0E0);
 }
 
 Color color2(int i, context) {
-  if (i != HomeCubit.get(context).nameIndex) return Color(0xff5300BF);
+  if (i != HomeCubit.get(context).nameIndex) return const Color(0xff5300BF);
 
-  return Color(0xffE0E0E0);
+  return const Color(0xffE0E0E0);
 }
 
 Widget buildProduct(BuildContext context, Size size, DeliveryModel serviceModel,
         int index) =>
     InkWell(
-      onTap: (){},
+      onTap: ()
+      {
+        navigatorTo(context, const ChooseMeal());
+      },
       child: Padding(
         padding: EdgeInsetsDirectional.only(
             end: size.width * 0.05, start: size.width * 0.05),
@@ -346,11 +348,11 @@ Widget buildProduct(BuildContext context, Size size, DeliveryModel serviceModel,
                                 style: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 16,
-                                  color: Color(0xff383838),
+                                  color: const Color(0xff383838),
                                   fontWeight: FontWeight.w700,
                                   height: size.height * 0.001,
                                 ),
-                                textHeightBehavior: TextHeightBehavior(
+                                textHeightBehavior: const TextHeightBehavior(
                                     applyHeightToFirstAscent: false),
                                 textAlign:
                                     isAr ? TextAlign.right : TextAlign.left,
@@ -375,10 +377,10 @@ Widget buildProduct(BuildContext context, Size size, DeliveryModel serviceModel,
                                 style: TextStyle(
                                   fontFamily: 'Tajawal',
                                   fontSize: 14,
-                                  color: Color(0xa8000000),
+                                  color: const Color(0xa8000000),
                                   height: size.height * 0.001,
                                 ),
-                                textHeightBehavior: TextHeightBehavior(
+                                textHeightBehavior: const TextHeightBehavior(
                                     applyHeightToFirstAscent: false),
                                 textAlign:
                                     isAr ? TextAlign.right : TextAlign.left,
@@ -393,7 +395,7 @@ Widget buildProduct(BuildContext context, Size size, DeliveryModel serviceModel,
                       timenew(index, size, serviceModel),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   const Icon(
                     Icons.arrow_forward_ios_outlined,
                     color: Color(

@@ -96,13 +96,13 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<String> name5 = [
     'الكل',
-    'مراكز تعليمية',
-    'أساتذة خاص',
+    'خدمات وقائية',
+    'خدمات تأهيلية',
   ];
   List<String> names5 = [
     'All',
-    'Center Education',
-    'Private Teachers',
+    'Preventive services',
+    'Rehabilitation services',
   ];
 
   List<String> nameOrder = [
@@ -381,6 +381,7 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
+
   List<DeliveryModel> listCafes = [];
 
   Future<void> getCafes() async {
@@ -490,8 +491,6 @@ class HomeCubit extends Cubit<HomeState> {
 
 
   List<DeliveryModel> all4List = [];
-
-
   List<DeliveryModel> shopList = [];
 
   Future<void> getShopCenter() async {
@@ -548,6 +547,49 @@ class HomeCubit extends Cubit<HomeState> {
       value.docs.forEach((element) {
         shoesList.add(DeliveryModel.fromJson(element.data()));
         all4List.add(DeliveryModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<ServiceModel> all5List = [];
+  List<ServiceModel> preventiveList = [];
+
+  Future<void> getPreventive() async {
+    preventiveList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('5')
+        .collection('Preventive_Services')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        preventiveList.add(ServiceModel.fromJson(element.data()));
+        all5List.add(ServiceModel.fromJson(element.data()));
+      });
+      emit(SuccessGetServiceState());
+    }).catchError((error) {
+      emit(ErrorGetServiceState(error.toString()));
+    });
+  }
+
+  List<ServiceModel> rehabilitationList = [];
+
+  Future<void> getRehabilitation() async {
+    rehabilitationList = [];
+    emit(LoadingGetServiceState());
+    await FirebaseFirestore.instance
+        .collection('houses_repair')
+        .doc('5')
+        .collection('Rehabilitation_Services')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        rehabilitationList.add(ServiceModel.fromJson(element.data()));
+        all5List.add(ServiceModel.fromJson(element.data()));
       });
       emit(SuccessGetServiceState());
     }).catchError((error) {

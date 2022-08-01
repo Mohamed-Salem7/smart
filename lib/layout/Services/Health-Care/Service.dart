@@ -13,16 +13,16 @@ import 'package:unicons/unicons.dart';
 import '../Details_Order/Details_Order.dart';
 
 
-class PrivateTeacher extends StatelessWidget {
-  const PrivateTeacher({Key? key}) : super(key: key);
+class HealthCare extends StatelessWidget {
+  const HealthCare({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => HomeCubit()
-        ..getEducationCenter()
-        ..getPrivateTeacher(),
+        ..getPreventive()
+        ..getRehabilitation(),
       child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -81,7 +81,7 @@ class PrivateTeacher extends StatelessWidget {
                                         child: Row(
                                           children: [
                                             Text(
-                                              lang.getText('Service5',) as String,
+                                              lang.getText('Service4',) as String,
                                               style: const TextStyle(
                                                 fontFamily: 'Tajawal',
                                                 fontSize: 20,
@@ -90,9 +90,9 @@ class PrivateTeacher extends StatelessWidget {
                                                 height: 0.6,
                                               ),
                                               textHeightBehavior:
-                                                  const TextHeightBehavior(
-                                                      applyHeightToFirstAscent:
-                                                          false),
+                                              const TextHeightBehavior(
+                                                  applyHeightToFirstAscent:
+                                                  false),
                                               textAlign: isAr
                                                   ? TextAlign.right
                                                   : TextAlign.left,
@@ -107,7 +107,7 @@ class PrivateTeacher extends StatelessWidget {
                                         left: isAr ? size.width * 0.05 : 0,
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                          MainAxisAlignment.end,
                                           children: [
                                             IconButton(
                                               onPressed: () {
@@ -145,35 +145,35 @@ class PrivateTeacher extends StatelessWidget {
                                                 width: size.width * 0.22,
                                                 decoration: BoxDecoration(
                                                     color:
-                                                        color(index, context),
+                                                    color(index, context),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
+                                                    BorderRadius.circular(
+                                                        10)),
                                                 child: Center(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal:
-                                                                size.width *
-                                                                    0.001),
+                                                    EdgeInsets.symmetric(
+                                                        horizontal:
+                                                        size.width *
+                                                            0.001),
                                                     child: Text(
                                                       isAr
                                                           ? HomeCubit.get(
-                                                                  context)
-                                                              .name3[index]
+                                                          context)
+                                                          .name5[index]
                                                           : HomeCubit.get(
-                                                                  context)
-                                                              .names3[index],
+                                                          context)
+                                                          .names5[index],
                                                       style: TextStyle(
                                                         fontFamily: 'Tajawal',
                                                         fontSize: 14,
                                                         color: color2(
                                                             index, context),
                                                         letterSpacing:
-                                                            -0.33764714050292965,
+                                                        -0.33764714050292965,
                                                       ),
                                                       textAlign:
-                                                          TextAlign.center,
+                                                      TextAlign.center,
                                                       softWrap: false,
                                                     ),
                                                   ),
@@ -184,10 +184,10 @@ class PrivateTeacher extends StatelessWidget {
                                         ),
                                         separatorBuilder: (context, index) =>
                                             SizedBox(
-                                          width: size.width * 0.02,
-                                        ),
+                                              width: size.width * 0.02,
+                                            ),
                                         itemCount:
-                                            HomeCubit.get(context).name3.length,
+                                        HomeCubit.get(context).name5.length,
                                       ),
                                     ),
                                   ),
@@ -200,13 +200,13 @@ class PrivateTeacher extends StatelessWidget {
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
                                 itemCount:
-                                    HomeCubit.get(context).all3List.length,
+                                HomeCubit.get(context).all5List.length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
                                   context,
                                   size,
-                                  HomeCubit.get(context).all3List[index],
+                                  HomeCubit.get(context).all5List[index],
                                 ),
                               ),
                             ),
@@ -215,14 +215,14 @@ class PrivateTeacher extends StatelessWidget {
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
                                 itemCount: HomeCubit.get(context)
-                                    .educationList
+                                    .preventiveList
                                     .length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
                                   context,
                                   size,
-                                  HomeCubit.get(context).educationList[index],
+                                  HomeCubit.get(context).preventiveList[index],
                                 ),
                               ),
                             ),
@@ -231,13 +231,13 @@ class PrivateTeacher extends StatelessWidget {
                               padding: EdgeInsets.only(top: size.height * 0.23),
                               child: ListView.builder(
                                 itemCount:
-                                    HomeCubit.get(context).privateTeacherList.length,
+                                HomeCubit.get(context).rehabilitationList.length,
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => buildProduct(
                                   context,
                                   size,
-                                  HomeCubit.get(context).privateTeacherList[index],
+                                  HomeCubit.get(context).rehabilitationList[index],
                                 ),
                               ),
                             ),
@@ -311,7 +311,7 @@ Color color2(int i, context) {
 }
 
 Widget buildProduct(
-        BuildContext context, Size size, ServiceModel serviceModel) =>
+    BuildContext context, Size size, ServiceModel serviceModel) =>
     Padding(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
       child: Column(
@@ -399,12 +399,12 @@ Widget buildProduct(
                           height: size.height * 0.002,
                         ),
                         textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                        TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.right,
                       ),
                       Text(
                         Provider.of<ProviderLanguage>(context).getText('Shekel')
-                            as String,
+                        as String,
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontSize: 12,
@@ -413,7 +413,7 @@ Widget buildProduct(
                           height: size.height * 0.002,
                         ),
                         textHeightBehavior:
-                            TextHeightBehavior(applyHeightToFirstAscent: false),
+                        TextHeightBehavior(applyHeightToFirstAscent: false),
                         textAlign: TextAlign.right,
                       ),
                     ],

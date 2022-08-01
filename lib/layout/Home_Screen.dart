@@ -7,8 +7,10 @@ import 'package:provider/provider.dart';
 import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Delievry_Service.dart';
 import 'package:smart_service/layout/Services/E-Shopping/Service.dart';
+import 'package:smart_service/layout/Services/Health-Care/Service.dart';
 import 'package:smart_service/layout/Services/Maintenance_Houses/Details_Service.dart';
 import 'package:smart_service/Shared/constant.dart';
+import 'package:smart_service/layout/Services/Other_Service.dart';
 import 'package:smart_service/layout/Services/Private_Teacher/Service.dart';
 import 'package:smart_service/models/Services_Model.dart';
 import 'package:smart_service/modules/Home/cubit/cubit.dart';
@@ -279,6 +281,12 @@ Widget buildService(BuildContext context, Size size,
             }
             if (HomeCubit.get(context).servicesList[index].title == 'خدمة التسوق الإلكتروني') {
               navigatorTo(context, EShopping());
+            }
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمة العناية الصحية') {
+              navigatorTo(context, HealthCare());
+            }
+            if (HomeCubit.get(context).servicesList[index].title == 'خدمات أخرى') {
+              navigatorTo(context, OtherService());
             }
           },
           child: Row(
