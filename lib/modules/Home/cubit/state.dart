@@ -13,6 +13,8 @@ class LoadingGetUserData extends HomeState{}
 
 class SuccessGetUserData extends HomeState{}
 
+class SuccessLocation extends HomeState{}
+
 class ErrorGetUserData extends HomeState {
   final String error;
   ErrorGetUserData(this.error);

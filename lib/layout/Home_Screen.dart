@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_service/Google_Map/Map.dart';
 import 'package:smart_service/language/language.dart';
 import 'package:smart_service/layout/Services/Delievry_Houses/Delievry_Service.dart';
 import 'package:smart_service/layout/Services/E-Shopping/Service.dart';
@@ -137,36 +138,42 @@ class HomeScreen extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: size.width * 0.02,
                                     vertical: size.height * 0.01),
-                                child: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.location_on,
-                                      color: Color(0xff5300BF),
-                                      size: 30,
-                                    ),
-                                    SizedBox(
-                                      width: size.width * 0.03,
-                                    ),
-                                    Text(
-                                      lang.getText('Select_your_location') as String,
-                                      style: TextStyle(
-                                        fontFamily: 'Tajawal',
-                                        fontSize: 16,
-                                        color: const Color(0xff000000),
-                                        height: size.height * 0.0001,
+                                child: InkWell(
+                                  onTap: ()
+                                  {
+                                    navigatorTo(context, MyMap());
+                                  },
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.location_on,
+                                        color: Color(0xff5300BF),
+                                        size: 30,
                                       ),
-                                      textHeightBehavior: TextHeightBehavior(
-                                          applyHeightToFirstAscent: false),
-                                      textAlign: TextAlign.center,
-                                      softWrap: false,
-                                    ),
-                                    const Spacer(),
-                                    const Icon(
-                                      Icons.keyboard_arrow_down_sharp,
-                                      color: Color(0xff5300BF),
-                                      size: 30,
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        width: size.width * 0.03,
+                                      ),
+                                      Text(
+                                        lang.getText('Select_your_location') as String,
+                                        style: TextStyle(
+                                          fontFamily: 'Tajawal',
+                                          fontSize: 16,
+                                          color: const Color(0xff000000),
+                                          height: size.height * 0.0001,
+                                        ),
+                                        textHeightBehavior: TextHeightBehavior(
+                                            applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.center,
+                                        softWrap: false,
+                                      ),
+                                      const Spacer(),
+                                      const Icon(
+                                        Icons.keyboard_arrow_down_sharp,
+                                        color: Color(0xff5300BF),
+                                        size: 30,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

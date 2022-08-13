@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_service/language/language.dart';
@@ -133,6 +134,28 @@ class HomeCubit extends Cubit<HomeState> {
     'English',
     'العربية',
   ];
+
+
+
+  Set<Marker> markers={};
+
+  void MyLocation({required double latitude,required double longitude}){
+    markers.add(
+      Marker(
+        markerId: MarkerId('My Location'),
+        position: LatLng(latitude, longitude),
+      ),
+    );
+    emit(SuccessLocation());
+  }
+  void logoutUser() async {
+    emit(LoadingLogoutState());
+    await FirebaseAuth.instance.signOut().then((value) {
+      emit(SuccessLogoutState());
+    }).catchError((error) {
+      emit(ErrorLogoutState(error.toString()));
+    });
+  }
 
   bool isSelect = false;
 
@@ -598,14 +621,14 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
 
-  void logoutUser() async {
-    emit(LoadingLogoutState());
-    await FirebaseAuth.instance.signOut().then((value) {
-      emit(SuccessLogoutState());
-    }).catchError((error) {
-      emit(ErrorLogoutState(error.toString()));
-    });
-  }
+  // void logoutUser() async {
+  //   emit(LoadingLogoutState());
+  //   await FirebaseAuth.instance.signOut().then((value) {
+  //     emit(SuccessLogoutState());
+  //   }).catchError((error) {
+  //     emit(ErrorLogoutState(error.toString()));
+  //   });
+  // }
 
 
 
